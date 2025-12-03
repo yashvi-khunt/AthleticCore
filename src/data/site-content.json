@@ -1,17 +1,12 @@
 {
   "site": {
     "title": "AthleticCore Studio",
-    "nav": [
-      "Home",
-      "Programs",
-      "About",
-      "Contact"
-    ]
+    "nav": ["Home", "Programs", "About", "Contact"]
   },
   "hero": {
-    "title": "Become the Best Version of Yourself",
-    "subtitle": "Professional fitness coaching tailored to your goals",
-    "buttonText": "Start Now",
+    "title": "Train Harder. Recover Faster. Move Better.",
+    "subtitle": "Premium coaching, group classes, and nutrition guidance — all in one place.",
+    "buttonText": "Join A Class",
     "image": "/images/hero.jpg"
   },
   "sections": [

@@ -5,17 +5,14 @@ import { content } from "@/lib/content";
 export default function Navbar() {
   const nav = content.site.nav;
   return (
-    <header className="bg-white shadow-sm">
+    <header className="site-header">
       <div className="container flex items-center justify-between py-4">
-        <Link
-          href="/"
-          className="text-xl font-bold"
-          style={{ color: "var(--color-primary)" }}
-        >
+        <Link href="/" className="site-logo text-2xl">
           {content.site.title}
         </Link>
+
         <nav>
-          <ul className="flex gap-6 text-sm text-(--color-text-secondary)">
+          <ul className="site-nav flex items-center gap-6 text-sm">
             {nav.map((n) => (
               <li key={n}>
                 <Link
@@ -28,6 +25,15 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/contact"
+                className="ml-2 btn-primary"
+                aria-label="Join now"
+              >
+                Join Now
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

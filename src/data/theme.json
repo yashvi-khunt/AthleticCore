@@ -1,8 +1,8 @@
 {
-  "primary": "#1A5D57",
-  "secondary": "#F5A623",
+  "primary": "#0F172A",
+  "secondary": "#FF6A3D",
   "background": "#FFFFFF",
-  "textPrimary": "#222222",
-  "textSecondary": "#555555",
+  "textPrimary": "#0B1220",
+  "textSecondary": "#6B7280",
   "siteMaxWidth": "1200px"
 }

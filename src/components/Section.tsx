@@ -15,15 +15,13 @@ export default function Section({
     <section id={section.id} className="py-8">
       <div className="container">
         <h2
-          className="text-2xl font-semibold"
+          className="section-title"
           style={{ color: "var(--color-text-primary)" }}
         >
           {section.title}
         </h2>
         {section.description && (
-          <p className="mt-2 text-(--color-text-secondary)">
-            {section.description}
-          </p>
+          <p className="mt-2 muted">{section.description}</p>
         )}
         {children ? (
           <div className="mt-6">{children}</div>

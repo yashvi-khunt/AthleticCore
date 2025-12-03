@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Card({ item }: { item: ProgramItem }) {
   return (
-    <article className="rounded-lg overflow-hidden border">
+    <article className="program-card">
       <div className="relative h-44 w-full overflow-hidden">
         <Image
           src={item.image ?? "/images/hero.jpg"}
@@ -16,14 +16,19 @@ export default function Card({ item }: { item: ProgramItem }) {
         />
       </div>
       <div className="p-4">
-        <h3 className="font-semibold text-lg">{item.name}</h3>
-        <Link
-          href={item.slug ? `/programs/${item.slug}` : "#"}
-          className="mt-3 inline-block text-sm font-medium"
-          style={{ color: "var(--color-primary)" }}
-        >
-          Learn more →
-        </Link>
+        <h3 className="program-title font-semibold">{item.name}</h3>
+        {item.description && (
+          <p className="mt-2 text-sm muted">{item.description}</p>
+        )}
+        <div className="mt-4">
+          <Link
+            href={item.slug ? `/programs/${item.slug}` : "#"}
+            className="text-sm font-medium"
+            style={{ color: "var(--color-secondary)" }}
+          >
+            Learn more →
+          </Link>
+        </div>
       </div>
     </article>
   );
