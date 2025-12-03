@@ -9,6 +9,8 @@ export default function Section({
   section: SectionType;
   children?: ReactNode;
 }) {
+  const hasItems = section.items && section.items.length > 0;
+
   return (
     <section id={section.id} className="py-8">
       <div className="container">
@@ -23,13 +25,15 @@ export default function Section({
             {section.description}
           </p>
         )}
-        {section.items && section.items.length > 0 && (
+        {children ? (
+          <div className="mt-6">{children}</div>
+        ) : hasItems ? (
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {section.items.map((it) => (
+            {section.items?.map((it) => (
               <Card key={it.name} item={it} />
             ))}
           </div>
-        )}
+        ) : null}
       </div>
     </section>
   );

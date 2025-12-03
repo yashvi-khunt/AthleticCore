@@ -6,12 +6,13 @@ import Link from "next/link";
 export default function Card({ item }: { item: ProgramItem }) {
   return (
     <article className="rounded-lg overflow-hidden border">
-      <div className="h-44 w-full overflow-hidden relative">
+      <div className="relative h-44 w-full overflow-hidden">
         <Image
           src={item.image ?? "/images/hero.jpg"}
           alt={item.name}
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
+          sizes="(min-width: 1024px) 360px, (min-width: 640px) 320px, 100vw"
         />
       </div>
       <div className="p-4">

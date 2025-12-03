@@ -43,13 +43,14 @@ export default function Hero({
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="w-full max-w-md rounded-lg shadow-lg overflow-hidden">
+          <div className="relative w-full max-w-md overflow-hidden rounded-lg shadow-lg aspect-[4/3]">
             <Image
               src={image}
               alt="Hero"
-              width={800}
-              height={600}
-              objectFit="cover"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 480px, 100vw"
+              priority
             />
           </div>
         </div>

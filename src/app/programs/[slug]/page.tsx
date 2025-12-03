@@ -1,30 +1,28 @@
-import fs from "fs";
-import path from "path";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import type { ProgramItem, SiteContent } from "@/types/site";
-
-const loadContent = (): SiteContent => {
-  const filePath = path.join(process.cwd(), "src/data/site-content.json");
-  const raw = fs.readFileSync(filePath, "utf-8");
-  return JSON.parse(raw) as SiteContent;
-};
-
-const findProgram = (slug: string): ProgramItem | undefined => {
-  const content = loadContent();
-  const programs = content.sections.find((s) => s.id === "programs");
-  return programs?.items?.find((p) => p.slug === slug);
-};
+import type { Metadata } from "next";
+import { content, getProgramBySlug, getProgramSlugs } from "@/lib/content";
 
 export async function generateStaticParams() {
-  const content = loadContent();
-  const programs = content.sections.find((s) => s.id === "programs");
+  return getProgramSlugs().map((slug) => ({ slug }));
+}
 
-  return (
-    programs?.items
-      ?.filter((item): item is ProgramItem & { slug: string } => Boolean(item.slug))
-      .map((item) => ({ slug: item.slug as string })) ?? []
-  );
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const program = getProgramBySlug(slug);
+
+  if (!program) {
+    return { title: "Program not found" };
+  }
+
+  return {
+    title: `${program.name} | ${content.site.title}`,
+    description: program.description ?? content.hero.subtitle,
+  };
 }
 
 export default async function ProgramPage({
@@ -33,7 +31,7 @@ export default async function ProgramPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const program = findProgram(slug);
+  const program = getProgramBySlug(slug);
 
   if (!program) {
     notFound();
@@ -68,7 +66,7 @@ export default async function ProgramPage({
         </div>
 
         <div className="space-y-4">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+          <div className="relative aspect-4/3 overflow-hidden rounded-lg">
             <Image
               src={program.image ?? "/images/hero.jpg"}
               alt={program.name}

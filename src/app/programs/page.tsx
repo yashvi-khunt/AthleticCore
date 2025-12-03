@@ -1,14 +1,8 @@
 import Section from "@/components/Section";
-import { SiteContent } from "@/types/site";
-import path from "path";
-import fs from "fs";
+import { getProgramsSection } from "@/lib/content";
 
-export default async function Programs() {
-  const filePath = path.join(process.cwd(), "src/data/site-content.json");
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const content: SiteContent = JSON.parse(raw);
-  const programs = content.sections.find((s) => s.id === "programs");
-
+export default function Programs() {
+  const programs = getProgramsSection();
   return (
     <div className="py-12">
       {programs ? (

@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { themeVars } from "@/lib/theme";
 
 export const metadata = {
   title: "Fitness Coaching",
@@ -13,14 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" style={themeVars}>
       <body>
-        <div
-          className="min-h-screen flex flex-col"
-          style={{ backgroundColor: "var(--color-background)" }}
-        >
+        <div className="min-h-screen flex flex-col">
           <Navbar />
-          <div className="container flex-1">{children}</div>
+          <main className="flex-1">{children}</main>
           <Footer />
         </div>
       </body>

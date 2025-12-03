@@ -1,14 +1,5 @@
 @import "tailwindcss";
 
-:root {
-  --color-primary: #1a5d57;
-  --color-secondary: #f5a623;
-  --color-background: #ffffff;
-  --color-text-primary: #222222;
-  --color-text-secondary: #555555;
-  --site-max-width: 1200px;
-}
-
 html,
 body,
 #__next {
@@ -16,8 +7,8 @@ body,
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-text-primary);
+  background: var(--color-background, #ffffff);
+  color: var(--color-text-primary, #222222);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
@@ -25,7 +16,7 @@ body {
 }
 
 .container {
-  max-width: var(--site-max-width);
+  max-width: var(--site-max-width, 1200px);
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;

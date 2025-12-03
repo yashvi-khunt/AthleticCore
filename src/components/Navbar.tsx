@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import data from "../data/site-content.json";
+import { content } from "@/lib/content";
 
 export default function Navbar() {
-  const nav = data.site.nav;
+  const nav = content.site.nav;
   return (
     <header className="bg-white shadow-sm">
       <div className="container flex items-center justify-between py-4">
@@ -12,7 +12,7 @@ export default function Navbar() {
           className="text-xl font-bold"
           style={{ color: "var(--color-primary)" }}
         >
-          {data.site.title}
+          {content.site.title}
         </Link>
         <nav>
           <ul className="flex gap-6 text-sm text-(--color-text-secondary)">
