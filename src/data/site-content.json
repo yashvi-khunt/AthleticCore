@@ -23,17 +23,41 @@
         {
           "name": "Personal Training",
           "image": "/images/program1.jpg",
-          "slug": "personal-training"
+          "slug": "personal-training",
+          "description": "One-on-one coaching built around your goals with weekly progress tracking.",
+          "details": [
+            "Movement assessment and goal planning to map your training blocks",
+            "Custom strength, conditioning, and mobility sessions refreshed every 4 weeks",
+            "Accountability with check-ins, form review, and adjustments between sessions"
+          ],
+          "duration": "8-12 week blocks",
+          "frequency": "2-4 sessions per week"
         },
         {
           "name": "Group Classes",
           "image": "/images/program2.jpg",
-          "slug": "group-classes"
+          "slug": "group-classes",
+          "description": "High-energy classes focused on strength, conditioning, and teamwork.",
+          "details": [
+            "Small groups so coaches can correct form and pacing for every athlete",
+            "Balanced weekly schedule for power, conditioning, and mobility",
+            "Scalable movements so beginners and advanced athletes can train together"
+          ],
+          "duration": "55-minute sessions",
+          "frequency": "Offered 5 days per week"
         },
         {
           "name": "Nutrition Coaching",
           "image": "/images/program3.jpg",
-          "slug": "nutrition-coaching"
+          "slug": "nutrition-coaching",
+          "description": "Habit-first nutrition guidance to fuel training and recovery.",
+          "details": [
+            "Macro targets aligned to your sport, sleep, and stress profile",
+            "Meal plans with grocery guides and simple prep options",
+            "Weekly check-ins with data review and habit adjustments"
+          ],
+          "duration": "Rolling monthly coaching",
+          "frequency": "Weekly check-ins"
         }
       ]
     },

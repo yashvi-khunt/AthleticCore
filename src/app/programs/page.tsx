@@ -8,7 +8,7 @@ export default async function Programs() {
   const raw = fs.readFileSync(filePath, "utf-8");
   const content: SiteContent = JSON.parse(raw);
   const programs = content.sections.find((s) => s.id === "programs");
-  console.log("Programs content:", programs);
+
   return (
     <div className="py-12">
       {programs ? (

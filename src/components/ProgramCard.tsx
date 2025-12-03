@@ -17,7 +17,7 @@ export default function Card({ item }: { item: ProgramItem }) {
       <div className="p-4">
         <h3 className="font-semibold text-lg">{item.name}</h3>
         <Link
-          href={item.slug ? `/${item.slug}` : "#"}
+          href={item.slug ? `/programs/${item.slug}` : "#"}
           className="mt-3 inline-block text-sm font-medium"
           style={{ color: "var(--color-primary)" }}
         >

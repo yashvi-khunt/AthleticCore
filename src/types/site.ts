@@ -11,6 +11,10 @@ export type ProgramItem = {
   name: string;
   image?: string;
   slug?: string;
+  description?: string;
+  details?: string[];
+  duration?: string;
+  frequency?: string;
 };
 
 export type Section = {
