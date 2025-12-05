@@ -1,69 +1,302 @@
 {
   "site": {
-    "title": "AthleticCore Studio",
-    "nav": ["Home", "Programs", "About", "Contact"]
+    "name": "CORE ATHLETE",
+    "tagline": "Creating. Opportunities. Realigning. Expectations.",
+    "description": "Professional athletic training and development for all sports and skill levels."
   },
+  "navigation": [
+    { "label": "Programs", "href": "#programs" },
+    { "label": "About", "href": "#about" },
+    { "label": "Services", "href": "#services" },
+    { "label": "Pricing", "href": "#pricing" },
+    { "label": "Testimonials", "href": "#testimonials" },
+    { "label": "Contact", "href": "#contact" }
+  ],
   "hero": {
-    "title": "Train Harder. Recover Faster. Move Better.",
-    "subtitle": "Premium coaching, group classes, and nutrition guidance — all in one place.",
-    "buttonText": "Join A Class",
-    "image": "/images/hero.jpg"
+    "title": "TRAIN WITH CORE ATHLETE",
+    "subtitle": "Creating. Opportunities. Realigning. Expectations. Build strength, speed, and confidence with our science-based training programs.",
+    "primaryButton": {
+      "text": "View Programs",
+      "href": "#programs"
+    },
+    "secondaryButton": {
+      "text": "Get Started",
+      "href": "#contact"
+    },
+    "backgroundImage": "/images/hero.jpg",
+    "showStats": true,
+    "stats": [
+      { "number": "500+", "label": "Athletes Trained" },
+      { "number": "10+", "label": "Sports Covered" },
+      { "number": "95%", "label": "Success Rate" },
+      { "number": "24/7", "label": "Support Available" }
+    ]
   },
-  "sections": [
+  "about": {
+    "title": "What Sets C.O.R.E. Athlete Apart",
+    "subtitle": "Our training philosophy",
+    "description": [
+      "Our training philosophy is built around four core principles that drive every program we create.",
+      "We believe in creating opportunities for athletes to discover their potential and push beyond perceived limits through structured, science-based training methods."
+    ],
+    "image": "/images/training.jpg",
+    "features": [
+      "Evidence-based training methodology",
+      "Individualized athlete assessments",
+      "Sport-specific programming",
+      "Continuous progress tracking"
+    ],
+    "philosophy": [
+      {
+        "letter": "C",
+        "word": "Creating",
+        "description": "Opportunities for athletes to discover their potential and push beyond perceived limits."
+      },
+      {
+        "letter": "O",
+        "word": "Opportunities",
+        "description": "Building pathways to success through structured progression and skill development."
+      },
+      {
+        "letter": "R",
+        "word": "Realigning",
+        "description": "Adjusting mindsets, techniques, and approaches to optimize performance outcomes."
+      },
+      {
+        "letter": "E",
+        "word": "Expectations",
+        "description": "Setting ambitious yet achievable goals that inspire growth and dedication."
+      }
+    ]
+  },
+  "programs": [
     {
-      "id": "programs",
-      "title": "Training Programs",
-      "description": "Custom workouts to match your lifestyle",
-      "items": [
-        {
-          "name": "Personal Training",
-          "image": "/images/program1.jpg",
-          "slug": "personal-training",
-          "description": "One-on-one coaching built around your goals with weekly progress tracking.",
-          "details": [
-            "Movement assessment and goal planning to map your training blocks",
-            "Custom strength, conditioning, and mobility sessions refreshed every 4 weeks",
-            "Accountability with check-ins, form review, and adjustments between sessions"
-          ],
-          "duration": "8-12 week blocks",
-          "frequency": "2-4 sessions per week"
-        },
-        {
-          "name": "Group Classes",
-          "image": "/images/program2.jpg",
-          "slug": "group-classes",
-          "description": "High-energy classes focused on strength, conditioning, and teamwork.",
-          "details": [
-            "Small groups so coaches can correct form and pacing for every athlete",
-            "Balanced weekly schedule for power, conditioning, and mobility",
-            "Scalable movements so beginners and advanced athletes can train together"
-          ],
-          "duration": "55-minute sessions",
-          "frequency": "Offered 5 days per week"
-        },
-        {
-          "name": "Nutrition Coaching",
-          "image": "/images/program3.jpg",
-          "slug": "nutrition-coaching",
-          "description": "Habit-first nutrition guidance to fuel training and recovery.",
-          "details": [
-            "Macro targets aligned to your sport, sleep, and stress profile",
-            "Meal plans with grocery guides and simple prep options",
-            "Weekly check-ins with data review and habit adjustments"
-          ],
-          "duration": "Rolling monthly coaching",
-          "frequency": "Weekly check-ins"
-        }
-      ]
+      "id": "team-training",
+      "name": "Team Training",
+      "slug": "team-training",
+      "image": "/images/team-training.jpg",
+      "shortDescription": "High-energy group sessions perfect for team environments. Emphasizes competition, teamwork, and athletic performance.",
+      "fullDescription": "Dynamic, high-energy sessions designed for team environments with 6-8 athletes. Perfect for sports teams looking to build cohesion while improving individual performance.",
+      "features": [
+        "Dynamic, high-energy sessions",
+        "Perfect for team environments",
+        "Emphasizes competition and teamwork",
+        "Athletic performance focus",
+        "Sport-specific drills and conditioning"
+      ],
+      "groupSize": "6-8 athletes",
+      "price": "$40/hr per athlete",
+      "duration": "60 minutes",
+      "frequency": "2-3x per week",
+      "featured": false
     },
     {
-      "id": "about",
-      "title": "Why Choose Us",
-      "description": "We combine science and empathy to deliver the best results.",
-      "items": []
+      "id": "small-group",
+      "name": "Small Group Training",
+      "slug": "small-group",
+      "image": "/images/small-group.jpg",
+      "shortDescription": "Focused coaching in a semi-private setting with skill-specific feedback and drills.",
+      "fullDescription": "Ideal for athletes looking to refine technique with focused coaching in a semi-private environment of 2-6 athletes.",
+      "features": [
+        "Focused coaching in semi-private setting",
+        "Skill-specific feedback and drills",
+        "Ideal for athletes refining technique",
+        "Personalized attention",
+        "Progressive skill development"
+      ],
+      "groupSize": "2-6 athletes",
+      "price": "$60/hr per athlete",
+      "duration": "60 minutes",
+      "frequency": "2-4x per week",
+      "featured": true
+    },
+    {
+      "id": "private-training",
+      "name": "Private 1-on-1 Training",
+      "slug": "private-training",
+      "image": "/images/private-training.jpg",
+      "shortDescription": "Customized performance plan with direct coaching and progress tracking tailored to your goals.",
+      "fullDescription": "Completely customized training experience with one-on-one attention from elite coaches. Perfect for athletes serious about reaching their maximum potential.",
+      "features": [
+        "Customized performance plan",
+        "Direct coaching and progress tracking",
+        "Tailored to athlete's sport and goals",
+        "Maximum individual attention",
+        "Flexible scheduling",
+        "Video analysis and feedback"
+      ],
+      "groupSize": "1-on-1",
+      "price": "$75/hr",
+      "duration": "60 minutes",
+      "frequency": "Flexible schedule",
+      "featured": false
     }
   ],
+  "services": [
+    {
+      "id": "strength-conditioning",
+      "title": "Strength & Conditioning",
+      "description": "Build explosive power, speed, and endurance with sport-specific strength programs designed for athletic performance.",
+      "icon": "💪"
+    },
+    {
+      "id": "speed-agility",
+      "title": "Speed & Agility",
+      "description": "Improve your first step, change of direction, and overall agility with proven training methods used by elite athletes.",
+      "icon": "⚡"
+    },
+    {
+      "id": "injury-prevention",
+      "title": "Injury Prevention",
+      "description": "Reduce injury risk and build resilience through targeted mobility work, corrective exercises, and proper movement patterns.",
+      "icon": "🛡️"
+    },
+    {
+      "id": "mental-performance",
+      "title": "Mental Performance",
+      "description": "Develop mental toughness, focus, and confidence through sport psychology techniques and mindset training.",
+      "icon": "🧠"
+    },
+    {
+      "id": "nutrition-coaching",
+      "title": "Nutrition Coaching",
+      "description": "Optimize your diet for performance and recovery with personalized nutrition plans and ongoing support.",
+      "icon": "🥗"
+    },
+    {
+      "id": "video-analysis",
+      "title": "Video Analysis",
+      "description": "Get detailed feedback on your technique with professional video breakdown and movement analysis.",
+      "icon": "📹"
+    }
+  ],
+  "pricing": [
+    {
+      "id": "single-session",
+      "name": "Single Session",
+      "description": "Perfect for trying out our training or focusing on a specific goal.",
+      "price": "$75",
+      "interval": "per session",
+      "features": [
+        "60-minute training session",
+        "Pre-session assessment",
+        "Personalized workout",
+        "Post-session feedback"
+      ],
+      "featured": false,
+      "buttonText": "Book Session",
+      "buttonLink": "#contact"
+    },
+    {
+      "id": "monthly-package",
+      "name": "Monthly Package",
+      "description": "Best value for consistent training and measurable results.",
+      "price": "$240",
+      "interval": "per month",
+      "features": [
+        "8 sessions per month (2x/week)",
+        "Comprehensive initial assessment",
+        "Customized training plan",
+        "Progress tracking & adjustments",
+        "Nutrition guidance",
+        "Priority scheduling"
+      ],
+      "featured": true,
+      "buttonText": "Start Training",
+      "buttonLink": "#contact"
+    },
+    {
+      "id": "team-program",
+      "name": "Team Program",
+      "description": "Complete training solution for sports teams and groups.",
+      "price": "Custom",
+      "interval": "per season",
+      "features": [
+        "Season-long programming",
+        "Team assessments",
+        "Flexible scheduling",
+        "Performance testing",
+        "Coach collaboration",
+        "Team rates available"
+      ],
+      "featured": false,
+      "buttonText": "Contact Us",
+      "buttonLink": "#contact"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "testimonial-1",
+      "name": "Marcus Johnson",
+      "role": "Point Guard",
+      "sport": "Basketball",
+      "image": "/images/testimonial-1.jpg",
+      "quote": "Training with CORE ATHLETE took my game to the next level. The personalized attention and sport-specific drills made all the difference in my performance.",
+      "rating": 5
+    },
+    {
+      "id": "testimonial-2",
+      "name": "Sarah Martinez",
+      "role": "Middle Blocker",
+      "sport": "Volleyball",
+      "image": "/images/testimonial-2.jpg",
+      "quote": "The coaches here understand what it takes to compete at a high level. My vertical jump increased by 4 inches in just 3 months!",
+      "rating": 5
+    },
+    {
+      "id": "testimonial-3",
+      "name": "Coach Williams",
+      "role": "Head Coach",
+      "sport": "High School Football",
+      "image": "/images/testimonial-3.jpg",
+      "quote": "We've partnered with CORE ATHLETE for our off-season training program. The professionalism and results speak for themselves. Highly recommend!",
+      "rating": 5
+    }
+  ],
+  "sports": [
+    { "id": "baseball", "name": "Baseball", "icon": "⚾" },
+    { "id": "basketball", "name": "Basketball", "icon": "🏀" },
+    { "id": "football", "name": "Football", "icon": "🏈" },
+    { "id": "volleyball", "name": "Volleyball", "icon": "🏐" },
+    { "id": "track", "name": "Track & Field", "icon": "🏃" },
+    { "id": "soccer", "name": "Soccer", "icon": "⚽" },
+    { "id": "tennis", "name": "Tennis", "icon": "🎾" },
+    { "id": "swimming", "name": "Swimming", "icon": "🏊" },
+    { "id": "wrestling", "name": "Wrestling", "icon": "🤼" },
+    { "id": "strength", "name": "Strength Sports", "icon": "💪" }
+  ],
+  "onlinePrograms": [
+    {
+      "id": "online-strength",
+      "title": "Online Strength Program",
+      "description": "12-week progressive strength training program you can do from anywhere. Includes video demonstrations and weekly check-ins.",
+      "image": "/images/online-program-1.jpg",
+      "link": "/programs/online-strength"
+    },
+    {
+      "id": "online-speed",
+      "title": "Speed & Agility Course",
+      "description": "8-week program focused on improving your speed, agility, and quickness with minimal equipment needed.",
+      "image": "/images/online-program-2.jpg",
+      "link": "/programs/online-speed"
+    }
+  ],
+  "contact": {
+    "email": "info@coreathlete.com",
+    "phone": "(555) 123-4567",
+    "address": "123 Training Center Dr, Your City, ST 12345",
+    "availability": "In-person and virtual sessions available",
+    "socialMedia": {
+      "instagram": "https://instagram.com/coreathlete",
+      "facebook": "https://facebook.com/coreathlete",
+      "twitter": "https://twitter.com/coreathlete"
+    }
+  },
   "footer": {
-    "text": "\u00a9 2025 AthleticCore Studio \u2014 All rights reserved."
+    "copyright": "© 2025 CORE ATHLETE. All rights reserved.",
+    "links": [
+      { "label": "Privacy Policy", "href": "/privacy" },
+      { "label": "Terms of Service", "href": "/terms" }
+    ]
   }
 }
