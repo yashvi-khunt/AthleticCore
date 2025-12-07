@@ -24,7 +24,7 @@ export default function Hero({
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/70 to-black/60" />
+        <div className="absolute inset-0 hero-overlay" />
       </div>
 
       {/* Content */}
@@ -38,7 +38,7 @@ export default function Hero({
               return (
                 <span key={index}>
                   {isHighlight ? (
-                    <span className="text-lime-400">{word}</span>
+                    <span className="text-lime">{word}</span>
                   ) : (
                     word
                   )}
@@ -57,14 +57,14 @@ export default function Hero({
           <div className="flex flex-wrap gap-4 mb-12">
             <Link
               href={primaryButton.href}
-              className="inline-flex items-center justify-center px-8 py-4 bg-lime-400 text-black text-base font-bold rounded-full hover:bg-lime-500 transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-lime text-black text-base font-bold rounded-full hover:bg-lime-dark transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl"
             >
               {primaryButton.text}
             </Link>
             {secondaryButton && (
               <Link
                 href={secondaryButton.href}
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white text-base font-bold rounded-full hover:bg-white hover:text-black transition-all hover:-translate-y-1"
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/20 text-white text-base font-bold rounded-full hover:bg-white hover:text-black transition-all hover:-translate-y-1"
               >
                 {secondaryButton.text}
               </Link>
@@ -79,7 +79,7 @@ export default function Hero({
                   key={index}
                   className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
                 >
-                  <div className="text-3xl md:text-4xl font-black text-lime-400 mb-2">
+                  <div className="text-3xl md:text-4xl font-black text-lime mb-2">
                     {stat.number}
                   </div>
                   <div className="text-sm text-white/80">{stat.label}</div>

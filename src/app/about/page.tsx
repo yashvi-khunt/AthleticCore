@@ -52,7 +52,7 @@ export default function AboutPage() {
       <section className="relative bg-slate-900 text-white py-20 lg:py-32">
         <div className="absolute inset-0 opacity-20">
           <Image
-            src="/images/hero.jpg"
+            src="https://source.unsplash.com/1600x900/?fitness,training,athlete"
             alt="About CORE ATHLETE"
             fill
             className="object-cover"
@@ -137,7 +137,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/hero.jpg"
+                src="https://source.unsplash.com/1600x900/?fitness,training,facility"
                 alt="CORE ATHLETE training facility"
                 fill
                 className="object-cover"
@@ -167,7 +167,7 @@ export default function AboutPage() {
               >
                 <div className="relative h-64 bg-slate-200">
                   <Image
-                    src="/images/hero.jpg"
+                    src="https://source.unsplash.com/800x800/?coach,trainer,portrait"
                     alt={member.name}
                     fill
                     className="object-cover"

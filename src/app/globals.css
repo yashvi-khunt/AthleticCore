@@ -65,6 +65,13 @@
   --site-max-width: 1280px;
   --header-height: 80px;
 
+  /* Border color used by components when not specified */
+  --border-color: rgba(15, 23, 42, 0.08);
+  /* Hero overlay colors (used for readability over images) */
+  --overlay-top: rgba(0, 0, 0, 0.8);
+  --overlay-mid: rgba(0, 0, 0, 0.6);
+  --overlay-bottom: rgba(0, 0, 0, 0.5);
+
   /* Transitions */
   --transition-base: 200ms ease-out;
   --transition-slow: 400ms ease-out;
@@ -170,12 +177,12 @@ body {
 .btn-primary {
   background: var(--color-primary);
   color: var(--color-secondary);
-  box-shadow: 0 4px 14px rgb(163 230 53 / 0.3);
+  box-shadow: var(--shadow-glow-lime);
 }
 
 .btn-primary:hover {
-  background: var(--color-accent);
-  box-shadow: 0 6px 20px rgb(163 230 53 / 0.4);
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-glow-lime-lg);
   transform: translateY(-2px);
 }
 
@@ -235,15 +242,17 @@ body {
   top: 0;
   z-index: 50;
   height: var(--header-height);
-  background: rgb(255 255 255 / 0.95);
+  /* Use semantic surface color so theme overrides apply */
+  background: color-mix(in srgb, var(--color-surface) 95%, transparent);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgb(15 23 42 / 0.08);
+  border-bottom: 1px solid var(--border-color, rgba(15, 23, 42, 0.08));
   transition: all var(--transition-base);
 }
 
 .site-header.scrolled {
-  background: rgb(255 255 255 / 0.98);
-  box-shadow: 0 4px 20px rgb(15 23 42 / 0.06);
+  background: color-mix(in srgb, var(--color-surface) 98%, transparent);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
 }
 
 .site-nav a {
@@ -368,6 +377,40 @@ body {
   background-color: var(--color-primary);
 }
 
+.bg-lime-dark {
+  background-color: var(--color-primary-dark) !important;
+}
+
+/* Make lime accent pop on hover for utility classes that use it */
+.hover\:bg-lime-dark:hover {
+  background-color: var(--color-primary-dark) !important;
+}
+
+/* Compatibility helpers for existing Tailwind lime classes used in components */
+.bg-lime-400 {
+  background-color: var(--color-primary) !important;
+}
+.text-lime-400 {
+  color: var(--color-primary) !important;
+}
+.bg-lime-400\/10 {
+  background-color: color-mix(
+    in srgb,
+    var(--color-primary) 10%,
+    transparent
+  ) !important;
+}
+.border-lime-400\/20 {
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 20%,
+    transparent
+  ) !important;
+}
+.hover\:bg-lime-500:hover {
+  background-color: var(--color-primary-dark) !important;
+}
+
 .bg-surface {
   background-color: var(--color-surface);
 }
@@ -447,14 +490,182 @@ p {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-slate-100);
+  background: var(--color-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-slate-400);
+  background: var(--color-primary);
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 80%, black);
+}
+
+/* ===== DARK THEME OVERRIDES ===== */
+.dark,
+[data-theme="dark"] {
+  --color-background: #0b1220;
+  --color-surface: #071026;
+  --color-surface-dark: #061021;
+  --color-text-primary: #e6eef8;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #ffffff;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-card-hover: 0 20px 50px rgba(0, 0, 0, 0.7);
+  --shadow-glow-lime: 0 0 20px rgba(163, 230, 53, 0.12);
+  --shadow-glow-lime-lg: 0 0 40px rgba(163, 230, 53, 0.16);
+  --border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Smooth theme transition */
+html {
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* ===== THEME-AWARE TAILWIND UTILITY OVERRIDES ===== */
+/* These map frequently-used Tailwind color utilities to the semantic CSS variables
+  so both light and dark themes apply consistently across components. */
+
+/* Background utilities */
+.bg-white {
+  background-color: var(--color-background) !important;
+}
+.bg-slate-50 {
+  background-color: var(--color-surface) !important;
+}
+.bg-slate-900 {
+  background-color: var(--color-surface-dark) !important;
+}
+
+/* Text utilities */
+.text-slate-900 {
+  color: var(--color-text-primary) !important;
+}
+.text-slate-700 {
+  color: var(--color-text-secondary) !important;
+}
+.text-slate-600 {
+  color: var(--color-text-muted) !important;
+}
+.text-white {
+  color: var(--color-text-inverse) !important;
+}
+
+/* Border utilities */
+.border-slate-200 {
+  border-color: var(--border-color) !important;
+}
+
+/* Hover utility overrides (Tailwind uses class names with colons escaped in CSS) */
+.hover\:bg-slate-100:hover {
+  background-color: var(--color-surface) !important;
+}
+.hover\:bg-white:hover {
+  background-color: var(--color-background) !important;
+}
+.hover\:text-lime-400:hover {
+  color: var(--color-primary) !important;
+}
+
+/* Opacity-style utilities (e.g. bg-white/10, text-white/90) — use attribute selectors
+  because these classnames contain a slash which is awkward to target directly. */
+[class*="bg-white/10"] {
+  background-color: color-mix(
+    in srgb,
+    var(--color-background) 10%,
+    transparent
+  ) !important;
+}
+[class*="text-white/"] {
+  color: color-mix(
+    in srgb,
+    var(--color-text-inverse) 90%,
+    transparent
+  ) !important;
+}
+[class*="bg-white/"] {
+  /* general fallback for bg-white/<n> */
+  background-color: color-mix(
+    in srgb,
+    var(--color-background) 10%,
+    transparent
+  ) !important;
+}
+
+/* Cards, surfaces and components that use utility classes should inherit semantic colors */
+.card,
+.program-card,
+.card-lime {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Ensure hero-like dark backgrounds still show as expected in dark mode */
+.text-white\/90 {
+  color: color-mix(
+    in srgb,
+    var(--color-text-inverse) 90%,
+    transparent
+  ) !important;
+}
+
+.text-white\/70 {
+  color: color-mix(
+    in srgb,
+    var(--color-text-inverse) 70%,
+    transparent
+  ) !important;
+}
+
+/* Hover/border/group helpers */
+.hover\:border-lime-400:hover {
+  border-color: var(--color-primary) !important;
+}
+.hover\:bg-lime-400:hover {
+  background-color: var(--color-primary) !important;
+}
+.group:hover .group-hover\:text-lime-400 {
+  color: var(--color-primary) !important;
+}
+
+/* Explicit helpers for common opacity-based utilities */
+.bg-white\/10 {
+  background-color: color-mix(
+    in srgb,
+    var(--color-background) 10%,
+    transparent
+  ) !important;
+}
+.text-white\/80 {
+  color: color-mix(
+    in srgb,
+    var(--color-text-inverse) 80%,
+    transparent
+  ) !important;
+}
+.border-white\/20 {
+  border-color: color-mix(
+    in srgb,
+    var(--color-text-inverse) 20%,
+    transparent
+  ) !important;
+}
+.border-white\/30 {
+  border-color: color-mix(
+    in srgb,
+    var(--color-text-inverse) 30%,
+    transparent
+  ) !important;
+}
+
+/* Hero overlay class uses semantic overlay stops so it adapts to theme */
+.hero-overlay {
+  background: linear-gradient(
+    90deg,
+    var(--overlay-top),
+    var(--overlay-mid),
+    var(--overlay-bottom)
+  );
 }

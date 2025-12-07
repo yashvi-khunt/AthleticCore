@@ -1,15 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getNavigation } from "@/lib/content";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState<string | null>(null);
   const navigation = getNavigation();
 
+  useEffect(() => {
+    // Initialize theme from localStorage or system preference
+    try {
+      const saved = localStorage.getItem("theme");
+      if (saved) {
+        setTheme(saved);
+        document.documentElement.classList.toggle("dark", saved === "dark");
+      } else {
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setTheme(prefersDark ? "dark" : "light");
+        document.documentElement.classList.toggle("dark", prefersDark);
+      }
+    } catch (e) {
+      // ignore (SSR safety)
+    }
+  }, []);
+
+  function toggleTheme() {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {}
+    document.documentElement.classList.toggle("dark", next === "dark");
+  }
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+    <header className="fixed top-0 left-0 right-0 z-50 site-header">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -33,7 +62,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8 site-nav">
             <ul className="flex items-center gap-6">
               {navigation.map((link) => (
                 <li key={link.href}>
@@ -47,12 +76,59 @@ export default function Navbar() {
               ))}
             </ul>
 
-            <Link
-              href="#contact"
-              className="inline-flex items-center justify-center px-6 py-2.5 bg-lime-400 text-black text-sm font-bold rounded-full hover:bg-lime-500 transition-colors shadow-md hover:shadow-lg"
-            >
-              Book Session
-            </Link>
+            <div className="flex items-center gap-4">
+              <button
+                type="button"
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors"
+              >
+                {theme === "dark" ? (
+                  <svg
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.36 6.36l-1.42-1.42M7.05 6.05L5.64 4.64m12.02 0l-1.41 1.41M7.05 17.95l-1.41 1.41"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="3"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+              </button>
+
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center px-6 py-2.5 bg-lime text-black text-sm font-bold rounded-full hover:bg-lime-dark transition-colors shadow-md hover:shadow-lg"
+              >
+                Book Session
+              </Link>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -110,10 +186,22 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+              <li className="px-4 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    toggleTheme();
+                    setIsOpen(false);
+                  }}
+                  className="w-full inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-100 transition-colors"
+                >
+                  {theme === "dark" ? "Switch to Light" : "Switch to Dark"}
+                </button>
+              </li>
               <li className="mt-2 px-4">
                 <Link
                   href="#contact"
-                  className="block text-center px-6 py-2.5 bg-lime-400 text-black text-sm font-bold rounded-full hover:bg-lime-500 transition-colors"
+                  className="block text-center px-6 py-2.5 bg-lime text-black text-sm font-bold rounded-full hover:bg-lime-dark transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   Book Session
