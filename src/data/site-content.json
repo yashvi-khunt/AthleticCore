@@ -23,7 +23,7 @@
       "text": "Get Started",
       "href": "#contact"
     },
-    "backgroundImage": "/images/hero.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1518611012118-f0c5d2cffe4e?auto=format&fit=crop&w=1600&q=80",
     "showStats": true,
     "stats": [
       { "number": "500+", "label": "Athletes Trained" },
@@ -39,7 +39,7 @@
       "Our training philosophy is built around four core principles that drive every program we create.",
       "We believe in creating opportunities for athletes to discover their potential and push beyond perceived limits through structured, science-based training methods."
     ],
-    "image": "/images/training.jpg",
+    "image": "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1600&q=80",
     "features": [
       "Evidence-based training methodology",
       "Individualized athlete assessments",
@@ -74,7 +74,7 @@
       "id": "team-training",
       "name": "Team Training",
       "slug": "team-training",
-      "image": "/images/team-training.jpg",
+      "image": "https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1600&q=80",
       "shortDescription": "High-energy group sessions perfect for team environments. Emphasizes competition, teamwork, and athletic performance.",
       "fullDescription": "Dynamic, high-energy sessions designed for team environments with 6-8 athletes. Perfect for sports teams looking to build cohesion while improving individual performance.",
       "features": [
@@ -94,7 +94,7 @@
       "id": "small-group",
       "name": "Small Group Training",
       "slug": "small-group",
-      "image": "/images/small-group.jpg",
+      "image": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?auto=format&fit=crop&w=1600&q=80",
       "shortDescription": "Focused coaching in a semi-private setting with skill-specific feedback and drills.",
       "fullDescription": "Ideal for athletes looking to refine technique with focused coaching in a semi-private environment of 2-6 athletes.",
       "features": [
@@ -114,7 +114,7 @@
       "id": "private-training",
       "name": "Private 1-on-1 Training",
       "slug": "private-training",
-      "image": "/images/private-training.jpg",
+      "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80",
       "shortDescription": "Customized performance plan with direct coaching and progress tracking tailored to your goals.",
       "fullDescription": "Completely customized training experience with one-on-one attention from elite coaches. Perfect for athletes serious about reaching their maximum potential.",
       "features": [
@@ -230,7 +230,7 @@
       "name": "Marcus Johnson",
       "role": "Point Guard",
       "sport": "Basketball",
-      "image": "/images/testimonial-1.jpg",
+      "image": "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80",
       "quote": "Training with CORE ATHLETE took my game to the next level. The personalized attention and sport-specific drills made all the difference in my performance.",
       "rating": 5
     },
@@ -239,7 +239,7 @@
       "name": "Sarah Martinez",
       "role": "Middle Blocker",
       "sport": "Volleyball",
-      "image": "/images/testimonial-2.jpg",
+      "image": "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80",
       "quote": "The coaches here understand what it takes to compete at a high level. My vertical jump increased by 4 inches in just 3 months!",
       "rating": 5
     },
@@ -248,7 +248,7 @@
       "name": "Coach Williams",
       "role": "Head Coach",
       "sport": "High School Football",
-      "image": "/images/testimonial-3.jpg",
+      "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
       "quote": "We've partnered with CORE ATHLETE for our off-season training program. The professionalism and results speak for themselves. Highly recommend!",
       "rating": 5
     }
@@ -270,14 +270,14 @@
       "id": "online-strength",
       "title": "Online Strength Program",
       "description": "12-week progressive strength training program you can do from anywhere. Includes video demonstrations and weekly check-ins.",
-      "image": "/images/online-program-1.jpg",
+      "image": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1600&q=80",
       "link": "/programs/online-strength"
     },
     {
       "id": "online-speed",
       "title": "Speed & Agility Course",
       "description": "8-week program focused on improving your speed, agility, and quickness with minimal equipment needed.",
-      "image": "/images/online-program-2.jpg",
+      "image": "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1600&q=80",
       "link": "/programs/online-speed"
     }
   ],
