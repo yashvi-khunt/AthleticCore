@@ -505,18 +505,151 @@ p {
 /* ===== DARK THEME OVERRIDES ===== */
 .dark,
 [data-theme="dark"] {
-  --color-background: #0b1220;
-  --color-surface: #071026;
-  --color-surface-dark: #061021;
-  --color-text-primary: #e6eef8;
+  /* Main background - slightly lighter for better base contrast */
+  --color-background: #0f1729;
+
+  /* Surface colors with more variation */
+  --color-surface: #1a2332; /* Lighter surface for cards */
+  --color-surface-dark: #0a101d; /* Darker surface for contrast sections */
+
+  /* Additional surface variation */
+  --color-surface-alt: #141d2e; /* Alternative surface for sections */
+
+  /* Text colors with better contrast */
+  --color-text-primary: #f1f5f9; /* Brighter white for primary text */
   --color-text-secondary: #cbd5e1;
   --color-text-muted: #94a3b8;
   --color-text-inverse: #ffffff;
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.6);
-  --shadow-card-hover: 0 20px 50px rgba(0, 0, 0, 0.7);
-  --shadow-glow-lime: 0 0 20px rgba(163, 230, 53, 0.12);
-  --shadow-glow-lime-lg: 0 0 40px rgba(163, 230, 53, 0.16);
-  --border-color: rgba(255, 255, 255, 0.06);
+
+  /* Enhanced shadows for better card separation */
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.7),
+    0 2px 8px rgba(163, 230, 53, 0.05);
+  --shadow-card-hover: 0 20px 50px rgba(0, 0, 0, 0.8),
+    0 4px 16px rgba(163, 230, 53, 0.08);
+
+  /* Subtle lime glows */
+  --shadow-glow-lime: 0 0 20px rgba(163, 230, 53, 0.15);
+  --shadow-glow-lime-lg: 0 0 40px rgba(163, 230, 53, 0.2);
+
+  /* Enhanced borders with lime tint */
+  --border-color: rgba(163, 230, 53, 0.1);
+  --border-color-strong: rgba(163, 230, 53, 0.15);
+}
+
+/* ===== DARK MODE SPECIFIC ENHANCEMENTS ===== */
+
+/* Card borders and backgrounds */
+.dark .card,
+.dark .program-card {
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--border-color-strong);
+}
+
+.dark .card:hover,
+.dark .program-card:hover {
+  border-color: rgba(163, 230, 53, 0.25);
+}
+
+/* Section backgrounds */
+.dark .bg-white {
+  background-color: var(--color-background) !important;
+}
+
+.dark .bg-slate-50 {
+  background-color: var(--color-surface-alt) !important;
+}
+
+.dark .bg-slate-900 {
+  background-color: var(--color-surface-dark) !important;
+}
+
+/* Section separators */
+.dark section {
+  position: relative;
+}
+
+.dark section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(163, 230, 53, 0.1) 50%,
+    transparent
+  );
+}
+
+.dark section:first-of-type::before {
+  display: none;
+}
+
+/* Pricing cards */
+.dark #pricing .bg-white,
+.dark [id="pricing"] .bg-white {
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--border-color-strong);
+}
+
+.dark .border-lime-400 {
+  border-color: rgba(163, 230, 53, 0.4) !important;
+  box-shadow: 0 0 30px rgba(163, 230, 53, 0.15);
+}
+
+/* All white background cards get borders */
+.dark [class*="rounded-2xl"].bg-white,
+.dark .bg-white[class*="rounded"],
+.dark .bg-slate-50.rounded-xl {
+  border: 1px solid var(--border-color);
+}
+
+/* Form elements */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--border-color);
+  color: var(--color-text-primary);
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: rgba(163, 230, 53, 0.4);
+  box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.1);
+}
+
+/* Navbar */
+.dark .site-header {
+  background: rgba(15, 23, 41, 0.95);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Badges */
+.dark .bg-lime-400\/10 {
+  background-color: rgba(163, 230, 53, 0.12) !important;
+  border-color: rgba(163, 230, 53, 0.25) !important;
+}
+
+/* CTA section */
+.dark .bg-slate-900 {
+  background-color: var(--color-surface-dark) !important;
+  border-top: 1px solid rgba(163, 230, 53, 0.15);
+  border-bottom: 1px solid rgba(163, 230, 53, 0.15);
+}
+
+/* Buttons */
+.dark .bg-slate-900.text-white {
+  background-color: var(--color-surface-dark) !important;
+  border: 1px solid rgba(163, 230, 53, 0.2);
+}
+
+.dark .bg-slate-900.text-white:hover {
+  background-color: var(--color-surface) !important;
+  border-color: rgba(163, 230, 53, 0.4);
 }
 
 /* Smooth theme transition */

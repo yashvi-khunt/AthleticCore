@@ -19,10 +19,9 @@ export default function AboutSection({
               src={image}
               alt="Athletic training"
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(min-width: 1024px) 600px, 100vw"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
           </div>
 
           {/* Content */}
@@ -63,7 +62,7 @@ export default function AboutSection({
 
             <Link
               href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-lime-400 text-black text-base font-bold rounded-full hover:bg-lime-500 transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl mt-4"
+              className="inline-flex items-center justify-center px-8 py-4 bg-lime-400 text-black text-base font-bold rounded-full hover:bg-lime-500 transition-colors shadow-lg mt-4"
             >
               Start Your Journey
             </Link>
