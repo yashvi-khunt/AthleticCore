@@ -140,35 +140,37 @@ data/site-content.json
 
 ```
 1. Open: src/data/site-content.json
-   
+
 2. Find sections array
-   
+
 3. Change order values:
-   
+
    Before:
    { "id": "pricing-section", "order": 5 }
    { "id": "testimonials-section", "order": 6 }
-   
+
    After:
    { "id": "testimonials-section", "order": 5 }
    { "id": "pricing-section", "order": 6 }
-   
+
 4. Save file
-   
+
 5. Browser refreshes (dev mode)
-   
+
 6. Result: Testimonials now appears before Pricing
 ```
 
 ## Key Concepts
 
 ### 1. Separation of Concerns
+
 - **Content** (JSON) ≠ **Structure** (Components) ≠ **Logic** (Utils)
 - Edit content without touching code
 - Reuse components anywhere
 - Utilities handle complex operations
 
 ### 2. Type Safety
+
 ```
 TypeScript Types (content.ts)
         ↓
@@ -180,6 +182,7 @@ Better developer experience
 ```
 
 ### 3. Dynamic Rendering
+
 ```
 Static Config → Dynamic Output
 - No hardcoded section order
@@ -190,21 +193,25 @@ Static Config → Dynamic Output
 ## Benefits
 
 ✅ **Easy to Edit**
+
 - Change JSON, not code
 - No developer needed for reordering
 - Quick A/B testing
 
 ✅ **Type Safe**
+
 - TypeScript catches errors
 - IntelliSense support
 - Clear data structure
 
 ✅ **Maintainable**
+
 - Single source of truth
 - Reusable components
 - Clear file organization
 
 ✅ **Flexible**
+
 - Add custom properties
 - Create new section types
 - Multiple layout presets

@@ -13,31 +13,35 @@ export function validateSection(section: SectionConfig): boolean {
     console.error("Section must have id and type", section);
     return false;
   }
-  
+
   if (typeof section.enabled !== "boolean") {
     console.error("Section enabled must be a boolean", section);
     return false;
   }
-  
+
   if (typeof section.order !== "number") {
     console.error("Section order must be a number", section);
     return false;
   }
-  
+
   return true;
 }
 
 /**
  * Sorts sections by order
  */
-export function sortSectionsByOrder(sections: SectionConfig[]): SectionConfig[] {
+export function sortSectionsByOrder(
+  sections: SectionConfig[]
+): SectionConfig[] {
   return [...sections].sort((a, b) => a.order - b.order);
 }
 
 /**
  * Filters enabled sections
  */
-export function filterEnabledSections(sections: SectionConfig[]): SectionConfig[] {
+export function filterEnabledSections(
+  sections: SectionConfig[]
+): SectionConfig[] {
   return sections.filter((section) => section.enabled);
 }
 
@@ -71,22 +75,22 @@ export function reorderSections(
 ): SectionConfig[] {
   const newSections = [...sections];
   const sectionIndex = newSections.findIndex((s) => s.id === fromId);
-  
+
   if (sectionIndex === -1) {
     console.error(`Section with id ${fromId} not found`);
     return sections;
   }
-  
+
   const section = newSections[sectionIndex];
   const oldOrder = section.order;
-  
+
   // Update the moved section
   section.order = toOrder;
-  
+
   // Adjust other sections
   newSections.forEach((s) => {
     if (s.id === fromId) return;
-    
+
     if (oldOrder < toOrder) {
       // Moving down: shift sections up
       if (s.order > oldOrder && s.order <= toOrder) {
@@ -99,7 +103,7 @@ export function reorderSections(
       }
     }
   });
-  
+
   return sortSectionsByOrder(newSections);
 }
 
@@ -136,9 +140,7 @@ export function toggleSection(
   id: string
 ): SectionConfig[] {
   return sections.map((section) =>
-    section.id === id
-      ? { ...section, enabled: !section.enabled }
-      : section
+    section.id === id ? { ...section, enabled: !section.enabled } : section
   );
 }
 
@@ -162,14 +164,14 @@ export function validateAllSections(sections: SectionConfig[]): {
   errors: string[];
 } {
   const errors: string[] = [];
-  
+
   // Check for duplicate IDs
   const ids = sections.map((s) => s.id);
   const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
   if (duplicateIds.length > 0) {
     errors.push(`Duplicate section IDs found: ${duplicateIds.join(", ")}`);
   }
-  
+
   // Check for duplicate orders in enabled sections
   const enabledSections = filterEnabledSections(sections);
   const orders = enabledSections.map((s) => s.order);
@@ -179,14 +181,14 @@ export function validateAllSections(sections: SectionConfig[]): {
   if (duplicateOrders.length > 0) {
     errors.push(`Duplicate order numbers found: ${duplicateOrders.join(", ")}`);
   }
-  
+
   // Validate each section
   sections.forEach((section, index) => {
     if (!validateSection(section)) {
       errors.push(`Section at index ${index} is invalid`);
     }
   });
-  
+
   return {
     valid: errors.length === 0,
     errors,
@@ -196,7 +198,9 @@ export function validateAllSections(sections: SectionConfig[]): {
 /**
  * Normalizes section orders to sequential numbers (1, 2, 3, etc.)
  */
-export function normalizeSectionOrders(sections: SectionConfig[]): SectionConfig[] {
+export function normalizeSectionOrders(
+  sections: SectionConfig[]
+): SectionConfig[] {
   const sorted = sortSectionsByOrder(sections);
   return sorted.map((section, index) => ({
     ...section,

@@ -3,6 +3,7 @@
 ## Overview
 
 Your website now uses a dynamic section management system that allows you to easily:
+
 - ✅ Reorder sections without touching code
 - ✅ Enable/disable sections via JSON configuration
 - ✅ Customize section properties
@@ -72,7 +73,7 @@ Change the `enabled` property:
 {
   "id": "sports-section",
   "type": "sports",
-  "enabled": false,  // This section won't display
+  "enabled": false, // This section won't display
   "order": 7
 }
 ```
@@ -96,17 +97,17 @@ Add section-specific customizations:
 
 ## Available Section Types
 
-| Type | Description |
-|------|-------------|
-| `hero` | Hero banner with title, subtitle, and CTAs |
-| `programs` | Training programs grid |
-| `about` | About section with CORE philosophy |
-| `services` | Services grid with icons |
-| `pricing` | Pricing plans cards |
-| `testimonials` | Customer testimonials carousel |
-| `sports` | Sports icons grid |
-| `cta` | Call-to-action section |
-| `contact` | Contact information and form |
+| Type           | Description                                |
+| -------------- | ------------------------------------------ |
+| `hero`         | Hero banner with title, subtitle, and CTAs |
+| `programs`     | Training programs grid                     |
+| `about`        | About section with CORE philosophy         |
+| `services`     | Services grid with icons                   |
+| `pricing`      | Pricing plans cards                        |
+| `testimonials` | Customer testimonials carousel             |
+| `sports`       | Sports icons grid                          |
+| `cta`          | Call-to-action section                     |
+| `contact`      | Contact information and form               |
 
 ## Quick Examples
 
@@ -192,11 +193,8 @@ To add a completely new section type:
 1. **Create the component** in `/src/components/YourNewSection.tsx`
 2. **Add the type** to `/src/types/content.ts`:
    ```typescript
-   export type SectionType = 
-     | "hero"
-     | "programs"
-     | "your-new-section"  // Add here
-     // ...
+   export type SectionType = "hero" | "programs" | "your-new-section"; // Add here
+   // ...
    ```
 3. **Add to SectionRenderer** in `/src/components/SectionRenderer.tsx`:
    ```typescript
@@ -224,28 +222,31 @@ To add a completely new section type:
 
 ## Component Files
 
-| File | Purpose |
-|------|---------|
-| `/src/app/page.tsx` | Main page that renders sections dynamically |
-| `/src/components/SectionRenderer.tsx` | Maps section types to components |
-| `/src/components/SectionWrapper.tsx` | Wrapper for common section styling |
-| `/src/lib/content.ts` | Helper functions to get section data |
-| `/src/types/content.ts` | TypeScript types for sections |
-| `/src/data/site-content.json` | Section configuration and content |
+| File                                  | Purpose                                     |
+| ------------------------------------- | ------------------------------------------- |
+| `/src/app/page.tsx`                   | Main page that renders sections dynamically |
+| `/src/components/SectionRenderer.tsx` | Maps section types to components            |
+| `/src/components/SectionWrapper.tsx`  | Wrapper for common section styling          |
+| `/src/lib/content.ts`                 | Helper functions to get section data        |
+| `/src/types/content.ts`               | TypeScript types for sections               |
+| `/src/data/site-content.json`         | Section configuration and content           |
 
 ## Troubleshooting
 
 **Section not appearing?**
+
 - Check that `enabled: true`
 - Verify the `type` matches available types
 - Ensure the order number is within your range
 
 **Wrong order?**
+
 - Check all `order` values
 - Make sure they're in the sequence you want
 - Remember: lower numbers appear first
 
 **Build errors?**
+
 - Run `npm run build` to check for TypeScript errors
 - Verify JSON syntax is correct (no trailing commas)
 - Check that all required properties are present

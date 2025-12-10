@@ -140,7 +140,7 @@ export interface ContactInfo {
 }
 
 // ===== SECTION CONFIGURATION =====
-export type SectionType = 
+export type SectionType =
   | "hero"
   | "programs"
   | "about"

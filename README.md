@@ -14,7 +14,7 @@ A modern, dynamic Next.js website for athletic training and sports performance. 
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm, yarn, pnpm, or bun
 
 ### Installation
@@ -66,6 +66,7 @@ The website uses a dynamic section system. To reorder sections or hide/show them
 5. Set `enabled: true` to show a section
 
 **Example:**
+
 ```json
 {
   "id": "about-section",
@@ -110,17 +111,17 @@ ac_frontend/
 
 ## 🎨 Available Sections
 
-| Section | Type | Description |
-|---------|------|-------------|
-| Hero | `hero` | Landing banner with CTA buttons |
-| Programs | `programs` | Training programs grid |
-| About | `about` | CORE philosophy and features |
-| Services | `services` | Services offered |
-| Pricing | `pricing` | Pricing plans |
-| Testimonials | `testimonials` | Customer reviews |
-| Sports | `sports` | Supported sports icons |
-| CTA | `cta` | Call-to-action section |
-| Contact | `contact` | Contact information |
+| Section      | Type           | Description                     |
+| ------------ | -------------- | ------------------------------- |
+| Hero         | `hero`         | Landing banner with CTA buttons |
+| Programs     | `programs`     | Training programs grid          |
+| About        | `about`        | CORE philosophy and features    |
+| Services     | `services`     | Services offered                |
+| Pricing      | `pricing`      | Pricing plans                   |
+| Testimonials | `testimonials` | Customer reviews                |
+| Sports       | `sports`       | Supported sports icons          |
+| CTA          | `cta`          | Call-to-action section          |
+| Contact      | `contact`      | Contact information             |
 
 ## ⚙️ Configuration Examples
 
@@ -138,10 +139,16 @@ ac_frontend/
 ### Reorder Sections
 
 Change the `order` values:
+
 ```json
 [
   { "id": "hero-section", "type": "hero", "enabled": true, "order": 1 },
-  { "id": "testimonials-section", "type": "testimonials", "enabled": true, "order": 2 },
+  {
+    "id": "testimonials-section",
+    "type": "testimonials",
+    "enabled": true,
+    "order": 2
+  },
   { "id": "programs-section", "type": "programs", "enabled": true, "order": 3 }
 ]
 ```

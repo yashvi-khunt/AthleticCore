@@ -29,7 +29,7 @@ interface SectionRendererProps {
 
 /**
  * SectionRenderer - Dynamically renders sections based on configuration
- * 
+ *
  * This component reads the section type and custom props to render
  * the appropriate section component. Custom props from the section
  * configuration are merged with default data.
