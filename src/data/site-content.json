@@ -12,6 +12,62 @@
     { "label": "Testimonials", "href": "#testimonials" },
     { "label": "Contact", "href": "#contact" }
   ],
+  "sections": [
+    {
+      "id": "hero-section",
+      "type": "hero",
+      "enabled": true,
+      "order": 1
+    },
+    {
+      "id": "programs-section",
+      "type": "programs",
+      "enabled": true,
+      "order": 2
+    },
+    {
+      "id": "about-section",
+      "type": "about",
+      "enabled": true,
+      "order": 3
+    },
+    {
+      "id": "services-section",
+      "type": "services",
+      "enabled": true,
+      "order": 4
+    },
+    {
+      "id": "pricing-section",
+      "type": "pricing",
+      "enabled": true,
+      "order": 5
+    },
+    {
+      "id": "testimonials-section",
+      "type": "testimonials",
+      "enabled": true,
+      "order": 6
+    },
+    {
+      "id": "sports-section",
+      "type": "sports",
+      "enabled": true,
+      "order": 7
+    },
+    {
+      "id": "cta-section",
+      "type": "cta",
+      "enabled": true,
+      "order": 8
+    },
+    {
+      "id": "contact-section",
+      "type": "contact",
+      "enabled": true,
+      "order": 9
+    }
+  ],
   "hero": {
     "title": "TRAIN WITH CORE ATHLETE",
     "subtitle": "Creating. Opportunities. Realigning. Expectations. Build strength, speed, and confidence with our science-based training programs.",

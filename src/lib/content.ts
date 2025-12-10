@@ -101,6 +101,21 @@ export const getFooterData = () => {
   return content.footer;
 };
 
+// ===== SECTIONS =====
+export const getSections = () => {
+  return content.sections || [];
+};
+
+export const getEnabledSections = () => {
+  return getSections()
+    .filter((section) => section.enabled)
+    .sort((a, b) => a.order - b.order);
+};
+
+export const getSectionByType = (type: string) => {
+  return getSections().find((section) => section.type === type);
+};
+
 // ===== UTILITY FUNCTIONS =====
 
 // Search programs

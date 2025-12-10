@@ -139,6 +139,27 @@ export interface ContactInfo {
   };
 }
 
+// ===== SECTION CONFIGURATION =====
+export type SectionType = 
+  | "hero"
+  | "programs"
+  | "about"
+  | "services"
+  | "pricing"
+  | "testimonials"
+  | "sports"
+  | "cta"
+  | "contact";
+
+export interface SectionConfig {
+  id: string;
+  type: SectionType;
+  enabled: boolean;
+  order: number;
+  title?: string;
+  customProps?: Record<string, any>;
+}
+
 // ===== SITE CONTENT (MAIN DATA STRUCTURE) =====
 export interface SiteContent {
   site: {
@@ -147,6 +168,7 @@ export interface SiteContent {
     description: string;
   };
   navigation: NavLink[];
+  sections?: SectionConfig[];
   hero: Hero;
   about: About;
   programs: Program[];

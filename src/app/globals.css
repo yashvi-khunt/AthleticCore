@@ -648,7 +648,7 @@ p {
 }
 
 .dark .bg-slate-900.text-white:hover {
-  background-color: var(--color-surface) !important;
+  /* background-color: var(--color-surface) !important; */
   border-color: rgba(163, 230, 53, 0.4);
 }
 
