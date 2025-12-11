@@ -20,20 +20,20 @@
       "order": 1
     },
     {
-      "id": "programs-section",
-      "type": "programs",
+      "id": "about-section",
+      "type": "about",
       "enabled": true,
       "order": 2
     },
     {
-      "id": "about-section",
-      "type": "about",
+      "id": "sports-section",
+      "type": "sports",
       "enabled": true,
       "order": 3
     },
     {
-      "id": "services-section",
-      "type": "services",
+      "id": "programs-section",
+      "type": "programs",
       "enabled": true,
       "order": 4
     },
@@ -50,21 +50,21 @@
       "order": 6
     },
     {
-      "id": "sports-section",
-      "type": "sports",
-      "enabled": true,
-      "order": 7
-    },
-    {
       "id": "cta-section",
       "type": "cta",
       "enabled": true,
-      "order": 8
+      "order": 7
     },
     {
       "id": "contact-section",
       "type": "contact",
       "enabled": true,
+      "order": 8
+    },
+    {
+      "id": "services-section",
+      "type": "services",
+      "enabled": false,
       "order": 9
     }
   ],

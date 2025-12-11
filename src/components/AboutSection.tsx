@@ -17,10 +17,10 @@ export default function AboutSection({
       {/* Background Logo */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
-          src="/images/aboutBg.png"
+          src="/images/aboutBackground.png"
           alt="CORE ATHLETE Logo"
           fill
-          className="object-contain opacity-10"
+          className="object-contain opacity-20"
           sizes="100vw"
           priority
         />
