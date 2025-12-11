@@ -113,7 +113,8 @@ export interface Philosophy {
 export interface Sport {
   id: string;
   name: string;
-  icon: string;
+  icon?: string;
+  image: string;
 }
 
 // ===== ONLINE PROGRAMS =====

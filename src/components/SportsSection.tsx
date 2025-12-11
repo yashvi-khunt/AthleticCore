@@ -33,14 +33,20 @@ export default function SportsSection({
   );
 }
 
-function SportCard({ icon, name }: Sport) {
+function SportCard({ image, name }: Sport) {
   return (
-    <div className="bg-white rounded-xl p-6 text-center hover:shadow-lg hover:-translate-y-1 transition-all border border-slate-200 hover:border-lime-400 group">
-      <div className="text-4xl mb-3 transition-transform group-hover:scale-110">
-        {icon}
+    <div className="bg-white rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all border border-slate-200 hover:border-lime-400 group">
+      <div className="aspect-square relative overflow-hidden">
+        <img
+          src={image}
+          alt={name}
+          className="w-full h-full object-cover transition-transform group-hover:scale-110"
+        />
       </div>
-      <div className="text-sm font-semibold text-slate-700 group-hover:text-lime-400 transition-colors">
-        {name}
+      <div className="p-4 text-center">
+        <div className="text-sm font-semibold text-slate-700 group-hover:text-lime-400 transition-colors">
+          {name}
+        </div>
       </div>
     </div>
   );

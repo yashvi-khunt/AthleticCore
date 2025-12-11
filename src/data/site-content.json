@@ -310,16 +310,56 @@
     }
   ],
   "sports": [
-    { "id": "baseball", "name": "Baseball", "icon": "⚾" },
-    { "id": "basketball", "name": "Basketball", "icon": "🏀" },
-    { "id": "football", "name": "Football", "icon": "🏈" },
-    { "id": "volleyball", "name": "Volleyball", "icon": "🏐" },
-    { "id": "track", "name": "Track & Field", "icon": "🏃" },
-    { "id": "soccer", "name": "Soccer", "icon": "⚽" },
-    { "id": "tennis", "name": "Tennis", "icon": "🎾" },
-    { "id": "swimming", "name": "Swimming", "icon": "🏊" },
-    { "id": "wrestling", "name": "Wrestling", "icon": "🤼" },
-    { "id": "strength", "name": "Strength Sports", "icon": "💪" }
+    {
+      "id": "baseball",
+      "name": "Baseball",
+      "image": "https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "basketball",
+      "name": "Basketball",
+      "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "football",
+      "name": "Football",
+      "image": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "volleyball",
+      "name": "Volleyball",
+      "image": "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "track",
+      "name": "Track & Field",
+      "image": "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "soccer",
+      "name": "Soccer",
+      "image": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "tennis",
+      "name": "Tennis",
+      "image": "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "swimming",
+      "name": "Swimming",
+      "image": "https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "wrestling",
+      "name": "Wrestling",
+      "image": "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "strength",
+      "name": "Strength Sports",
+      "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
+    }
   ],
   "onlinePrograms": [
     {
