@@ -8,7 +8,7 @@ interface Props {
 
 export default function ServicesSection({
   services,
-  title = "Our Services",
+  title = "What We Specialise In",
   subtitle,
 }: Props) {
   return (

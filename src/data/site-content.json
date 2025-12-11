@@ -50,21 +50,21 @@
       "order": 6
     },
     {
+      "id": "services-section",
+      "type": "services",
+      "enabled": true,
+      "order": 7
+    },
+    {
       "id": "cta-section",
       "type": "cta",
       "enabled": true,
-      "order": 7
+      "order": 8
     },
     {
       "id": "contact-section",
       "type": "contact",
       "enabled": true,
-      "order": 8
-    },
-    {
-      "id": "services-section",
-      "type": "services",
-      "enabled": false,
       "order": 9
     }
   ],
