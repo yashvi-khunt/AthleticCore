@@ -17,7 +17,7 @@ export default function AboutSection({
       {/* Background Logo */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
-          src="/images/aboutBackground.png"
+          src="/AthleticCore/images/aboutBackground.png"
           alt="CORE ATHLETE Logo"
           fill
           className="object-contain opacity-20"
