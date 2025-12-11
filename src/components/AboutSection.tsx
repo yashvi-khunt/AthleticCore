@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState, useRef } from "react";
 import type { About } from "@/types/content";
 
 export default function AboutSection({
@@ -9,21 +12,61 @@ export default function AboutSection({
   image,
   philosophy,
 }: About) {
+  const [offsetY, setOffsetY] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const sectionTop = sectionRef.current.offsetTop;
+      const sectionHeight = sectionRef.current.offsetHeight;
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+
+      // Calculate scroll position relative to section
+      const sectionScrollStart = sectionTop - windowHeight;
+      const sectionScrollEnd = sectionTop + sectionHeight;
+
+      // Only apply parallax when section is in viewport
+      if (
+        scrollPosition > sectionScrollStart &&
+        scrollPosition < sectionScrollEnd
+      ) {
+        const relativeScroll = scrollPosition - sectionScrollStart;
+        setOffsetY(relativeScroll * 0.3); // Adjust 0.3 for parallax speed
+      }
+    };
+
+    handleScroll(); // Initial calculation
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="about"
       className="relative py-20 bg-slate-900 text-white overflow-hidden"
     >
-      {/* Background Logo */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <Image
-          src="/AthleticCore/images/aboutBackground.png"
-          alt="CORE ATHLETE Logo"
-          fill
-          className="object-contain opacity-20"
-          sizes="100vw"
-          priority
-        />
+      {/* Background Logo with Parallax */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute inset-0 w-full h-[140%] -top-[50%]"
+          style={{
+            transform: `translateY(${offsetY}px)`,
+            willChange: "transform",
+          }}
+        >
+          <Image
+            src="/AthleticCore/images/aboutBackground.png"
+            alt="CORE ATHLETE Logo"
+            fill
+            className="object-contain opacity-20"
+            sizes="100vw"
+            priority
+          />
+        </div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
