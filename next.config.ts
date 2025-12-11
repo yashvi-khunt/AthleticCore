@@ -1,9 +1,11 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
-  basePath: "/AthleticCore",
+  basePath: isProd ? "/AthleticCore" : "",
   output: "export",
-  assetPrefix: "/AthleticCore",
+  assetPrefix: isProd ? "/AthleticCore" : "",
   images: {
     unoptimized: true,
     domains: ["images.unsplash.com", "source.unsplash.com"],
