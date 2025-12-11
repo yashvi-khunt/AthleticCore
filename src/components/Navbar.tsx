@@ -43,28 +43,15 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 hover:opacity-90 transition-opacity"
-          >
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
-                <Image
-                  src="/AthleticCore/images/logo-transparent.png"
-                  alt="CORE ATHLETE Logo"
-                  fill
-                  className="object-cover"
-                  sizes="40px"
-                />
-              </div>
-              <div className="flex flex-col leading-tight">
-                <span className="text-base font-black tracking-wider text-slate-900">
-                  CORE
-                </span>
-                <span className="text-xs font-semibold tracking-widest text-lime-400">
-                  ATHLETE
-                </span>
-              </div>
+          <Link href="/" className="hover:opacity-90 transition-opacity">
+            <div className="w-16 h-16 relative">
+              <Image
+                src="/AthleticCore/images/logo-transparent.png"
+                alt="CORE ATHLETE Logo"
+                fill
+                className="object-contain"
+                sizes="64px"
+              />
             </div>
           </Link>
 

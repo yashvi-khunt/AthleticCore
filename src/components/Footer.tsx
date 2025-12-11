@@ -13,24 +13,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
-                <Image
-                  src="/AthleticCore/images/logo-transparent.png"
-                  alt="CORE ATHLETE Logo"
-                  fill
-                  className="object-cover"
-                  sizes="40px"
-                />
-              </div>
-              <div className="flex flex-col leading-tight">
-                <span className="text-base font-black tracking-wider">
-                  CORE
-                </span>
-                <span className="text-xs font-semibold tracking-widest text-lime-400">
-                  ATHLETE
-                </span>
-              </div>
+            <div className="w-16 h-16 relative mb-4">
+              <Image
+                src="/AthleticCore/images/logo-transparent.png"
+                alt="CORE ATHLETE Logo"
+                fill
+                className="object-contain"
+                sizes="64px"
+              />
             </div>
             <p className="text-sm text-white/70">{siteInfo.tagline}</p>
           </div>
