@@ -62,7 +62,7 @@ export default function AboutSection({
             src="/AthleticCore/images/aboutBackground.png"
             alt="CORE ATHLETE Logo"
             fill
-            className="object-contain opacity-20"
+            className="object-cover opacity-20"
             sizes="100vw"
             priority
           />
