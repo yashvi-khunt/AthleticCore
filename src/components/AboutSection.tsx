@@ -10,8 +10,23 @@ export default function AboutSection({
   philosophy,
 }: About) {
   return (
-    <section id="about" className="py-20 bg-slate-900 text-white">
-      <div className="container mx-auto px-4">
+    <section
+      id="about"
+      className="relative py-20 bg-slate-900 text-white overflow-hidden"
+    >
+      {/* Background Logo */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/images/aboutBg.png"
+          alt="CORE ATHLETE Logo"
+          fill
+          className="object-contain opacity-10"
+          sizes="100vw"
+          priority
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
           <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden">
