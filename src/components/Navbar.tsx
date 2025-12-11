@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getNavigation } from "@/lib/content";
 
 export default function Navbar() {
@@ -47,8 +48,14 @@ export default function Navbar() {
             className="flex items-center gap-3 hover:opacity-90 transition-opacity"
           >
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-lime-400 flex items-center justify-center">
-                <span className="text-black font-black text-xl">C</span>
+              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+                <Image
+                  src="/images/logo-transparent.png"
+                  alt="CORE ATHLETE Logo"
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                />
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="text-base font-black tracking-wider text-slate-900">

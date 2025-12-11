@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getFooterData, getSiteInfo, getContactInfo } from "@/lib/content";
 
 export default function Footer() {
@@ -13,8 +14,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-lime-400 flex items-center justify-center">
-                <span className="text-black font-black text-xl">C</span>
+              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+                <Image
+                  src="/images/logo-transparent.png"
+                  alt="CORE ATHLETE Logo"
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                />
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="text-base font-black tracking-wider">
