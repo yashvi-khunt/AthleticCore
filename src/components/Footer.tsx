@@ -16,7 +16,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 relative rounded-full overflow-hidden">
                 <Image
-                  src="/images/logo-transparent.png"
+                  src="/AthleticCore/images/logo-transparent.png"
                   alt="CORE ATHLETE Logo"
                   fill
                   className="object-cover"
