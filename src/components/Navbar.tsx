@@ -8,6 +8,7 @@ import { getNavigation } from "@/lib/content";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
   const navigation = getNavigation();
 
   useEffect(() => {
@@ -27,6 +28,13 @@ export default function Navbar() {
     } catch (e) {
       // ignore (SSR safety)
     }
+
+    // Fade in navbar after loader completes
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 4100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   function toggleTheme() {
@@ -39,7 +47,11 @@ export default function Navbar() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 site-header">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 site-header transition-opacity duration-[1500ms] ease-out ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -47,7 +59,7 @@ export default function Navbar() {
             <div className="h-16 w-64 relative">
               {theme === "dark" ? (
                 <Image
-                  src="/AthleticCore/images/logos/full-logo-white.png"
+                  src="/images/logos/full-logo-white.png"
                   alt="Athletic Core Logo"
                   fill
                   className="object-contain object-left"

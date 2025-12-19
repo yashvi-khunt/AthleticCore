@@ -10,19 +10,19 @@ export default function PageLoader() {
   >("initial");
 
   useEffect(() => {
-    // Animation sequence - slower timings
+    // Animation sequence - faster timings
     const showLogoTimer = setTimeout(() => {
       setAnimationStage("center");
-    }, 500);
+    }, 400);
 
     const startTransitionTimer = setTimeout(() => {
       setAnimationStage("transition");
-    }, 2800);
+    }, 2000);
 
     const completeTimer = setTimeout(() => {
       setAnimationStage("complete");
       setIsLoading(false);
-    }, 4000);
+    }, 3000);
 
     return () => {
       clearTimeout(showLogoTimer);
@@ -35,29 +35,34 @@ export default function PageLoader() {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] bg-black transition-opacity duration-1000 ${
+      className={`fixed inset-0 z-[9999] bg-slate-950 transition-opacity duration-1000 ${
         animationStage === "complete"
           ? "opacity-0 pointer-events-none"
           : "opacity-100"
       }`}
     >
       <div
-        className={`absolute transition-all duration-1000 ${
+        className={`absolute ${
           animationStage === "initial"
             ? "opacity-0 scale-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-180"
             : animationStage === "center"
-            ? "opacity-100 scale-110 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0"
+            ? "opacity-100 scale-[3] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0"
             : animationStage === "transition"
-            ? "opacity-100 scale-[0.3] top-6 left-8 translate-x-0 translate-y-0 rotate-0"
+            ? "opacity-100 scale-100"
             : "opacity-0"
         }`}
         style={{
-          transition: "all 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+          transition: "all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+          ...(animationStage === "transition" && {
+            top: "1.5rem",
+            left: "2rem",
+            transform: "none",
+          }),
         }}
       >
         <div className="relative w-64 h-16">
           <Image
-            src="/AthleticCore/images/logos/full-logo-white.png"
+            src="/images/logos/full-logo-white.png"
             alt="Athletic Core"
             fill
             className="object-contain"
