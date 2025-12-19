@@ -29,10 +29,10 @@ export default function Navbar() {
       // ignore (SSR safety)
     }
 
-    // Fade in navbar after loader completes
+    // Reveal navbar with unblur effect when logo stops
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 4100);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -48,9 +48,12 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 site-header transition-opacity duration-[1500ms] ease-out ${
-        isVisible ? "opacity-100" : "opacity-0"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 site-header"
+      style={{
+        filter: isVisible ? "blur(0px)" : "blur(10px)",
+        opacity: isVisible ? 1 : 0,
+        transition: "filter 1s ease-out, opacity 1s ease-out",
+      }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
