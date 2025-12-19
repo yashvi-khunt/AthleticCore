@@ -7,9 +7,13 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CORE ATHLETE - Athletic Training & Development",
+  title: "Athletic Core - Elite Athletic Training & Development",
   description:
-    "Creating. Opportunities. Realigning. Expectations. Build strength, speed, and confidence with our science-based training programs.",
+    "Transform your performance with Athletic Core's science-based training programs. Build strength, speed, and confidence with expert coaching.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

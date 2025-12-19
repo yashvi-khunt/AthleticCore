@@ -44,14 +44,26 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="hover:opacity-90 transition-opacity">
-            <div className="w-16 h-16 relative">
-              <Image
-                src="/AthleticCore/images/logo-transparent.png"
-                alt="CORE ATHLETE Logo"
-                fill
-                className="object-contain"
-                sizes="64px"
-              />
+            <div className="h-16 w-64 relative">
+              {theme === "dark" ? (
+                <Image
+                  src="/AthleticCore/images/logos/full-logo-white.png"
+                  alt="Athletic Core Logo"
+                  fill
+                  className="object-contain object-left"
+                  sizes="256px"
+                  priority
+                />
+              ) : (
+                <Image
+                  src="/AthleticCore/images/logos/full-logo-black.png"
+                  alt="Athletic Core Logo"
+                  fill
+                  className="object-contain object-left"
+                  sizes="256px"
+                  priority
+                />
+              )}
             </div>
           </Link>
 

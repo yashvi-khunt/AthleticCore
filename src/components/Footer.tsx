@@ -13,13 +13,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1">
-            <div className="w-16 h-16 relative mb-4">
+            <div className="h-16 w-40 relative mb-4">
               <Image
-                src="/AthleticCore/images/logo-transparent.png"
-                alt="CORE ATHLETE Logo"
+                src="/AthleticCore/images/logos/full-logo-white.png"
+                alt="Athletic Core Logo"
                 fill
-                className="object-contain"
-                sizes="64px"
+                className="object-contain object-left"
+                sizes="160px"
               />
             </div>
             <p className="text-sm text-white/70">{siteInfo.tagline}</p>
