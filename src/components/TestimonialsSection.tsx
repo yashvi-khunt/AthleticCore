@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import type { Testimonial } from "@/types/content";
 
 interface Props {
@@ -31,24 +34,61 @@ export default function TestimonialsSection({
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {testimonials.map((testimonial) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {testimonials.slice(0, 3).map((testimonial) => (
             <TestimonialCard key={testimonial.id} {...testimonial} />
           ))}
         </div>
+
+        {/* Show More Button */}
+        {testimonials.length > 3 && (
+          <div className="text-center mt-12">
+            <a
+              href="/testimonials"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-slate-900 font-bold rounded-lg hover:bg-lime-500 transition-colors shadow-lg hover:shadow-xl"
+            >
+              View All Testimonials
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
-function TestimonialCard({
-  name,
-  role,
-  sport,
-  quote,
-  image,
-  rating,
-}: Testimonial) {
+function TestimonialCard(testimonial: Testimonial) {
+  const {
+    name,
+    role,
+    sport,
+    quote,
+    image,
+    rating,
+    videoId,
+    videoThumbnail,
+    videoDuration,
+    videoTitle,
+  } = testimonial;
+
+  // If it's a YouTube video testimonial, render video card
+  if (videoId) {
+    return <YouTubeTestimonialCard {...testimonial} />;
+  }
+
+  // Otherwise render traditional text testimonial
   return (
     <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-slate-200">
       {/* Rating Stars */}
@@ -75,7 +115,7 @@ function TestimonialCard({
       {/* Author */}
       <div className="flex items-center gap-3 pt-4 border-t border-slate-200">
         {image && (
-          <div className="relative w-12 h-12 rounded-full overflow-hidden fshrink-0">
+          <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0">
             <Image
               src={image}
               alt={name}
@@ -89,6 +129,106 @@ function TestimonialCard({
           <div className="font-bold text-slate-900">{name}</div>
           {role && <div className="text-sm text-slate-600">{role}</div>}
           {sport && <div className="text-sm text-lime-600">{sport}</div>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function YouTubeTestimonialCard({
+  videoId,
+  videoThumbnail,
+  videoDuration,
+  videoTitle,
+  name,
+  sport,
+  image,
+}: Testimonial) {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Generate YouTube thumbnail URL (default to maxresdefault, fallback to hqdefault)
+  const thumbnailUrl =
+    videoThumbnail || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+
+  return (
+    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer">
+      {/* Video Thumbnail */}
+      <div
+        className="relative aspect-video bg-slate-900 overflow-hidden"
+        onClick={() => setIsPlaying(true)}
+      >
+        {!isPlaying ? (
+          <>
+            {/* Thumbnail Image */}
+            <Image
+              src={thumbnailUrl}
+              alt={videoTitle || `${name} testimonial`}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+
+            {/* Duration Badge */}
+            {videoDuration && (
+              <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-semibold px-2 py-1 rounded">
+                {videoDuration}
+              </div>
+            )}
+
+            {/* Play Button Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl">
+                <svg
+                  className="w-8 h-8 md:w-10 md:h-10 text-white ml-1"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </>
+        ) : (
+          // Embedded YouTube Player
+          <iframe
+            className="absolute inset-0 w-full h-full"
+            src={videoUrl}
+            title={videoTitle || `${name} testimonial`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        )}
+      </div>
+
+      {/* Video Info */}
+      <div className="p-4">
+        {/* Video Title */}
+        <h3 className="font-bold text-slate-900 mb-2 line-clamp-2 group-hover:text-lime-600 transition-colors">
+          {videoTitle || `${name}'s Testimonial`}
+        </h3>
+
+        {/* Author Info */}
+        <div className="flex items-center gap-3">
+          {image && (
+            <div className="relative w-9 h-9 rounded-full overflow-hidden shrink-0">
+              <Image
+                src={image}
+                alt={name}
+                fill
+                className="object-cover"
+                sizes="36px"
+              />
+            </div>
+          )}
+          <div className="min-w-0">
+            <div className="font-semibold text-sm text-slate-900 truncate">
+              {name}
+            </div>
+            {sport && (
+              <div className="text-xs text-slate-600 truncate">{sport}</div>
+            )}
+          </div>
         </div>
       </div>
     </div>

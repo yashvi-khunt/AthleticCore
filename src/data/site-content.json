@@ -282,31 +282,58 @@
   ],
   "testimonials": [
     {
-      "id": "testimonial-1",
+      "id": "testimonial-video-1",
       "name": "Marcus Johnson",
-      "role": "Point Guard",
-      "sport": "Basketball",
+      "sport": "Basketball Training",
       "image": "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80",
-      "quote": "Training with CORE ATHLETE took my game to the next level. The personalized attention and sport-specific drills made all the difference in my performance.",
-      "rating": 5
+      "videoId": "dQw4w9WgXcQ",
+      "videoDuration": "3:33",
+      "videoTitle": "How CORE ATHLETE Transformed My Basketball Game"
     },
     {
-      "id": "testimonial-2",
+      "id": "testimonial-video-2",
       "name": "Sarah Martinez",
-      "role": "Middle Blocker",
-      "sport": "Volleyball",
+      "sport": "Volleyball Performance",
       "image": "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80",
-      "quote": "The coaches here understand what it takes to compete at a high level. My vertical jump increased by 4 inches in just 3 months!",
-      "rating": 5
+      "videoId": "9bZkp7q19f0",
+      "videoDuration": "2:45",
+      "videoTitle": "My Vertical Jump Journey - 4 Inches in 3 Months!"
     },
     {
-      "id": "testimonial-3",
+      "id": "testimonial-video-3",
       "name": "Coach Williams",
-      "role": "Head Coach",
       "sport": "High School Football",
       "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
-      "quote": "We've partnered with CORE ATHLETE for our off-season training program. The professionalism and results speak for themselves. Highly recommend!",
+      "videoId": "jNQXAC9IVRw",
+      "videoDuration": "5:12",
+      "videoTitle": "Why We Partner with CORE ATHLETE for Team Training"
+    },
+    {
+      "id": "testimonial-text-1",
+      "name": "Alex Thompson",
+      "role": "Track Athlete",
+      "sport": "Track & Field",
+      "image": "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=800&q=80",
+      "quote": "The speed and agility training here is unmatched. I dropped my 100m time by 0.3 seconds in just one season!",
       "rating": 5
+    },
+    {
+      "id": "testimonial-text-2",
+      "name": "Emily Chen",
+      "role": "Soccer Forward",
+      "sport": "Soccer",
+      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",
+      "quote": "CORE ATHLETE helped me develop the strength and conditioning I needed to compete at the collegiate level. The coaches are amazing!",
+      "rating": 5
+    },
+    {
+      "id": "testimonial-video-4",
+      "name": "David Rodriguez",
+      "sport": "Football Strength Training",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+      "videoId": "M7lc1UVf-VE",
+      "videoDuration": "4:21",
+      "videoTitle": "From Rookie to Starter - My CORE ATHLETE Story"
     }
   ],
   "sports": [

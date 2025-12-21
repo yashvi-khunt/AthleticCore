@@ -76,6 +76,11 @@ export interface Testimonial {
   image?: string;
   quote: string;
   rating?: number;
+  // YouTube video support
+  videoId?: string; // YouTube video ID
+  videoThumbnail?: string; // Custom thumbnail URL (optional, will auto-generate from videoId)
+  videoDuration?: string; // Display duration like "2:34"
+  videoTitle?: string; // Optional custom title for the video
 }
 
 // ===== TEAM MEMBERS =====
