@@ -62,7 +62,7 @@ export default function PageLoader() {
       >
         <div className="relative w-64 h-16">
           <Image
-            src="/images/logos/full-logo-white.png"
+            src="/AthleticCore/images/logos/full-logo-white.png"
             alt="Athletic Core"
             fill
             className="object-contain"

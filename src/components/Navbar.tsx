@@ -62,7 +62,7 @@ export default function Navbar() {
             <div className="h-16 w-64 relative">
               {theme === "dark" ? (
                 <Image
-                  src="/images/logos/full-logo-white.png"
+                  src="/AthleticCore/images/logos/full-logo-white.png"
                   alt="Athletic Core Logo"
                   fill
                   className="object-contain object-left"
