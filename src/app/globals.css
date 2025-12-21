@@ -676,6 +676,17 @@ p {
   border-color: rgba(163, 230, 53, 0.4);
 }
 
+/* Force black text on lime/green buttons in dark mode */
+.dark .bg-lime,
+.dark .bg-lime-400 {
+  color: #000000 !important;
+}
+
+.dark .bg-lime:hover,
+.dark .bg-lime-dark:hover {
+  color: #000000 !important;
+}
+
 /* Smooth theme transition */
 html {
   transition: background-color 200ms ease, color 200ms ease;
