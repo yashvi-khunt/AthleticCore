@@ -2,7 +2,6 @@
 @import "tailwindcss";
 
 /* ===== TAILWIND V4 THEME CONFIGURATION ===== */
-/* These become Tailwind utility classes like text-lime-400, bg-slate-900, etc. */
 @theme {
   /* CORE ATHLETE Brand Colors */
   --color-lime-50: #f7fee7;
@@ -44,21 +43,20 @@
 }
 
 /* ===== SEMANTIC COLOR VARIABLES ===== */
-/* These are for inline styles or custom CSS when needed */
 :root {
-  /* Semantic Colors - use these in inline styles or custom CSS */
+  /* Semantic Colors */
   --color-primary: #a3e635;
   --color-primary-dark: #65a30d;
   --color-secondary: #000000;
   --color-accent: #84cc16;
 
-  /* Dark theme colors applied globally */
+  /* Dark theme colors */
   --color-background: #0f1729;
   --color-surface: #1a2332;
   --color-surface-dark: #0a101d;
   --color-surface-alt: #141d2e;
 
-  /* Text Colors - Dark theme */
+  /* Text Colors */
   --color-text-primary: #f1f5f9;
   --color-text-secondary: #cbd5e1;
   --color-text-muted: #94a3b8;
@@ -68,27 +66,15 @@
   --site-max-width: 1280px;
   --header-height: 80px;
 
-  /* Hero overlay colors (used for readability over images) */
-  --overlay-top: rgba(0, 0, 0, 0.8);
-  --overlay-mid: rgba(0, 0, 0, 0.6);
-  --overlay-bottom: rgba(0, 0, 0, 0.5);
-
   /* Transitions */
   --transition-base: 200ms ease-out;
   --transition-slow: 400ms ease-out;
 
-  /* Shadows - Dark theme */
-  --shadow-glow-lime: 0 0 20px rgba(163, 230, 53, 0.15);
-  --shadow-glow-lime-lg: 0 0 40px rgba(163, 230, 53, 0.2);
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.7),
-    0 2px 8px rgba(163, 230, 53, 0.05);
-  --shadow-card-hover: 0 20px 50px rgba(0, 0, 0, 0.8),
-    0 4px 16px rgba(163, 230, 53, 0.08);
-
-  /* Borders - Dark theme */
+  /* Borders */
   --border-color: rgba(163, 230, 53, 0.1);
   --border-color-strong: rgba(163, 230, 53, 0.15);
 }
+
 
 /* ===== BASE STYLES ===== */
 *,
@@ -109,6 +95,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
 }
 
 /* ===== LAYOUT UTILITIES ===== */
@@ -135,121 +138,12 @@ body {
   }
 }
 
-/* ===== TYPOGRAPHY SYSTEM ===== */
-.text-display {
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-family: var(--font-display);
-}
-
-.text-heading-1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-}
-
-.text-heading-2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.text-heading-3 {
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-/* ===== BUTTON SYSTEM ===== */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.875rem 2rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  letter-spacing: 0.025em;
-  text-transform: uppercase;
-  border-radius: 9999px;
-  transition: all var(--transition-base);
-  cursor: pointer;
-  border: none;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: var(--color-secondary);
-  box-shadow: var(--shadow-glow-lime);
-}
-
-.btn-primary:hover {
-  background: var(--color-primary-dark);
-  box-shadow: var(--shadow-glow-lime-lg);
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: var(--color-secondary);
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-}
-
-.btn-secondary:hover {
-  background: var(--color-primary);
-  color: var(--color-secondary);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--color-text-primary);
-  border: 2px solid var(--color-text-primary);
-}
-
-.btn-outline:hover {
-  background: var(--color-text-primary);
-  color: var(--color-background);
-}
-
-/* ===== CARD SYSTEM ===== */
-.card {
-  background: var(--color-background);
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  transition: all var(--transition-base);
-}
-
-.card:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-4px);
-}
-
-.card-dark {
-  background: var(--color-surface-dark);
-  color: var(--color-text-inverse);
-}
-
-.card-lime {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-accent)
-  );
-  color: var(--color-secondary);
-}
-
 /* ===== HEADER/NAVBAR ===== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
   height: var(--header-height);
-  /* Use black background with backdrop blur */
   background: rgba(0, 0, 0, 0.95);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
@@ -272,225 +166,6 @@ body {
   color: var(--color-primary);
 }
 
-/* ===== HERO SECTION ===== */
-.hero {
-  position: relative;
-  padding: 6rem 0;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-}
-
-@media (min-width: 768px) {
-  .hero {
-    padding: 8rem 0;
-  }
-}
-
-/* ===== SECTION SPACING ===== */
-.section {
-  padding: 4rem 0;
-}
-
-@media (min-width: 768px) {
-  .section {
-    padding: 6rem 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .section {
-    padding: 8rem 0;
-  }
-}
-
-/* ===== PROGRAM CARDS ===== */
-.program-card {
-  background: var(--color-background);
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.program-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgb(15 23 42 / 0.15);
-}
-
-.program-card:hover .program-image {
-  transform: scale(1.05);
-}
-
-.program-image {
-  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 30px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.fade-in-up-delay-1 {
-  animation-delay: 0.15s;
-  opacity: 0;
-}
-
-.fade-in-up-delay-2 {
-  animation-delay: 0.3s;
-  opacity: 0;
-}
-
-.fade-in-up-delay-3 {
-  animation-delay: 0.45s;
-  opacity: 0;
-}
-
-@keyframes pulse-lime {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgb(163 230 53 / 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgb(163 230 53 / 0.5);
-  }
-}
-
-.animate-pulse-lime {
-  animation: pulse-lime 2s ease-in-out infinite;
-}
-
-/* ===== UTILITY CLASSES ===== */
-.text-lime {
-  color: var(--color-primary);
-}
-
-.text-muted {
-  color: var(--color-text-muted);
-}
-
-.bg-lime {
-  background-color: var(--color-primary);
-}
-
-.bg-lime-dark {
-  background-color: var(--color-primary-dark) !important;
-}
-
-/* Make lime accent pop on hover for utility classes that use it */
-.hover\:bg-lime-dark:hover {
-  background-color: var(--color-primary-dark) !important;
-}
-
-/* Compatibility helpers for existing Tailwind lime classes used in components */
-.bg-lime-400 {
-  background-color: var(--color-primary) !important;
-}
-.text-lime-400 {
-  color: var(--color-primary) !important;
-}
-.bg-lime-400\/10 {
-  background-color: color-mix(
-    in srgb,
-    var(--color-primary) 10%,
-    transparent
-  ) !important;
-}
-.border-lime-400\/20 {
-  border-color: color-mix(
-    in srgb,
-    var(--color-primary) 20%,
-    transparent
-  ) !important;
-}
-.hover\:bg-lime-500:hover {
-  background-color: var(--color-primary-dark) !important;
-}
-
-.bg-surface {
-  background-color: var(--color-surface);
-}
-
-.bg-surface-dark {
-  background-color: var(--color-surface-dark);
-}
-
-.border-lime {
-  border-color: var(--color-primary);
-}
-
-/* ===== GLOW EFFECTS ===== */
-.glow-lime {
-  box-shadow: var(--shadow-glow-lime);
-}
-
-.glow-lime-lg {
-  box-shadow: var(--shadow-glow-lime-lg);
-}
-
-/* ===== FOCUS STATES ===== */
-*:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* ===== GRADIENT BACKGROUNDS ===== */
-.bg-gradient-lime {
-  background: linear-gradient(
-    135deg,
-    var(--color-lime-400),
-    var(--color-lime-600)
-  );
-}
-
-.bg-gradient-dark {
-  background: linear-gradient(
-    135deg,
-    var(--color-slate-900),
-    var(--color-slate-800)
-  );
-}
-
-/* ===== BACKDROP EFFECTS ===== */
-.backdrop-blur-soft {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.backdrop-blur-strong {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-/* ===== RESPONSIVE TYPOGRAPHY ===== */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 0;
-}
-
-p {
-  margin: 0;
-  line-height: 1.7;
-}
-
 /* ===== CUSTOM SCROLLBAR ===== */
 ::-webkit-scrollbar {
   width: 12px;
@@ -509,55 +184,150 @@ p {
   background: color-mix(in srgb, var(--color-primary) 80%, black);
 }
 
-/* ===== DARK THEME ENHANCEMENTS ===== */
-
-/* Card borders and backgrounds */
-.card,
-.program-card {
-  background-color: var(--color-surface) !important;
-  border: 1px solid var(--border-color-strong);
+/* ===== FOCUS STATES ===== */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
-.card:hover,
-.program-card:hover {
-  border-color: rgba(163, 230, 53, 0.25);
-}
 
-/* Section backgrounds */
+/* ===== TAILWIND UTILITY OVERRIDES FOR DARK THEME ===== */
+
+/* Background utilities */
 .bg-white {
-  background-color: var(--color-slate-800) !important;
+  background-color: var(--color-surface) !important;
 }
 
 .bg-slate-50 {
   background-color: var(--color-surface-alt) !important;
 }
 
-/* Testimonials and Programs sections use intermediate color */
-section#testimonials,
-section#programs {
-  background-color: #17202f !important;
-  border-top: 1px solid rgba(163, 230, 53, 0.08);
-  border-bottom: 1px solid rgba(163, 230, 53, 0.08);
-}
-
-/* Sports and Pricing sections with subtle borders */
-section#sports,
-section#pricing {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Cards in all sections use slate-800 */
-article.bg-white,
-.bg-white.rounded-2xl,
-.bg-white.rounded-xl {
-  background-color: #1e293b !important;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
 .bg-slate-900 {
   background-color: var(--color-surface-dark) !important;
+  border-top: 1px solid rgba(163, 230, 53, 0.15);
+  border-bottom: 1px solid rgba(163, 230, 53, 0.15);
+}
+
+.bg-slate-800 {
+  background-color: #1e293b !important;
+}
+
+/* Lime color utilities */
+.bg-lime {
+  background-color: var(--color-primary) !important;
+  color: #000000 !important;
+}
+
+.bg-lime-dark {
+  background-color: var(--color-primary-dark) !important;
+  color: #000000 !important;
+}
+
+.hover\:bg-lime-dark:hover {
+  background-color: var(--color-primary-dark) !important;
+  color: #000000 !important;
+}
+
+.text-lime {
+  color: var(--color-primary) !important;
+}
+
+.bg-lime-400 {
+  background-color: var(--color-primary) !important;
+  color: #000000 !important;
+}
+
+.text-lime-400 {
+  color: var(--color-primary) !important;
+}
+
+.bg-lime-400\/10 {
+  background-color: rgba(163, 230, 53, 0.12) !important;
+}
+
+.border-lime-400\/20 {
+  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent) !important;
+}
+
+.border-lime-400 {
+  border-color: rgba(163, 230, 53, 0.4) !important;
+  box-shadow: 0 0 30px rgba(163, 230, 53, 0.15);
+}
+
+/* Text utilities */
+.text-slate-900 {
+  color: var(--color-text-primary) !important;
+}
+
+.text-slate-700 {
+  color: var(--color-text-secondary) !important;
+}
+
+.text-slate-600 {
+  color: var(--color-text-muted) !important;
+}
+
+.text-white {
+  color: var(--color-text-inverse) !important;
+}
+
+/* Border utilities */
+.border-slate-200 {
+  border-color: var(--border-color) !important;
+}
+
+.border-slate-300 {
+  border-color: var(--border-color) !important;
+}
+
+/* Hover state overrides */
+.hover\:bg-lime-500:hover {
+  background-color: var(--color-primary-dark) !important;
+  color: #000000 !important;
+}
+
+.hover\:bg-slate-100:hover {
+  background-color: var(--color-surface) !important;
+}
+
+.hover\:text-lime-400:hover {
+  color: var(--color-primary) !important;
+}
+
+.hover\:border-lime-400:hover {
+  border-color: var(--color-primary) !important;
+}
+
+.group:hover .group-hover\:text-lime-400 {
+  color: var(--color-primary) !important;
+}
+
+/* Cards and rounded elements */
+.bg-white.rounded-2xl,
+.bg-white.rounded-xl,
+.bg-slate-50.rounded-xl {
+  border: 1px solid var(--border-color);
+}
+
+.bg-white.rounded-2xl:hover,
+.bg-white.rounded-xl:hover {
+  border-color: rgba(163, 230, 53, 0.25);
+}
+
+/* Form elements */
+input,
+textarea,
+select {
+  background-color: var(--color-surface) !important;
+  border-color: var(--border-color);
+  color: var(--color-text-primary);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(163, 230, 53, 0.4);
+  box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.1);
 }
 
 /* Section separators */
@@ -572,228 +342,33 @@ section::before {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(163, 230, 53, 0.1) 50%,
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(163, 230, 53, 0.1) 50%, transparent);
 }
 
 section:first-of-type::before {
   display: none;
 }
 
-/* Pricing cards */
-#pricing .bg-white,
-[id="pricing"] .bg-white {
-  border: 1px solid var(--border-color-strong);
-}
-
-.border-lime-400 {
-  border-color: rgba(163, 230, 53, 0.4) !important;
-  box-shadow: 0 0 30px rgba(163, 230, 53, 0.15);
-}
-
-/* All white background cards get borders */
-[class*="rounded-2xl"].bg-white,
-.bg-white[class*="rounded"],
-.bg-slate-50.rounded-xl {
-  border: 1px solid var(--border-color);
-}
-
-/* Form elements */
-input,
-textarea,
-select {
-  background-color: var(--color-surface) !important;
-  border: 1px solid var(--border-color);
-  color: var(--color-text-primary);
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: rgba(163, 230, 53, 0.4);
-  box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.1);
-}
-
-/* Badges */
-.bg-lime-400\/10 {
-  background-color: rgba(163, 230, 53, 0.12) !important;
-  border-color: rgba(163, 230, 53, 0.25) !important;
-}
-
-/* CTA section */
-.bg-slate-900 {
-  background-color: var(--color-surface-dark) !important;
-  border-top: 1px solid rgba(163, 230, 53, 0.15);
-  border-bottom: 1px solid rgba(163, 230, 53, 0.15);
-}
-
-/* Buttons */
-.bg-slate-900.text-white {
-  background-color: var(--color-surface-dark) !important;
-  border: 1px solid rgba(163, 230, 53, 0.2);
-}
-
-.bg-slate-900.text-white:hover {
-  border-color: rgba(163, 230, 53, 0.4);
-}
-
-/* Force black text on lime/green buttons */
-.bg-lime,
-.bg-lime-400 {
-  color: #000000 !important;
-}
-
-.bg-lime:hover,
-.bg-lime-dark:hover {
-  color: #000000 !important;
-}
-
-/* ===== THEME-AWARE TAILWIND UTILITY OVERRIDES ===== */
-/* These map frequently-used Tailwind color utilities to the semantic CSS variables
-  so both light and dark themes apply consistently across components. */
-
-/* Background utilities */
-.bg-white {
-  background-color: var(--color-background) !important;
-}
-.bg-slate-50 {
-  background-color: var(--color-surface) !important;
-}
-.bg-slate-900 {
-  background-color: var(--color-surface-dark) !important;
-}
-
-/* Text utilities */
-.text-slate-900 {
-  color: var(--color-text-primary) !important;
-}
-.text-slate-700 {
-  color: var(--color-text-secondary) !important;
-}
-.text-slate-600 {
-  color: var(--color-text-muted) !important;
-}
-.text-white {
-  color: var(--color-text-inverse) !important;
-}
-
-/* Border utilities */
-.border-slate-200 {
-  border-color: var(--border-color) !important;
-}
-
-/* Hover utility overrides (Tailwind uses class names with colons escaped in CSS) */
-.hover\:bg-slate-100:hover {
-  background-color: var(--color-surface) !important;
-}
-.hover\:bg-white:hover {
-  background-color: var(--color-background) !important;
-}
-.hover\:text-lime-400:hover {
-  color: var(--color-primary) !important;
-}
-
-/* Opacity-style utilities (e.g. bg-white/10, text-white/90) — use attribute selectors
-  because these classnames contain a slash which is awkward to target directly. */
-[class*="bg-white/10"] {
-  background-color: color-mix(
-    in srgb,
-    var(--color-background) 10%,
-    transparent
-  ) !important;
-}
-[class*="text-white/"] {
-  color: color-mix(
-    in srgb,
-    var(--color-text-inverse) 90%,
-    transparent
-  ) !important;
-}
-[class*="bg-white/"] {
-  /* general fallback for bg-white/<n> */
-  background-color: color-mix(
-    in srgb,
-    var(--color-background) 10%,
-    transparent
-  ) !important;
-}
-
-/* Cards, surfaces and components that use utility classes should inherit semantic colors */
-.card,
-.program-card,
-.card-lime {
-  background-color: var(--color-surface) !important;
-  color: var(--color-text-primary) !important;
-}
-
-/* Ensure hero-like dark backgrounds still show as expected in dark mode */
-.text-white\/90 {
-  color: color-mix(
-    in srgb,
-    var(--color-text-inverse) 90%,
-    transparent
-  ) !important;
-}
-
-.text-white\/70 {
-  color: color-mix(
-    in srgb,
-    var(--color-text-inverse) 70%,
-    transparent
-  ) !important;
-}
-
-/* Hover/border/group helpers */
-.hover\:border-lime-400:hover {
-  border-color: var(--color-primary) !important;
-}
-.hover\:bg-lime-400:hover {
-  background-color: var(--color-primary) !important;
-}
-.group:hover .group-hover\:text-lime-400 {
-  color: var(--color-primary) !important;
-}
-
-/* Explicit helpers for common opacity-based utilities */
-.bg-white\/10 {
-  background-color: color-mix(
-    in srgb,
-    var(--color-background) 10%,
-    transparent
-  ) !important;
-}
-.text-white\/80 {
-  color: color-mix(
-    in srgb,
-    var(--color-text-inverse) 80%,
-    transparent
-  ) !important;
-}
-.border-white\/20 {
-  border-color: color-mix(
-    in srgb,
-    var(--color-text-inverse) 20%,
-    transparent
-  ) !important;
-}
-.border-white\/30 {
-  border-color: color-mix(
-    in srgb,
-    var(--color-text-inverse) 30%,
-    transparent
-  ) !important;
-}
-
-/* Hero overlay class uses semantic overlay stops so it adapts to theme */
+/* Specific sections */
+section#testimonials,
+section#programs {
+  background-color: #17202f !important;
+  border-top: 1px solid rgba(163, 230, 53, 0.08);
+  border-bottom: 1px solid rgba(163, 230, 53, 0.08);
+/* Hero overlay gradient */
 .hero-overlay {
   background: linear-gradient(
     90deg,
-    var(--overlay-top),
-    var(--overlay-mid),
-    var(--overlay-bottom)
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.5)
   );
 }
+}
+
+section#sports,
+section#pricing {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
