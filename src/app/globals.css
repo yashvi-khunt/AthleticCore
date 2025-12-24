@@ -75,7 +75,6 @@
   --border-color-strong: rgba(163, 230, 53, 0.15);
 }
 
-
 /* ===== BASE STYLES ===== */
 *,
 *::before,
@@ -190,7 +189,6 @@ p {
   outline-offset: 2px;
 }
 
-
 /* ===== TAILWIND UTILITY OVERRIDES FOR DARK THEME ===== */
 
 /* Background utilities */
@@ -246,7 +244,11 @@ p {
 }
 
 .border-lime-400\/20 {
-  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent) !important;
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 20%,
+    transparent
+  ) !important;
 }
 
 .border-lime-400 {
@@ -342,7 +344,12 @@ section::before {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(163, 230, 53, 0.1) 50%, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(163, 230, 53, 0.1) 50%,
+    transparent
+  );
 }
 
 section:first-of-type::before {
@@ -355,15 +362,15 @@ section#programs {
   background-color: #17202f !important;
   border-top: 1px solid rgba(163, 230, 53, 0.08);
   border-bottom: 1px solid rgba(163, 230, 53, 0.08);
-/* Hero overlay gradient */
-.hero-overlay {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.8),
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.5)
-  );
-}
+  /* Hero overlay gradient */
+  .hero-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.5)
+    );
+  }
 }
 
 section#sports,
@@ -371,4 +378,3 @@ section#pricing {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-

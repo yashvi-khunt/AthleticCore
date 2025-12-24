@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Hero as HeroType } from "@/types/content";
@@ -14,30 +14,10 @@ export default function Hero({
   showStats = false,
   stats = [],
 }: HeroType) {
-  const [isRevealing, setIsRevealing] = useState(false);
-
-  useEffect(() => {
-    // Start unblur effect when logo stops at navbar
-    const timer = setTimeout(() => {
-      setIsRevealing(true);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          filter: isRevealing ? "blur(0px)" : "blur(20px)",
-          clipPath: isRevealing
-            ? "circle(150% at 0% 0%)"
-            : "circle(0% at 0% 0%)",
-          transition: "filter 1s ease-out, clip-path 1s ease-out",
-        }}
-      >
+      <div className="absolute inset-0 z-0">
         <Image
           src={backgroundImage}
           alt="Hero background"
@@ -50,14 +30,7 @@ export default function Hero({
       </div>
 
       {/* Content */}
-      <div
-        className="relative z-10 container mx-auto px-4 py-20"
-        style={{
-          filter: isRevealing ? "blur(0px)" : "blur(15px)",
-          opacity: isRevealing ? 1 : 0,
-          transition: "filter 1s ease-out 0.2s, opacity 1s ease-out 0.2s",
-        }}
-      >
+      <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="max-w-4xl">
           {/* Title */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">

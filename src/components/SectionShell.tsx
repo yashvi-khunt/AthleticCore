@@ -61,58 +61,26 @@ export default function SectionShell({
   style = {},
 }: SectionShellProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
   const [scrollOffset, setScrollOffset] = useState(0);
 
-  // Section-level scroll animation
+  // Section-level scroll animation - only for parallax
   useEffect(() => {
-    if (animationPreset === "none") return;
+    if (animationPreset !== "parallax") return;
 
     const handleScroll = () => {
       if (!sectionRef.current) return;
 
-      const rect = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Fade in when section enters viewport
-      if (animationPreset === "fadeIn" || animationPreset === "slideUp") {
-        const inView = rect.top < windowHeight * 0.8 && rect.bottom > 0;
-        setIsVisible(inView);
-      }
-
       // Parallax effect
-      if (animationPreset === "parallax") {
-        const sectionTop = sectionRef.current.offsetTop;
-        const scrollPosition = window.scrollY;
-        const relativeScroll = scrollPosition - sectionTop;
-        setScrollOffset(relativeScroll * 0.3);
-        setIsVisible(true);
-      }
+      const sectionTop = sectionRef.current.offsetTop;
+      const scrollPosition = window.scrollY;
+      const relativeScroll = scrollPosition - sectionTop;
+      setScrollOffset(relativeScroll * 0.3);
     };
 
     handleScroll(); // Initial check
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [animationPreset]);
-
-  // Animation classes
-  const getAnimationClasses = () => {
-    if (animationPreset === "none") return "";
-
-    const base = "transition-all duration-700 ease-out";
-
-    if (animationPreset === "fadeIn") {
-      return `${base} ${isVisible ? "opacity-100" : "opacity-0"}`;
-    }
-
-    if (animationPreset === "slideUp") {
-      return `${base} ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`;
-    }
-
-    return "";
-  };
 
   const sectionStyle =
     animationPreset === "parallax"
@@ -123,9 +91,7 @@ export default function SectionShell({
     <section
       ref={sectionRef}
       id={id}
-      className={`${bgVariantClasses[bgVariant]} ${
-        spacingClasses[spacing]
-      } ${getAnimationClasses()} ${className}`}
+      className={`${bgVariantClasses[bgVariant]} ${spacingClasses[spacing]} ${className}`}
       style={sectionStyle}
     >
       {children}
