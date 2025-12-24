@@ -13,7 +13,7 @@ export default function AboutSection({
   philosophy,
 }: About) {
   const [offsetY, setOffsetY] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
