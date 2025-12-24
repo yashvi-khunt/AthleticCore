@@ -51,13 +51,16 @@
   --color-primary-dark: #65a30d;
   --color-secondary: #000000;
   --color-accent: #84cc16;
-  --color-background: #ffffff;
-  --color-surface: #f8fafc;
-  --color-surface-dark: #0f172a;
+  
+  /* Dark theme colors applied globally */
+  --color-background: #0f1729;
+  --color-surface: #1a2332;
+  --color-surface-dark: #0a101d;
+  --color-surface-alt: #141d2e;
 
-  /* Text Colors */
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
+  /* Text Colors - Dark theme */
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
   --color-text-muted: #94a3b8;
   --color-text-inverse: #ffffff;
 
@@ -65,8 +68,6 @@
   --site-max-width: 1280px;
   --header-height: 80px;
 
-  /* Border color used by components when not specified */
-  --border-color: rgba(15, 23, 42, 0.08);
   /* Hero overlay colors (used for readability over images) */
   --overlay-top: rgba(0, 0, 0, 0.8);
   --overlay-mid: rgba(0, 0, 0, 0.6);
@@ -76,11 +77,15 @@
   --transition-base: 200ms ease-out;
   --transition-slow: 400ms ease-out;
 
-  /* Shadows */
-  --shadow-glow-lime: 0 0 20px rgb(163 230 53 / 0.3);
-  --shadow-glow-lime-lg: 0 0 40px rgb(163 230 53 / 0.4);
-  --shadow-card: 0 8px 24px rgb(15 23 42 / 0.08);
-  --shadow-card-hover: 0 20px 50px rgb(15 23 42 / 0.12);
+  /* Shadows - Dark theme */
+  --shadow-glow-lime: 0 0 20px rgba(163, 230, 53, 0.15);
+  --shadow-glow-lime-lg: 0 0 40px rgba(163, 230, 53, 0.2);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(163, 230, 53, 0.05);
+  --shadow-card-hover: 0 20px 50px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(163, 230, 53, 0.08);
+  
+  /* Borders - Dark theme */
+  --border-color: rgba(163, 230, 53, 0.1);
+  --border-color-strong: rgba(163, 230, 53, 0.15);
 }
 
 /* ===== BASE STYLES ===== */
@@ -502,97 +507,63 @@ p {
   background: color-mix(in srgb, var(--color-primary) 80%, black);
 }
 
-/* ===== DARK THEME OVERRIDES ===== */
-.dark,
-[data-theme="dark"] {
-  /* Main background - slightly lighter for better base contrast */
-  --color-background: #0f1729;
-
-  /* Surface colors with more variation */
-  --color-surface: #1a2332; /* Lighter surface for cards */
-  --color-surface-dark: #0a101d; /* Darker surface for contrast sections */
-
-  /* Additional surface variation */
-  --color-surface-alt: #141d2e; /* Alternative surface for sections */
-
-  /* Text colors with better contrast */
-  --color-text-primary: #f1f5f9; /* Brighter white for primary text */
-  --color-text-secondary: #cbd5e1;
-  --color-text-muted: #94a3b8;
-  --color-text-inverse: #ffffff;
-
-  /* Enhanced shadows for better card separation */
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.7),
-    0 2px 8px rgba(163, 230, 53, 0.05);
-  --shadow-card-hover: 0 20px 50px rgba(0, 0, 0, 0.8),
-    0 4px 16px rgba(163, 230, 53, 0.08);
-
-  /* Subtle lime glows */
-  --shadow-glow-lime: 0 0 20px rgba(163, 230, 53, 0.15);
-  --shadow-glow-lime-lg: 0 0 40px rgba(163, 230, 53, 0.2);
-
-  /* Enhanced borders with lime tint */
-  --border-color: rgba(163, 230, 53, 0.1);
-  --border-color-strong: rgba(163, 230, 53, 0.15);
-}
-
-/* ===== DARK MODE SPECIFIC ENHANCEMENTS ===== */
+/* ===== DARK THEME ENHANCEMENTS ===== */
 
 /* Card borders and backgrounds */
-.dark .card,
-.dark .program-card {
+.card,
+.program-card {
   background-color: var(--color-surface) !important;
   border: 1px solid var(--border-color-strong);
 }
 
-.dark .card:hover,
-.dark .program-card:hover {
+.card:hover,
+.program-card:hover {
   border-color: rgba(163, 230, 53, 0.25);
 }
 
 /* Section backgrounds */
-.dark .bg-white {
+.bg-white {
   background-color: var(--color-slate-800) !important;
 }
 
-.dark .bg-slate-50 {
+.bg-slate-50 {
   background-color: var(--color-surface-alt) !important;
 }
 
 /* Testimonials and Programs sections use intermediate color */
-.dark section#testimonials,
-.dark section#programs {
+section#testimonials,
+section#programs {
   background-color: #17202f !important;
   border-top: 1px solid rgba(163, 230, 53, 0.08);
   border-bottom: 1px solid rgba(163, 230, 53, 0.08);
 }
 
 /* Sports and Pricing sections with subtle borders */
-.dark section#sports,
-.dark section#pricing {
+section#sports,
+section#pricing {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Cards in all sections use slate-800 */
-.dark article.bg-white,
-.dark .bg-white.rounded-2xl,
-.dark .bg-white.rounded-xl {
+article.bg-white,
+.bg-white.rounded-2xl,
+.bg-white.rounded-xl {
   background-color: #1e293b !important;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.dark .bg-slate-900 {
+.bg-slate-900 {
   background-color: var(--color-surface-dark) !important;
 }
 
 /* Section separators */
-.dark section {
+section {
   position: relative;
 }
 
-.dark section::before {
+section::before {
   content: "";
   position: absolute;
   top: 0;
@@ -607,89 +578,82 @@ p {
   );
 }
 
-.dark section:first-of-type::before {
+section:first-of-type::before {
   display: none;
 }
 
 /* Pricing cards */
-.dark #pricing .bg-white,
-.dark [id="pricing"] .bg-white {
-  /* background-color: var(--color-surface) !important; */
+#pricing .bg-white,
+[id="pricing"] .bg-white {
   border: 1px solid var(--border-color-strong);
 }
 
-.dark .border-lime-400 {
+.border-lime-400 {
   border-color: rgba(163, 230, 53, 0.4) !important;
   box-shadow: 0 0 30px rgba(163, 230, 53, 0.15);
 }
 
 /* All white background cards get borders */
-.dark [class*="rounded-2xl"].bg-white,
-.dark .bg-white[class*="rounded"],
-.dark .bg-slate-50.rounded-xl {
+[class*="rounded-2xl"].bg-white,
+.bg-white[class*="rounded"],
+.bg-slate-50.rounded-xl {
   border: 1px solid var(--border-color);
 }
 
 /* Form elements */
-.dark input,
-.dark textarea,
-.dark select {
+input,
+textarea,
+select {
   background-color: var(--color-surface) !important;
   border: 1px solid var(--border-color);
   color: var(--color-text-primary);
 }
 
-.dark input:focus,
-.dark textarea:focus,
-.dark select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   border-color: rgba(163, 230, 53, 0.4);
   box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.1);
 }
 
 /* Navbar */
-.dark .site-header {
+.site-header {
   background: rgba(15, 23, 41, 0.95);
   border-bottom: 1px solid var(--border-color);
 }
 
 /* Badges */
-.dark .bg-lime-400\/10 {
+.bg-lime-400\/10 {
   background-color: rgba(163, 230, 53, 0.12) !important;
   border-color: rgba(163, 230, 53, 0.25) !important;
 }
 
 /* CTA section */
-.dark .bg-slate-900 {
+.bg-slate-900 {
   background-color: var(--color-surface-dark) !important;
   border-top: 1px solid rgba(163, 230, 53, 0.15);
   border-bottom: 1px solid rgba(163, 230, 53, 0.15);
 }
 
 /* Buttons */
-.dark .bg-slate-900.text-white {
+.bg-slate-900.text-white {
   background-color: var(--color-surface-dark) !important;
   border: 1px solid rgba(163, 230, 53, 0.2);
 }
 
-.dark .bg-slate-900.text-white:hover {
-  /* background-color: var(--color-surface) !important; */
+.bg-slate-900.text-white:hover {
   border-color: rgba(163, 230, 53, 0.4);
 }
 
-/* Force black text on lime/green buttons in dark mode */
-.dark .bg-lime,
-.dark .bg-lime-400 {
+/* Force black text on lime/green buttons */
+.bg-lime,
+.bg-lime-400 {
   color: #000000 !important;
 }
 
-.dark .bg-lime:hover,
-.dark .bg-lime-dark:hover {
+.bg-lime:hover,
+.bg-lime-dark:hover {
   color: #000000 !important;
-}
-
-/* Smooth theme transition */
-html {
-  transition: background-color 200ms ease, color 200ms ease;
 }
 
 /* ===== THEME-AWARE TAILWIND UTILITY OVERRIDES ===== */
