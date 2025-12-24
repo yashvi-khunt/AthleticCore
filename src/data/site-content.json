@@ -17,55 +17,91 @@
       "id": "hero-section",
       "type": "hero",
       "enabled": true,
-      "order": 1
+      "order": 1,
+      "bgVariant": "hero",
+      "animationPreset": "none",
+      "spacing": "none",
+      "dataKey": "hero"
     },
     {
       "id": "about-section",
       "type": "about",
       "enabled": true,
-      "order": 2
+      "order": 2,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "about"
     },
     {
       "id": "sports-section",
       "type": "sports",
       "enabled": true,
-      "order": 3
+      "order": 3,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "sports"
     },
     {
       "id": "programs-section",
       "type": "programs",
       "enabled": true,
-      "order": 4
+      "order": 4,
+      "bgVariant": "black",
+      "animationPreset": "slideUp",
+      "spacing": "large",
+      "dataKey": "programs"
     },
     {
       "id": "pricing-section",
       "type": "pricing",
       "enabled": true,
-      "order": 5
+      "order": 5,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "pricing"
     },
     {
       "id": "testimonials-section",
       "type": "testimonials",
       "enabled": true,
-      "order": 6
+      "order": 6,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "testimonials"
     },
     {
       "id": "services-section",
       "type": "services",
       "enabled": true,
-      "order": 7
+      "order": 7,
+      "bgVariant": "black",
+      "animationPreset": "slideUp",
+      "spacing": "large",
+      "dataKey": "services"
     },
     {
       "id": "cta-section",
       "type": "cta",
       "enabled": true,
-      "order": 8
+      "order": 8,
+      "bgVariant": "ctaDefault",
+      "animationPreset": "none",
+      "spacing": "none",
+      "dataKey": "cta"
     },
     {
       "id": "contact-section",
       "type": "contact",
       "enabled": true,
-      "order": 9
+      "order": 9,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "contact"
     }
   ],
   "hero": {
@@ -388,6 +424,18 @@
       "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
     }
   ],
+  "cta": {
+    "title": "Ready to Elevate Your Game?",
+    "subtitle": "Join hundreds of athletes who have transformed their performance with CORE ATHLETE training.",
+    "primaryButton": {
+      "text": "Get Started Today",
+      "href": "#contact"
+    },
+    "secondaryButton": {
+      "text": "View Programs",
+      "href": "#programs"
+    }
+  },
   "onlinePrograms": [
     {
       "id": "online-strength",

@@ -10,6 +10,7 @@ import type {
   Hero,
   About,
   ContactInfo,
+  CTA,
 } from "@/types/content";
 import siteData from "@/data/site-content.json";
 
@@ -84,6 +85,11 @@ export const getTestimonials = (): Testimonial[] => {
 // ===== SPORTS =====
 export const getSports = (): Sport[] => {
   return content.sports;
+};
+
+// ===== CTA =====
+export const getCTA = (): CTA => {
+  return content.cta;
 };
 
 // ===== ONLINE PROGRAMS =====

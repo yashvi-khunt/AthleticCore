@@ -2,6 +2,7 @@
 "use client";
 
 import { type SectionConfig } from "@/types/content";
+import SectionShell from "@/components/SectionShell";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
 import ProgramsSection from "@/components/ProgramsSection";
@@ -21,6 +22,7 @@ import {
   getTestimonials,
   getSports,
   getContactInfo,
+  getCTA,
 } from "@/lib/content";
 
 interface SectionRendererProps {
@@ -30,9 +32,15 @@ interface SectionRendererProps {
 /**
  * SectionRenderer - Dynamically renders sections based on configuration
  *
- * This component reads the section type and custom props to render
- * the appropriate section component. Custom props from the section
- * configuration are merged with default data.
+ * This component acts as the bridge between section configuration (from JSON/DB)
+ * and the actual section components. It wraps each section in SectionShell for
+ * consistent styling and animations, making the site easily convertible to CMS.
+ *
+ * CMS Conversion Notes:
+ * - Section config (bgVariant, spacing, animationPreset) comes from DB/JSON
+ * - Section content comes from content getters (will be API calls in CMS)
+ * - SectionShell provides consistent container styling
+ * - Individual section components remain pure presentational components
  */
 export default function SectionRenderer({ section }: SectionRendererProps) {
   // Return null if section is disabled
@@ -43,90 +51,86 @@ export default function SectionRenderer({ section }: SectionRendererProps) {
   // Get custom props if provided
   const customProps = section.customProps || {};
 
+  // Extract section shell configuration
+  const {
+    bgVariant = "black",
+    animationPreset = "fadeIn",
+    spacing = "large",
+  } = section;
+
   // Render the appropriate component based on section type
-  switch (section.type) {
-    case "hero": {
-      const hero = getHero();
-      return (
-        <div id={section.id}>
-          <Hero {...hero} {...customProps} />
-        </div>
-      );
-    }
+  // Each section is wrapped in SectionShell for consistent styling
+  const renderSectionContent = () => {
+    switch (section.type) {
+      case "hero": {
+        const hero = getHero();
+        // Hero manages its own container and background
+        return <Hero {...hero} {...customProps} />;
+      }
 
-    case "programs": {
-      const programs = getPrograms();
-      return (
-        <div id={section.id}>
-          <ProgramsSection programs={programs} {...customProps} />
-        </div>
-      );
-    }
+      case "programs": {
+        const programs = getPrograms();
+        return <ProgramsSection programs={programs} {...customProps} />;
+      }
 
-    case "about": {
-      const about = getAbout();
-      return (
-        <div id={section.id}>
-          <AboutSection {...about} {...customProps} />
-        </div>
-      );
-    }
+      case "about": {
+        const about = getAbout();
+        return <AboutSection {...about} {...customProps} />;
+      }
 
-    case "services": {
-      const services = getServices();
-      return (
-        <div id={section.id}>
-          <ServicesSection services={services} {...customProps} />
-        </div>
-      );
-    }
+      case "services": {
+        const services = getServices();
+        return <ServicesSection services={services} {...customProps} />;
+      }
 
-    case "pricing": {
-      const pricing = getPricing();
-      return (
-        <div id={section.id}>
-          <PricingSection plans={pricing} {...customProps} />
-        </div>
-      );
-    }
+      case "pricing": {
+        const pricing = getPricing();
+        return <PricingSection plans={pricing} {...customProps} />;
+      }
 
-    case "testimonials": {
-      const testimonials = getTestimonials();
-      return (
-        <div id={section.id}>
+      case "testimonials": {
+        const testimonials = getTestimonials();
+        return (
           <TestimonialsSection testimonials={testimonials} {...customProps} />
-        </div>
-      );
-    }
+        );
+      }
 
-    case "sports": {
-      const sports = getSports();
-      return (
-        <div id={section.id}>
-          <SportsSection sports={sports} {...customProps} />
-        </div>
-      );
-    }
+      case "sports": {
+        const sports = getSports();
+        return <SportsSection sports={sports} {...customProps} />;
+      }
 
-    case "cta": {
-      return (
-        <div id={section.id}>
-          <CTASection {...customProps} />
-        </div>
-      );
-    }
+      case "cta": {
+        const cta = getCTA();
+        // CTA section manages its own styling (lime background)
+        return <CTASection {...cta} {...customProps} />;
+      }
 
-    case "contact": {
-      const contact = getContactInfo();
-      return (
-        <div id={section.id}>
-          <ContactSection contact={contact} {...customProps} />
-        </div>
-      );
-    }
+      case "contact": {
+        const contact = getContactInfo();
+        return <ContactSection contact={contact} {...customProps} />;
+      }
 
-    default:
-      console.warn(`Unknown section type: ${section.type}`);
-      return null;
+      default:
+        console.warn(`Unknown section type: ${section.type}`);
+        return null;
+    }
+  };
+
+  // Hero and CTA sections manage their own containers, skip SectionShell
+  if (section.type === "hero" || section.type === "cta") {
+    return <div id={section.id}>{renderSectionContent()}</div>;
   }
+
+  // All other sections use SectionShell for consistent styling
+  return (
+    <SectionShell
+      id={section.id}
+      bgVariant={bgVariant}
+      spacing={spacing}
+      animationPreset={animationPreset}
+    >
+      {renderSectionContent()}
+    </SectionShell>
+  );
 }

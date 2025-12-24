@@ -13,29 +13,27 @@ export default function PricingSection({
   subtitle = "Choose the plan that fits your goals and schedule.",
 }: Props) {
   return (
-    <section id="pricing" className="py-20 bg-slate-50">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-block px-4 py-2 bg-lime-400/10 border border-lime-400/20 rounded-full mb-4">
-            <span className="text-sm font-bold uppercase tracking-wider text-lime-400">
-              Pricing
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
-            {title}
-          </h2>
-          <p className="text-lg text-slate-600">{subtitle}</p>
+    <div className="container mx-auto px-4">
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="inline-block px-4 py-2 bg-lime-400/10 border border-lime-400/20 rounded-full mb-4">
+          <span className="text-sm font-bold uppercase tracking-wider text-lime-400">
+            Pricing
+          </span>
         </div>
-
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {plans.map((plan) => (
-            <PricingCard key={plan.id} {...plan} />
-          ))}
-        </div>
+        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+          {title}
+        </h2>
+        <p className="text-lg text-slate-600">{subtitle}</p>
       </div>
-    </section>
+
+      {/* Pricing Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {plans.map((plan) => (
+          <PricingCard key={plan.id} {...plan} />
+        ))}
+      </div>
+    </div>
   );
 }
 

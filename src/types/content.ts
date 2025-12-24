@@ -122,6 +122,20 @@ export interface Sport {
   image: string;
 }
 
+// ===== CTA =====
+export interface CTA {
+  title: string;
+  subtitle: string;
+  primaryButton: {
+    text: string;
+    href: string;
+  };
+  secondaryButton?: {
+    text: string;
+    href: string;
+  };
+}
+
 // ===== ONLINE PROGRAMS =====
 export interface OnlineProgram {
   id: string;
@@ -157,13 +171,25 @@ export type SectionType =
   | "cta"
   | "contact";
 
+export type SectionBgVariant = "black" | "ctaDefault" | "hero";
+export type SectionAnimationPreset = "none" | "fadeIn" | "slideUp" | "parallax";
+export type SectionSpacing = "none" | "small" | "medium" | "large";
+
 export interface SectionConfig {
   id: string;
   type: SectionType;
   enabled: boolean;
   order: number;
   title?: string;
-  customProps?: Record<string, any>;
+  customProps?: Record<string, unknown>;
+  /** Background variant for section container - drives SectionShell */
+  bgVariant?: SectionBgVariant;
+  /** Animation preset for section-level effects */
+  animationPreset?: SectionAnimationPreset;
+  /** Spacing preset for section padding */
+  spacing?: SectionSpacing;
+  /** Data key to fetch from content layer (e.g., 'programs', 'about') */
+  dataKey?: string;
 }
 
 // ===== SITE CONTENT (MAIN DATA STRUCTURE) =====
@@ -183,6 +209,7 @@ export interface SiteContent {
   testimonials?: Testimonial[];
   team?: TeamMember[];
   sports: Sport[];
+  cta: CTA;
   onlinePrograms?: OnlineProgram[];
   contact: ContactInfo;
   footer: {

@@ -18,54 +18,52 @@ export default function TestimonialsSection({
   if (!testimonials || testimonials.length === 0) return null;
 
   return (
-    <section id="testimonials" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-block px-4 py-2 bg-lime-400/10 border border-lime-400/20 rounded-full mb-4">
-            <span className="text-sm font-bold uppercase tracking-wider text-lime-400">
-              Testimonials
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
-            {title}
-          </h2>
-          <p className="text-lg text-slate-600">{subtitle}</p>
+    <div className="container mx-auto px-4">
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="inline-block px-4 py-2 bg-lime-400/10 border border-lime-400/20 rounded-full mb-4">
+          <span className="text-sm font-bold uppercase tracking-wider text-lime-400">
+            Testimonials
+          </span>
         </div>
-
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {testimonials.slice(0, 3).map((testimonial) => (
-            <TestimonialCard key={testimonial.id} {...testimonial} />
-          ))}
-        </div>
-
-        {/* Show More Button */}
-        {testimonials.length > 3 && (
-          <div className="text-center mt-12">
-            <a
-              href="/testimonials"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-slate-900 font-bold rounded-lg hover:bg-lime-500 transition-colors shadow-lg hover:shadow-xl"
-            >
-              View All Testimonials
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </a>
-          </div>
-        )}
+        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+          {title}
+        </h2>
+        <p className="text-lg text-slate-600">{subtitle}</p>
       </div>
-    </section>
+
+      {/* Testimonials Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {testimonials.slice(0, 3).map((testimonial) => (
+          <TestimonialCard key={testimonial.id} {...testimonial} />
+        ))}
+      </div>
+
+      {/* Show More Button */}
+      {testimonials.length > 3 && (
+        <div className="text-center mt-12">
+          <a
+            href="/testimonials"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-slate-900 font-bold rounded-lg hover:bg-lime-500 transition-colors shadow-lg hover:shadow-xl"
+          >
+            View All Testimonials
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
   );
 }
 

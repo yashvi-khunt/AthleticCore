@@ -44,11 +44,7 @@ export default function AboutSection({
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      id="about"
-      className="relative py-20 bg-slate-900 text-white overflow-hidden"
-    >
+    <div ref={sectionRef} className="relative text-white overflow-hidden">
       {/* Background Logo with Parallax */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div
@@ -127,7 +123,7 @@ export default function AboutSection({
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
