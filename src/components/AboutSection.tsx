@@ -44,7 +44,7 @@ export default function AboutSection({
   }, []);
 
   return (
-    <div ref={sectionRef} className="relative text-white overflow-hidden">
+    <div ref={sectionRef} className=" text-white overflow-hidden">
       {/* Background Logo with Parallax */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div
