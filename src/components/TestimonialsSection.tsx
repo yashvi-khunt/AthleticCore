@@ -44,7 +44,7 @@ export default function TestimonialsSection({
         <div className="text-center mt-12">
           <a
             href="/testimonials"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-slate-900 font-bold rounded-lg hover:bg-lime-500 transition-colors shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-black font-bold rounded-lg hover:bg-lime-500 transition-colors shadow-lg hover:shadow-xl"
           >
             View All Testimonials
             <svg
