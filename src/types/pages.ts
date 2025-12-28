@@ -4,9 +4,11 @@
  * Page configuration for multi-page architecture
  */
 export interface PageConfig {
-  slug: string;
-  title: string;
-  description: string;
+  page: {
+    slug: string;
+    title: string;
+    description: string;
+  };
   sections: PageSectionConfig[];
   content: Record<string, any>;
 }
@@ -56,6 +58,9 @@ export type PageSectionType =
   | "methodology"
   | "equipment"
   | "safety"
+  | "program-benefits"
+  | "program-methodology"
+  | "program-faq"
   | "contact-form"
   | "contact-info"
   | "faq";

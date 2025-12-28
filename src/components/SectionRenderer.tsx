@@ -60,11 +60,20 @@ export default function SectionRenderer({ section }: SectionRendererProps) {
   const customProps = section.customProps || {};
 
   // Extract section shell configuration
-  const {
-    bgVariant = "black",
-    animationPreset = "fadeIn",
-    spacing = "large",
-  } = section;
+  // Handle type differences between SectionConfig and PageSectionConfig
+  const rawBgVariant = (section as any).bgVariant || "black";
+  const rawAnimationPreset = (section as any).animationPreset || "fadeIn";
+  const spacing = (section as any).spacing || "large";
+
+  // Map PageSectionConfig variants to SectionShell compatible ones
+  const bgVariant = ["black", "ctaDefault", "hero"].includes(rawBgVariant)
+    ? (rawBgVariant as "black" | "ctaDefault" | "hero")
+    : "black";
+  const animationPreset = ["none", "fadeIn", "slideUp", "parallax"].includes(
+    rawAnimationPreset
+  )
+    ? (rawAnimationPreset as "none" | "fadeIn" | "slideUp" | "parallax")
+    : "fadeIn";
 
   // Render the appropriate component based on section type
   // Each section is wrapped in SectionShell for consistent styling
@@ -237,7 +246,7 @@ export default function SectionRenderer({ section }: SectionRendererProps) {
         );
 
       default:
-        console.warn(`Unknown section type: ${section.type}`);
+        console.warn(`Unknown section type: ${(section as any).type}`);
         return null;
     }
   };
