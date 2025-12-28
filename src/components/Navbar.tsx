@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   Box,
   Container,
@@ -14,13 +15,15 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { getNavigation } from "@/lib/content";
+import { getMainNav, getMobileNav } from "@/lib/content";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const navigation = getNavigation();
+  const pathname = usePathname();
+  const mainNav = getMainNav();
+  const mobileNav = getMobileNav();
 
   useEffect(() => {
     // Reveal navbar with unblur effect when logo stops
@@ -101,29 +104,36 @@ export default function Navbar() {
             }}
           >
             <List sx={{ display: "flex", alignItems: "center", gap: 3, p: 0 }}>
-              {navigation.map((link) => (
-                <ListItem key={link.href} sx={{ width: "auto", p: 0 }}>
-                  <Link href={link.href} style={{ textDecoration: "none" }}>
-                    <Box
-                      component="span"
-                      sx={{
-                        fontSize: "0.875rem",
-                        fontWeight: 600,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                        color: "white",
-                        transition: "color 0.3s",
-                        "&:hover": { color: "primary.main" },
-                      }}
-                    >
-                      {link.label}
-                    </Box>
-                  </Link>
-                </ListItem>
-              ))}
+              {mainNav.map((link) => {
+                const isActive = pathname === link.href;
+
+                return (
+                  <ListItem key={link.href} sx={{ width: "auto", p: 0 }}>
+                    <Link href={link.href} style={{ textDecoration: "none" }}>
+                      <Box
+                        component="span"
+                        sx={{
+                          fontSize: "0.875rem",
+                          fontWeight: 600,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.05em",
+                          color: isActive ? "primary.main" : "white",
+                          transition: "color 0.3s",
+                          borderBottom: isActive ? "2px solid" : "none",
+                          borderColor: "primary.main",
+                          paddingBottom: "2px",
+                          "&:hover": { color: "primary.main" },
+                        }}
+                      >
+                        {link.label}
+                      </Box>
+                    </Link>
+                  </ListItem>
+                );
+              })}
             </List>
 
-            <Link href="#contact" style={{ textDecoration: "none" }}>
+            <Link href="/contact" style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"
                 color="primary"
@@ -173,39 +183,46 @@ export default function Navbar() {
             <List
               sx={{ display: "flex", flexDirection: "column", gap: 1, mt: 2 }}
             >
-              {navigation.map((link) => (
-                <ListItem key={link.href} sx={{ p: 0 }}>
-                  <Link
-                    href={link.href}
-                    style={{ textDecoration: "none", width: "100%" }}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Box
-                      sx={{
-                        display: "block",
-                        px: 2,
-                        py: 1,
-                        fontSize: "0.875rem",
-                        fontWeight: 600,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                        color: "white",
-                        borderRadius: 1,
-                        transition: "all 0.3s",
-                        "&:hover": {
-                          bgcolor: "rgba(255, 255, 255, 0.1)",
-                          color: "primary.main",
-                        },
-                      }}
+              {mobileNav.map((link) => {
+                const isActive = pathname === link.href;
+
+                return (
+                  <ListItem key={link.href} sx={{ p: 0 }}>
+                    <Link
+                      href={link.href}
+                      style={{ textDecoration: "none", width: "100%" }}
+                      onClick={() => setIsOpen(false)}
                     >
-                      {link.label}
-                    </Box>
-                  </Link>
-                </ListItem>
-              ))}
+                      <Box
+                        sx={{
+                          display: "block",
+                          px: 2,
+                          py: 1,
+                          fontSize: "0.875rem",
+                          fontWeight: 600,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.05em",
+                          color: isActive ? "primary.main" : "white",
+                          borderRadius: 1,
+                          bgcolor: isActive
+                            ? "rgba(163, 230, 53, 0.1)"
+                            : "transparent",
+                          transition: "all 0.3s",
+                          "&:hover": {
+                            bgcolor: "rgba(255, 255, 255, 0.1)",
+                            color: "primary.main",
+                          },
+                        }}
+                      >
+                        {link.label}
+                      </Box>
+                    </Link>
+                  </ListItem>
+                );
+              })}
               <ListItem sx={{ mt: 1, px: 2 }}>
                 <Link
-                  href="#contact"
+                  href="/contact"
                   style={{ textDecoration: "none", width: "100%" }}
                   onClick={() => setIsOpen(false)}
                 >

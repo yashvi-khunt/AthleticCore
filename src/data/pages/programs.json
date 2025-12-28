@@ -1,0 +1,143 @@
+{
+  "page": {
+    "slug": "programs",
+    "title": "Training Programs | CORE ATHLETE",
+    "description": "Explore our comprehensive athletic training programs. From team training to 1-on-1 coaching, find the perfect program to elevate your performance."
+  },
+  "sections": [
+    {
+      "id": "programs-hero",
+      "type": "page-hero",
+      "enabled": true,
+      "order": 1,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "programsHero"
+    },
+    {
+      "id": "programs-grid",
+      "type": "program-grid",
+      "enabled": true,
+      "order": 2,
+      "bgVariant": "black",
+      "animationPreset": "slideUp",
+      "spacing": "large",
+      "dataKey": "programsGrid"
+    },
+    {
+      "id": "programs-comparison",
+      "type": "comparison-table",
+      "enabled": true,
+      "order": 3,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "comparison"
+    },
+    {
+      "id": "programs-cta",
+      "type": "cta",
+      "enabled": true,
+      "order": 4,
+      "bgVariant": "ctaDefault",
+      "animationPreset": "none",
+      "spacing": "none",
+      "dataKey": "cta"
+    }
+  ],
+  "content": {
+    "programsHero": {
+      "variant": "with-filters",
+      "title": "Training Programs",
+      "subtitle": "Science-based programs designed for every athlete and every goal",
+      "filters": ["All", "Team", "Small Group", "1-on-1", "Youth"]
+    },
+    "programsGrid": {
+      "title": "Choose Your Path",
+      "subtitle": "Find the program that matches your goals and schedule",
+      "layout": "3-column-cards",
+      "showFilters": true
+    },
+    "comparison": {
+      "title": "Program Comparison",
+      "subtitle": "Compare features and find the best fit",
+      "columns": [
+        {
+          "id": "feature",
+          "label": "Feature",
+          "width": "30%"
+        },
+        {
+          "id": "team",
+          "label": "Team Training",
+          "width": "17.5%"
+        },
+        {
+          "id": "small-group",
+          "label": "Small Group",
+          "width": "17.5%"
+        },
+        {
+          "id": "private",
+          "label": "1-on-1",
+          "width": "17.5%"
+        },
+        {
+          "id": "youth",
+          "label": "Youth",
+          "width": "17.5%"
+        }
+      ],
+      "rows": [
+        {
+          "feature": "Group Size",
+          "team": "6-8 athletes",
+          "small-group": "2-6 athletes",
+          "private": "1 athlete",
+          "youth": "4-8 athletes"
+        },
+        {
+          "feature": "Duration",
+          "team": "60 minutes",
+          "small-group": "60 minutes",
+          "private": "45-60 minutes",
+          "youth": "45 minutes"
+        },
+        {
+          "feature": "Personalization",
+          "team": "Moderate",
+          "small-group": "High",
+          "private": "Maximum",
+          "youth": "Age-appropriate"
+        },
+        {
+          "feature": "Price per Session",
+          "team": "$40/athlete",
+          "small-group": "$60/athlete",
+          "private": "$100",
+          "youth": "$35/athlete"
+        },
+        {
+          "feature": "Best For",
+          "team": "Team cohesion",
+          "small-group": "Skill refinement",
+          "private": "Elite performance",
+          "youth": "Developing athletes"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Begin?",
+      "subtitle": "Book a free trial session and experience the CORE ATHLETE difference.",
+      "primaryButton": {
+        "text": "Book Trial Session",
+        "href": "/contact"
+      },
+      "secondaryButton": {
+        "text": "Contact Us",
+        "href": "/contact"
+      }
+    }
+  }
+}

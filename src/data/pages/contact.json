@@ -1,0 +1,241 @@
+{
+  "page": {
+    "slug": "contact",
+    "title": "Contact Us | CORE ATHLETE",
+    "description": "Get in touch with CORE ATHLETE. Schedule a consultation, book a trial session, or ask us any questions about our training programs."
+  },
+  "sections": [
+    {
+      "id": "contact-hero",
+      "type": "page-hero",
+      "enabled": true,
+      "order": 1,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "contactHero"
+    },
+    {
+      "id": "contact-form",
+      "type": "contact-form",
+      "enabled": true,
+      "order": 2,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "form"
+    },
+    {
+      "id": "contact-info",
+      "type": "contact-info",
+      "enabled": true,
+      "order": 3,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "contactInfo"
+    },
+    {
+      "id": "contact-faq",
+      "type": "faq",
+      "enabled": true,
+      "order": 4,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "faq"
+    }
+  ],
+  "content": {
+    "contactHero": {
+      "variant": "minimal",
+      "title": "Get in Touch",
+      "subtitle": "Start your athletic journey today. We're here to help you reach your goals."
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "subtitle": "Fill out the form below and we'll get back to you within 24 hours",
+      "variant": "multi-step",
+      "submitEndpoint": "/api/contact",
+      "successMessage": "Thank you for your message! We'll get back to you within 24 hours.",
+      "fields": [
+        {
+          "id": "firstName",
+          "type": "text",
+          "label": "First Name",
+          "placeholder": "John",
+          "required": true,
+          "validation": {
+            "minLength": 2,
+            "maxLength": 50
+          }
+        },
+        {
+          "id": "lastName",
+          "type": "text",
+          "label": "Last Name",
+          "placeholder": "Doe",
+          "required": true,
+          "validation": {
+            "minLength": 2,
+            "maxLength": 50
+          }
+        },
+        {
+          "id": "email",
+          "type": "email",
+          "label": "Email Address",
+          "placeholder": "john.doe@example.com",
+          "required": true,
+          "validation": {
+            "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+          }
+        },
+        {
+          "id": "phone",
+          "type": "tel",
+          "label": "Phone Number",
+          "placeholder": "(555) 123-4567",
+          "required": false,
+          "validation": {
+            "pattern": "^[\\d\\s\\(\\)\\-\\+]+$"
+          }
+        },
+        {
+          "id": "program",
+          "type": "select",
+          "label": "Program Interest",
+          "placeholder": "Select a program",
+          "required": true,
+          "options": [
+            "Team Training",
+            "Small Group Training",
+            "1-on-1 Training",
+            "Youth Development",
+            "Not Sure / General Inquiry"
+          ]
+        },
+        {
+          "id": "sport",
+          "type": "select",
+          "label": "Primary Sport",
+          "placeholder": "Select your sport",
+          "required": false,
+          "options": [
+            "Basketball",
+            "Soccer",
+            "Track & Field",
+            "Football",
+            "Baseball",
+            "Volleyball",
+            "Tennis",
+            "Swimming",
+            "Other"
+          ]
+        },
+        {
+          "id": "experienceLevel",
+          "type": "select",
+          "label": "Experience Level",
+          "placeholder": "Select experience level",
+          "required": false,
+          "options": [
+            "Beginner",
+            "Intermediate",
+            "Advanced",
+            "Elite/Competitive"
+          ]
+        },
+        {
+          "id": "message",
+          "type": "textarea",
+          "label": "Message",
+          "placeholder": "Tell us about your goals, questions, or anything else we should know...",
+          "required": true,
+          "validation": {
+            "minLength": 10,
+            "maxLength": 1000
+          }
+        }
+      ]
+    },
+    "contactInfo": {
+      "title": "Visit Us",
+      "subtitle": "Find us at our training facility",
+      "variant": "split-layout",
+      "address": "123 Athletic Drive, Suite 100\nYour City, ST 12345",
+      "phone": "(555) 123-4567",
+      "email": "info@coreathlete.com",
+      "hours": [
+        {
+          "days": "Monday - Friday",
+          "time": "6:00 AM - 9:00 PM"
+        },
+        {
+          "days": "Saturday",
+          "time": "8:00 AM - 6:00 PM"
+        },
+        {
+          "days": "Sunday",
+          "time": "9:00 AM - 4:00 PM"
+        }
+      ],
+      "mapCoordinates": {
+        "lat": 40.7128,
+        "lng": -74.006
+      },
+      "socialMedia": {
+        "instagram": "https://instagram.com/coreathlete",
+        "facebook": "https://facebook.com/coreathlete",
+        "twitter": "https://twitter.com/coreathlete"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Quick answers to common questions",
+      "variant": "accordion",
+      "items": [
+        {
+          "id": "faq-1",
+          "question": "Do you offer free trial sessions?",
+          "answer": "Yes! We offer a complimentary trial session for all new athletes. This allows you to experience our training environment, meet our coaches, and see if our programs are the right fit for your goals."
+        },
+        {
+          "id": "faq-2",
+          "question": "What age groups do you train?",
+          "answer": "We train athletes of all ages, from youth athletes (ages 8+) to adults. Our programs are tailored to each age group's developmental needs and goals."
+        },
+        {
+          "id": "faq-3",
+          "question": "What should I bring to my first session?",
+          "answer": "Wear comfortable athletic clothing and clean athletic shoes. Bring a water bottle and towel. We provide all necessary training equipment."
+        },
+        {
+          "id": "faq-4",
+          "question": "How do I know which program is right for me?",
+          "answer": "During your initial consultation or trial session, our coaches will discuss your goals, experience level, and schedule to recommend the best program for you. We can also adjust as your needs change."
+        },
+        {
+          "id": "faq-5",
+          "question": "Do you work with beginners?",
+          "answer": "Absolutely! We train athletes at all skill levels, from complete beginners to elite competitors. Our coaches excel at meeting athletes where they are and building from there."
+        },
+        {
+          "id": "faq-6",
+          "question": "What is your cancellation policy?",
+          "answer": "We require 24-hour notice for session cancellations. Sessions canceled with less than 24 hours notice may be forfeited unless due to emergency or illness."
+        },
+        {
+          "id": "faq-7",
+          "question": "Do you offer online training?",
+          "answer": "Yes! We offer remote programming and virtual coaching for athletes who can't train with us in person. Contact us to learn more about our online options."
+        },
+        {
+          "id": "faq-8",
+          "question": "How do I schedule a facility tour?",
+          "answer": "Simply fill out the contact form above or give us a call. We're happy to show you around our facility and answer any questions you have."
+        }
+      ]
+    }
+  }
+}

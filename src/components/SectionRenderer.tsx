@@ -2,6 +2,7 @@
 "use client";
 
 import { type SectionConfig } from "@/types/content";
+import type { PageSectionConfig } from "@/types/pages";
 import SectionShell from "@/components/SectionShell";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
@@ -12,6 +13,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import SportsSection from "@/components/SportsSection";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
+import PageHero from "@/components/sections/PageHero";
 
 import {
   getHero,
@@ -23,10 +25,11 @@ import {
   getSports,
   getContactInfo,
   getCTA,
+  getPageContent,
 } from "@/lib/content";
 
 interface SectionRendererProps {
-  section: SectionConfig;
+  section: SectionConfig | PageSectionConfig;
 }
 
 /**
@@ -111,14 +114,65 @@ export default function SectionRenderer({ section }: SectionRendererProps) {
         return <ContactSection contact={contact} {...customProps} />;
       }
 
+      // ===== PAGE-SPECIFIC SECTIONS =====
+
+      case "page-hero": {
+        // Extract page slug from section ID (e.g., "about-hero" -> "about")
+        const pageSlug = section.id.split("-")[0];
+        const heroData = getPageContent(
+          pageSlug,
+          section.dataKey || "aboutHero"
+        );
+        if (!heroData) {
+          console.warn(
+            `Page hero data not found for ${pageSlug}:${section.dataKey}`
+          );
+          return null;
+        }
+        return <PageHero {...heroData} {...customProps} />;
+      }
+
+      // Placeholder for other page-specific sections
+      // These will be implemented as needed
+      case "story":
+      case "philosophy":
+      case "team":
+      case "credentials":
+      case "program-grid":
+      case "comparison-table":
+      case "featured-story":
+      case "testimonial-grid":
+      case "sports-breakdown":
+      case "facility-tour":
+      case "methodology":
+      case "equipment":
+      case "safety":
+      case "contact-form":
+      case "contact-info":
+      case "faq":
+        return (
+          <div
+            style={{ padding: "4rem 0", textAlign: "center", color: "white" }}
+          >
+            <h3>Section: {section.type}</h3>
+            <p style={{ color: "#a3e635" }}>
+              Coming soon - Component in development
+            </p>
+          </div>
+        );
+
       default:
         console.warn(`Unknown section type: ${section.type}`);
         return null;
     }
   };
 
-  // Hero and CTA sections manage their own containers, skip SectionShell
-  if (section.type === "hero" || section.type === "cta") {
+  // Hero, CTA, and page-hero sections manage their own containers, skip SectionShell
+  if (
+    section.type === "hero" ||
+    section.type === "cta" ||
+    section.type === "page-hero"
+  ) {
     return <div id={section.id}>{renderSectionContent()}</div>;
   }
 

@@ -1,0 +1,62 @@
+{
+  "copyright": "© 2025 CORE ATHLETE. All rights reserved.",
+  "description": "Creating. Opportunities. Realigning. Expectations.",
+  "sections": [
+    {
+      "title": "Quick Links",
+      "links": [
+        { "label": "Home", "href": "/" },
+        { "label": "Programs", "href": "/programs" },
+        { "label": "About", "href": "/about" },
+        { "label": "Contact", "href": "/contact" }
+      ]
+    },
+    {
+      "title": "Programs",
+      "links": [
+        { "label": "Team Training", "href": "/programs#team-training" },
+        { "label": "Small Group", "href": "/programs#small-group" },
+        { "label": "1-on-1 Training", "href": "/programs#1-on-1" },
+        { "label": "Youth Development", "href": "/programs#youth" }
+      ]
+    },
+    {
+      "title": "Resources",
+      "links": [
+        { "label": "Success Stories", "href": "/athletes" },
+        { "label": "Facilities", "href": "/facilities" },
+        { "label": "FAQ", "href": "/contact#faq" },
+        { "label": "Book a Tour", "href": "/contact" }
+      ]
+    },
+    {
+      "title": "Connect",
+      "links": [
+        {
+          "label": "Instagram",
+          "href": "https://instagram.com/coreathlete",
+          "external": true
+        },
+        {
+          "label": "Facebook",
+          "href": "https://facebook.com/coreathlete",
+          "external": true
+        },
+        {
+          "label": "Twitter",
+          "href": "https://twitter.com/coreathlete",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "contactInfo": {
+    "email": "info@coreathlete.com",
+    "phone": "(555) 123-4567",
+    "address": "123 Athletic Drive, Suite 100, Your City, ST 12345"
+  },
+  "legal": [
+    { "label": "Privacy Policy", "href": "/privacy" },
+    { "label": "Terms of Service", "href": "/terms" }
+  ]
+}

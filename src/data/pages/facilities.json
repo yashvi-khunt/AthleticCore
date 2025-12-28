@@ -1,0 +1,255 @@
+{
+  "page": {
+    "slug": "facilities",
+    "title": "Facilities & Methodology | CORE ATHLETE",
+    "description": "Explore our state-of-the-art training facility and learn about our science-based methodology that delivers real results for athletes."
+  },
+  "sections": [
+    {
+      "id": "facilities-hero",
+      "type": "page-hero",
+      "enabled": true,
+      "order": 1,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "facilitiesHero"
+    },
+    {
+      "id": "facilities-tour",
+      "type": "facility-tour",
+      "enabled": true,
+      "order": 2,
+      "bgVariant": "black",
+      "animationPreset": "parallax",
+      "spacing": "large",
+      "dataKey": "tour"
+    },
+    {
+      "id": "facilities-methodology",
+      "type": "methodology",
+      "enabled": true,
+      "order": 3,
+      "bgVariant": "black",
+      "animationPreset": "slideUp",
+      "spacing": "large",
+      "dataKey": "methodology"
+    },
+    {
+      "id": "facilities-equipment",
+      "type": "equipment",
+      "enabled": true,
+      "order": 4,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "equipment"
+    },
+    {
+      "id": "facilities-safety",
+      "type": "safety",
+      "enabled": true,
+      "order": 5,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "safety"
+    },
+    {
+      "id": "facilities-cta",
+      "type": "cta",
+      "enabled": true,
+      "order": 6,
+      "bgVariant": "ctaDefault",
+      "animationPreset": "none",
+      "spacing": "none",
+      "dataKey": "cta"
+    }
+  ],
+  "content": {
+    "facilitiesHero": {
+      "variant": "full-screen-video",
+      "title": "Our Training Facility",
+      "subtitle": "A world-class environment designed for athletic excellence",
+      "backgroundImage": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80"
+    },
+    "tour": {
+      "type": "images",
+      "title": "Facility Tour",
+      "subtitle": "Explore our state-of-the-art training spaces",
+      "variant": "image-gallery",
+      "media": [
+        {
+          "url": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80",
+          "caption": "Main Training Floor - 5,000 sq ft of open training space"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1600&q=80",
+          "caption": "Strength & Conditioning Area - Olympic platforms and power racks"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1600&q=80",
+          "caption": "Speed & Agility Track - 40-yard sprint lane with timing systems"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80",
+          "caption": "Recovery Zone - Foam rolling, stretching, and mobility stations"
+        }
+      ]
+    },
+    "methodology": {
+      "title": "Our Training Methodology",
+      "subtitle": "A systematic approach to athletic development",
+      "variant": "step-by-step",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Assessment",
+          "description": "Comprehensive evaluation of movement patterns, strength, speed, and sport-specific skills to establish baseline metrics.",
+          "icon": "assignment"
+        },
+        {
+          "number": 2,
+          "title": "Program Design",
+          "description": "Customized training plan based on assessment results, individual goals, and sport-specific requirements.",
+          "icon": "edit_note"
+        },
+        {
+          "number": 3,
+          "title": "Progressive Training",
+          "description": "Structured progression through training phases, building foundational strength, power, and sport-specific skills.",
+          "icon": "trending_up"
+        },
+        {
+          "number": 4,
+          "title": "Performance Testing",
+          "description": "Regular performance testing to track progress, identify areas for improvement, and adjust programming.",
+          "icon": "analytics"
+        },
+        {
+          "number": 5,
+          "title": "Refinement & Optimization",
+          "description": "Continuous program refinement based on performance data and athlete feedback to maximize results.",
+          "icon": "tune"
+        }
+      ]
+    },
+    "equipment": {
+      "title": "World-Class Equipment",
+      "subtitle": "Everything you need to train like an elite athlete",
+      "variant": "category-tabs",
+      "categories": [
+        {
+          "id": "strength",
+          "name": "Strength Training",
+          "items": [
+            "Olympic weightlifting platforms",
+            "Competition-grade barbells and bumper plates",
+            "Power racks and squat stands",
+            "Dumbbell sets (5-150 lbs)",
+            "Specialty bars (trap bar, safety squat bar, etc.)"
+          ]
+        },
+        {
+          "id": "conditioning",
+          "name": "Conditioning",
+          "items": [
+            "Assault bikes and rowing machines",
+            "Ski ergs and versa climbers",
+            "Battle ropes and slam balls",
+            "Sled track for pushing and pulling",
+            "Jump boxes and plyo equipment"
+          ]
+        },
+        {
+          "id": "speed-agility",
+          "name": "Speed & Agility",
+          "items": [
+            "40-yard sprint track with timing gates",
+            "Agility ladder and cone sets",
+            "Resistance parachutes and sleds",
+            "Hurdle sets (various heights)",
+            "Reaction training equipment"
+          ]
+        },
+        {
+          "id": "technology",
+          "name": "Technology",
+          "items": [
+            "Force plate testing systems",
+            "Velocity-based training devices",
+            "Video analysis software",
+            "Heart rate monitoring systems",
+            "Performance tracking apps"
+          ]
+        },
+        {
+          "id": "recovery",
+          "name": "Recovery",
+          "items": [
+            "Foam rollers and massage tools",
+            "Resistance bands and stretching equipment",
+            "Mobility stations",
+            "Ice baths and contrast therapy",
+            "Compression therapy systems"
+          ]
+        }
+      ]
+    },
+    "safety": {
+      "title": "Safety & Protocols",
+      "subtitle": "Your safety is our top priority",
+      "variant": "icon-list",
+      "items": [
+        {
+          "id": "safety-1",
+          "title": "Certified Coaching Staff",
+          "description": "All coaches hold nationally recognized certifications and maintain continuing education requirements.",
+          "icon": "verified"
+        },
+        {
+          "id": "safety-2",
+          "title": "First Aid & Emergency Response",
+          "description": "Staff trained in CPR and first aid with emergency action plans in place for all training scenarios.",
+          "icon": "local_hospital"
+        },
+        {
+          "id": "safety-3",
+          "title": "Equipment Maintenance",
+          "description": "Regular inspection and maintenance of all training equipment to ensure safety and optimal performance.",
+          "icon": "build"
+        },
+        {
+          "id": "safety-4",
+          "title": "Proper Supervision",
+          "description": "Appropriate coach-to-athlete ratios maintained at all times to ensure proper technique and safety.",
+          "icon": "supervisor_account"
+        },
+        {
+          "id": "safety-5",
+          "title": "Clean & Sanitized",
+          "description": "Rigorous cleaning protocols and sanitization procedures to maintain a healthy training environment.",
+          "icon": "cleaning_services"
+        },
+        {
+          "id": "safety-6",
+          "title": "SafeSport Compliance",
+          "description": "All coaches are SafeSport certified, ensuring a safe and positive environment for all athletes.",
+          "icon": "shield"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Schedule a Facility Tour",
+      "subtitle": "See our world-class training environment in person and meet our coaching staff.",
+      "primaryButton": {
+        "text": "Book a Tour",
+        "href": "/contact"
+      },
+      "secondaryButton": {
+        "text": "Contact Us",
+        "href": "/contact"
+      }
+    }
+  }
+}

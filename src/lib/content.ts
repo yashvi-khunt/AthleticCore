@@ -12,10 +12,40 @@ import type {
   ContactInfo,
   CTA,
 } from "@/types/content";
+import type {
+  PageConfig,
+  PageSectionConfig,
+  NavigationConfig,
+  FooterConfig,
+  SEOMetadata,
+} from "@/types/pages";
+import type { Metadata } from "next";
 import siteData from "@/data/site-content.json";
+import aboutData from "@/data/pages/about.json";
+import programsData from "@/data/pages/programs.json";
+import athletesData from "@/data/pages/athletes.json";
+import facilitiesData from "@/data/pages/facilities.json";
+import contactData from "@/data/pages/contact.json";
+import navigationData from "@/data/shared/navigation.json";
+import footerData from "@/data/shared/footer.json";
+import seoData from "@/data/shared/seo-metadata.json";
 
 // Type assertion for imported JSON
 const content: SiteContent = siteData as SiteContent;
+
+// Page data registry
+const pages: Record<string, PageConfig> = {
+  about: aboutData as PageConfig,
+  programs: programsData as PageConfig,
+  athletes: athletesData as PageConfig,
+  facilities: facilitiesData as PageConfig,
+  contact: contactData as PageConfig,
+};
+
+// Shared data
+const navigation: NavigationConfig = navigationData as NavigationConfig;
+const footer: FooterConfig = footerData as FooterConfig;
+const seoMetadata: SEOMetadata = seoData as SEOMetadata;
 
 // ===== MAIN CONTENT GETTER =====
 export const getContent = (): SiteContent => {
@@ -146,3 +176,120 @@ export const getProgramsByPriceRange = (
     return false;
   });
 };
+
+// ===== MULTI-PAGE FUNCTIONS =====
+
+/**
+ * Get sections for a specific page
+ * Returns enabled sections sorted by order
+ */
+export function getPageSections(pageSlug: string): PageSectionConfig[] {
+  const pageData = pages[pageSlug];
+
+  if (!pageData) {
+    console.warn(`Page data not found for slug: ${pageSlug}`);
+    return [];
+  }
+
+  return pageData.sections
+    .filter((section) => section.enabled)
+    .sort((a, b) => a.order - b.order);
+}
+
+/**
+ * Get content for a specific section on a page
+ * Returns null if page or content key doesn't exist
+ */
+export function getPageContent<T = any>(
+  pageSlug: string,
+  dataKey: string
+): T | null {
+  const pageData = pages[pageSlug];
+
+  if (!pageData) {
+    console.warn(`Page data not found for slug: ${pageSlug}`);
+    return null;
+  }
+
+  return (pageData.content?.[dataKey] as T) || null;
+}
+
+/**
+ * Get all page data for a specific page
+ */
+export function getPageData(pageSlug: string): PageConfig | null {
+  return pages[pageSlug] || null;
+}
+
+/**
+ * Get metadata for SEO (Next.js Metadata API)
+ */
+export function getPageMetadata(pageSlug: string): Metadata {
+  const pageSEO = seoMetadata.pages[pageSlug];
+  const global = seoMetadata.global;
+
+  if (!pageSEO) {
+    console.warn(`SEO metadata not found for page: ${pageSlug}`);
+    return {
+      title: global.siteName,
+      description: "",
+    };
+  }
+
+  return {
+    title: pageSEO.title,
+    description: pageSEO.description,
+    keywords: pageSEO.keywords,
+    openGraph: {
+      title: pageSEO.title,
+      description: pageSEO.description,
+      images: [pageSEO.ogImage],
+      siteName: global.siteName,
+      locale: global.locale,
+      type: global.type as "website",
+      url: `${global.siteUrl}/${pageSlug}`,
+    },
+    twitter: {
+      card: pageSEO.twitterCard,
+      title: pageSEO.title,
+      description: pageSEO.description,
+      images: [pageSEO.ogImage],
+      site: global.twitterHandle,
+    },
+  };
+}
+
+/**
+ * Get navigation data
+ */
+export function getNavigationData(): NavigationConfig {
+  return navigation;
+}
+
+/**
+ * Get main navigation items
+ */
+export function getMainNav() {
+  return navigation.mainNav;
+}
+
+/**
+ * Get mobile navigation items
+ */
+export function getMobileNav() {
+  return navigation.mobileNav;
+}
+
+/**
+ * Get footer data
+ */
+export function getFooterConfig(): FooterConfig {
+  return footer;
+}
+
+/**
+ * Get all available page slugs
+ */
+export function getAllPageSlugs(): string[] {
+  return Object.keys(pages);
+}

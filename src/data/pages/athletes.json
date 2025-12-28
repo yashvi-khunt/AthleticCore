@@ -1,0 +1,176 @@
+{
+  "page": {
+    "slug": "athletes",
+    "title": "Success Stories | CORE ATHLETE",
+    "description": "See real results from athletes who trained with CORE ATHLETE. Transformation stories, testimonials, and performance breakthroughs across all sports."
+  },
+  "sections": [
+    {
+      "id": "athletes-hero",
+      "type": "page-hero",
+      "enabled": true,
+      "order": 1,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "athletesHero"
+    },
+    {
+      "id": "athletes-featured",
+      "type": "featured-story",
+      "enabled": true,
+      "order": 2,
+      "bgVariant": "black",
+      "animationPreset": "parallax",
+      "spacing": "large",
+      "dataKey": "featuredStory"
+    },
+    {
+      "id": "athletes-testimonials",
+      "type": "testimonial-grid",
+      "enabled": true,
+      "order": 3,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "testimonials"
+    },
+    {
+      "id": "athletes-sports",
+      "type": "sports-breakdown",
+      "enabled": true,
+      "order": 4,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "sportsBreakdown"
+    },
+    {
+      "id": "athletes-cta",
+      "type": "cta",
+      "enabled": true,
+      "order": 5,
+      "bgVariant": "ctaDefault",
+      "animationPreset": "none",
+      "spacing": "none",
+      "dataKey": "cta"
+    }
+  ],
+  "content": {
+    "athletesHero": {
+      "variant": "stats-heavy",
+      "title": "Athlete Success Stories",
+      "subtitle": "Real athletes. Real results. Real transformations.",
+      "stats": [
+        { "number": "500+", "label": "Athletes Trained" },
+        { "number": "95%", "label": "Success Rate" },
+        { "number": "10+", "label": "Sports Covered" },
+        { "number": "24/7", "label": "Support Available" }
+      ]
+    },
+    "featuredStory": {
+      "variant": "full-width-media",
+      "athlete": "Jordan Martinez",
+      "sport": "Basketball",
+      "achievement": "Division I College Scholarship",
+      "title": "From Bench Player to D1 Scholarship",
+      "story": "When Jordan came to CORE ATHLETE, he was struggling to get playing time on his high school team. Through dedicated training focused on explosiveness, agility, and basketball-specific skills, he transformed into a starting player and earned a Division I scholarship within 18 months.",
+      "quote": "CORE ATHLETE didn't just make me stronger and faster – they taught me how to train smart, stay consistent, and believe in my potential. The coaching here changed my life.",
+      "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1600&q=80",
+      "metrics": [
+        {
+          "label": "Vertical Jump",
+          "before": "24 inches",
+          "after": "32 inches",
+          "improvement": "+8 inches"
+        },
+        {
+          "label": "40-Yard Dash",
+          "before": "5.2 seconds",
+          "after": "4.6 seconds",
+          "improvement": "-0.6 seconds"
+        },
+        {
+          "label": "Training Period",
+          "before": "",
+          "after": "18 months",
+          "improvement": ""
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Athletes Are Saying",
+      "subtitle": "Hear directly from the athletes we've helped transform",
+      "variant": "video-masonry",
+      "showFilters": true,
+      "sportFilters": [
+        "All",
+        "Basketball",
+        "Soccer",
+        "Track & Field",
+        "Football",
+        "Baseball",
+        "Other"
+      ]
+    },
+    "sportsBreakdown": {
+      "title": "Athletes Across All Sports",
+      "subtitle": "Training excellence in every discipline",
+      "variant": "icon-grid",
+      "sports": [
+        {
+          "name": "Basketball",
+          "athleteCount": 85,
+          "icon": "sports_basketball"
+        },
+        {
+          "name": "Soccer",
+          "athleteCount": 72,
+          "icon": "sports_soccer"
+        },
+        {
+          "name": "Track & Field",
+          "athleteCount": 68,
+          "icon": "directions_run"
+        },
+        {
+          "name": "Football",
+          "athleteCount": 61,
+          "icon": "sports_football"
+        },
+        {
+          "name": "Baseball",
+          "athleteCount": 54,
+          "icon": "sports_baseball"
+        },
+        {
+          "name": "Volleyball",
+          "athleteCount": 43,
+          "icon": "sports_volleyball"
+        },
+        {
+          "name": "Tennis",
+          "athleteCount": 38,
+          "icon": "sports_tennis"
+        },
+        {
+          "name": "Swimming",
+          "athleteCount": 29,
+          "icon": "pool"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Become Our Next Success Story",
+      "subtitle": "Join hundreds of athletes who have transformed their performance with CORE ATHLETE.",
+      "primaryButton": {
+        "text": "Start Your Journey",
+        "href": "/contact"
+      },
+      "secondaryButton": {
+        "text": "View Programs",
+        "href": "/programs"
+      }
+    }
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "page": {
+    "slug": "about",
+    "title": "About CORE ATHLETE | Elite Athletic Training Philosophy",
+    "description": "Learn about our training philosophy, team, and commitment to building champions through science-based athletic development. Discover what sets CORE ATHLETE apart."
+  },
+  "sections": [
+    {
+      "id": "about-hero",
+      "type": "page-hero",
+      "enabled": true,
+      "order": 1,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "aboutHero"
+    },
+    {
+      "id": "about-story",
+      "type": "story",
+      "enabled": true,
+      "order": 2,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "story"
+    },
+    {
+      "id": "about-philosophy",
+      "type": "philosophy",
+      "enabled": true,
+      "order": 3,
+      "bgVariant": "black",
+      "animationPreset": "slideUp",
+      "spacing": "large",
+      "dataKey": "philosophy"
+    },
+    {
+      "id": "about-team",
+      "type": "team",
+      "enabled": true,
+      "order": 4,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "team"
+    },
+    {
+      "id": "about-credentials",
+      "type": "credentials",
+      "enabled": true,
+      "order": 5,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "credentials"
+    },
+    {
+      "id": "about-cta",
+      "type": "cta",
+      "enabled": true,
+      "order": 6,
+      "bgVariant": "ctaDefault",
+      "animationPreset": "none",
+      "spacing": "none",
+      "dataKey": "cta"
+    }
+  ],
+  "content": {
+    "aboutHero": {
+      "variant": "minimal",
+      "title": "About CORE ATHLETE",
+      "subtitle": "Our Story, Philosophy, and Team"
+    },
+    "story": {
+      "title": "Our Story",
+      "variant": "media-left",
+      "paragraphs": [
+        "CORE ATHLETE was founded on a simple belief: every athlete has untapped potential waiting to be discovered. What started as a passion for athletic development has grown into a comprehensive training facility dedicated to transforming athletes across all sports and skill levels.",
+        "Our journey began with a commitment to evidence-based training methods and individualized coaching. We've spent years refining our approach, combining cutting-edge sports science with time-tested athletic principles to create programs that deliver real, measurable results.",
+        "Today, we're proud to be a trusted partner for athletes seeking to elevate their performance, whether they're preparing for their first competition or pursuing elite-level goals."
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80"
+      ]
+    },
+    "philosophy": {
+      "title": "The C.O.R.E. Philosophy",
+      "subtitle": "What Sets Us Apart",
+      "items": [
+        {
+          "letter": "C",
+          "word": "Creating",
+          "description": "Opportunities for athletes to discover their potential and push beyond perceived limits through structured, science-based training methods."
+        },
+        {
+          "letter": "O",
+          "word": "Opportunities",
+          "description": "Building pathways to success through progressive skill development, strategic programming, and supportive coaching environments."
+        },
+        {
+          "letter": "R",
+          "word": "Realigning",
+          "description": "Adjusting mindsets, techniques, and approaches to optimize performance outcomes and break through plateaus."
+        },
+        {
+          "letter": "E",
+          "word": "Expectations",
+          "description": "Setting ambitious yet achievable goals that inspire growth, dedication, and a commitment to excellence."
+        }
+      ]
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "Expert Coaches Dedicated to Your Success",
+      "members": [
+        {
+          "id": "coach-1",
+          "name": "Sarah Johnson",
+          "role": "Head Coach & Founder",
+          "bio": "Former collegiate athlete with 10+ years of experience in strength and conditioning. Certified Performance Enhancement Specialist (PES) and Corrective Exercise Specialist (CES).",
+          "image": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&w=800&q=80",
+          "credentials": [
+            "NSCA-CSCS Certified",
+            "NASM-PES Certified",
+            "USA Weightlifting Level 1",
+            "10+ Years Coaching Experience"
+          ],
+          "socialLinks": {
+            "instagram": "https://instagram.com/sarahjohnsoncoach",
+            "linkedin": "https://linkedin.com/in/sarahjohnson"
+          }
+        },
+        {
+          "id": "coach-2",
+          "name": "Marcus Williams",
+          "role": "Speed & Agility Specialist",
+          "bio": "Track and field background with expertise in sprint mechanics and explosive power development. Specialized in youth athletic development.",
+          "image": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=800&q=80",
+          "credentials": [
+            "USATF Level 2 Coach",
+            "Speed & Agility Specialist",
+            "Youth Athletic Development",
+            "8+ Years Coaching Experience"
+          ],
+          "socialLinks": {
+            "instagram": "https://instagram.com/coachwilliams",
+            "twitter": "https://twitter.com/coachwilliams"
+          }
+        },
+        {
+          "id": "coach-3",
+          "name": "Emily Chen",
+          "role": "Sport Performance Coach",
+          "bio": "Biomechanics specialist focused on movement efficiency and injury prevention. Works with athletes across multiple sports disciplines.",
+          "image": "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?auto=format&fit=crop&w=800&q=80",
+          "credentials": [
+            "MS in Exercise Science",
+            "FMS Certified",
+            "TPI Golf Fitness Instructor",
+            "6+ Years Coaching Experience"
+          ],
+          "socialLinks": {
+            "instagram": "https://instagram.com/emilychen_coach",
+            "linkedin": "https://linkedin.com/in/emilychen"
+          }
+        }
+      ]
+    },
+    "credentials": {
+      "title": "Certifications & Partnerships",
+      "subtitle": "Trusted by Athletes and Organizations",
+      "items": [
+        {
+          "id": "cert-1",
+          "title": "NSCA Certified Facility",
+          "description": "Recognized by the National Strength and Conditioning Association",
+          "icon": "verified"
+        },
+        {
+          "id": "cert-2",
+          "title": "USA Weightlifting Partner",
+          "description": "Official training partner for Olympic weightlifting development",
+          "icon": "military_tech"
+        },
+        {
+          "id": "cert-3",
+          "title": "SafeSport Certified",
+          "description": "All coaches certified in athlete safety and protection",
+          "icon": "shield"
+        },
+        {
+          "id": "cert-4",
+          "title": "Sports Medicine Partnership",
+          "description": "Collaboration with local sports medicine clinic for athlete care",
+          "icon": "local_hospital"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Start Your Journey?",
+      "subtitle": "Join hundreds of athletes who have transformed their performance with CORE ATHLETE.",
+      "primaryButton": {
+        "text": "Get Started",
+        "href": "/contact"
+      },
+      "secondaryButton": {
+        "text": "View Programs",
+        "href": "/programs"
+      }
+    }
+  }
+}

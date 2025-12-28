@@ -1,0 +1,38 @@
+{
+  "mainNav": [
+    {
+      "label": "Programs",
+      "href": "/programs",
+      "submenu": [
+        { "label": "All Programs", "href": "/programs" },
+        { "label": "Team Training", "href": "/programs#team-training" },
+        { "label": "Small Group", "href": "/programs#small-group" },
+        { "label": "1-on-1 Training", "href": "/programs#1-on-1" }
+      ]
+    },
+    {
+      "label": "About",
+      "href": "/about"
+    },
+    {
+      "label": "Athletes",
+      "href": "/athletes"
+    },
+    {
+      "label": "Facilities",
+      "href": "/facilities"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    }
+  ],
+  "mobileNav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Programs", "href": "/programs" },
+    { "label": "About", "href": "/about" },
+    { "label": "Athletes", "href": "/athletes" },
+    { "label": "Facilities", "href": "/facilities" },
+    { "label": "Contact", "href": "/contact" }
+  ]
+}

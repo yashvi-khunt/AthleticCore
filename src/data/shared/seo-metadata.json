@@ -1,0 +1,53 @@
+{
+  "pages": {
+    "home": {
+      "title": "CORE ATHLETE | Elite Athletic Training & Development",
+      "description": "Transform your performance with CORE ATHLETE's science-based training programs. Build strength, speed, and confidence with expert coaching.",
+      "keywords": "athletic training, sports performance, strength training, speed training, athlete development, CORE ATHLETE",
+      "ogImage": "/images/og-home.jpg",
+      "twitterCard": "summary_large_image"
+    },
+    "about": {
+      "title": "About CORE ATHLETE | Elite Athletic Training Philosophy",
+      "description": "Learn about our training philosophy, team, and commitment to building champions through science-based athletic development. Discover what sets CORE ATHLETE apart.",
+      "keywords": "athletic training philosophy, CORE methodology, certified coaches, athletic development, sports science",
+      "ogImage": "/images/og-about.jpg",
+      "twitterCard": "summary_large_image"
+    },
+    "programs": {
+      "title": "Training Programs | CORE ATHLETE",
+      "description": "Explore our comprehensive athletic training programs. From team training to 1-on-1 coaching, find the perfect program to elevate your performance.",
+      "keywords": "training programs, team training, small group training, 1-on-1 coaching, youth development, athletic programs",
+      "ogImage": "/images/og-programs.jpg",
+      "twitterCard": "summary_large_image"
+    },
+    "athletes": {
+      "title": "Success Stories | CORE ATHLETE",
+      "description": "See real results from athletes who trained with CORE ATHLETE. Transformation stories, testimonials, and performance breakthroughs across all sports.",
+      "keywords": "athlete success stories, testimonials, athlete transformations, training results, performance improvements",
+      "ogImage": "/images/og-athletes.jpg",
+      "twitterCard": "summary_large_image"
+    },
+    "facilities": {
+      "title": "Facilities & Methodology | CORE ATHLETE",
+      "description": "Explore our state-of-the-art training facility and learn about our science-based methodology that delivers real results for athletes.",
+      "keywords": "training facility, sports performance center, athletic equipment, training methodology, facility tour",
+      "ogImage": "/images/og-facilities.jpg",
+      "twitterCard": "summary_large_image"
+    },
+    "contact": {
+      "title": "Contact Us | CORE ATHLETE",
+      "description": "Get in touch with CORE ATHLETE. Schedule a consultation, book a trial session, or ask us any questions about our training programs.",
+      "keywords": "contact, schedule consultation, book trial, athletic training inquiry, get started",
+      "ogImage": "/images/og-contact.jpg",
+      "twitterCard": "summary_large_image"
+    }
+  },
+  "global": {
+    "siteName": "CORE ATHLETE",
+    "siteUrl": "https://coreathlete.com",
+    "twitterHandle": "@coreathlete",
+    "locale": "en_US",
+    "type": "website"
+  }
+}
