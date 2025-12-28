@@ -47,7 +47,14 @@ export default function AboutSection({
   return (
     <Box
       ref={sectionRef}
-      sx={{ color: "white", overflow: "hidden", position: "relative" }}
+      component="section"
+      sx={{
+        bgcolor: "#000000",
+        py: { xs: 8, md: 10, lg: 12 },
+        color: "white",
+        overflow: "hidden",
+        position: "relative",
+      }}
     >
       {/* Background Logo with Parallax */}
       <Box

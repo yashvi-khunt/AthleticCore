@@ -242,11 +242,12 @@ export default function SectionRenderer({ section }: SectionRendererProps) {
     }
   };
 
-  // Hero, CTA, and page-hero sections manage their own containers, skip SectionShell
+  // Hero, CTA, page-hero, and about sections manage their own containers, skip SectionShell
   if (
     section.type === "hero" ||
     section.type === "cta" ||
-    section.type === "page-hero"
+    section.type === "page-hero" ||
+    section.type === "about"
   ) {
     return <div id={section.id}>{renderSectionContent()}</div>;
   }
