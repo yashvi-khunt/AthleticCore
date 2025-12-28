@@ -1,3 +1,4 @@
+import { Box, Container, Typography, Chip, Grid } from "@mui/material";
 import type { Service } from "@/types/content";
 
 interface Props {
@@ -12,34 +13,99 @@ export default function ServicesSection({
   subtitle,
 }: Props) {
   return (
-    <div className="container mx-auto px-4 text-white">
+    <Container maxWidth="xl" sx={{ color: "white" }}>
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-block px-4 py-2 bg-lime-400/10 border border-lime-400/20 rounded-full mb-4">
-          <span className="text-sm font-bold uppercase tracking-wider text-lime-400">
-            Services
-          </span>
-        </div>
-        <h2 className="text-4xl md:text-5xl font-black mb-4">{title}</h2>
-        {subtitle && <p className="text-lg text-white/70">{subtitle}</p>}
-      </div>
+      <Box sx={{ textAlign: "center", maxWidth: "768px", mx: "auto", mb: 6 }}>
+        <Chip
+          label="Services"
+          sx={{
+            mb: 2,
+            px: 2,
+            py: 1,
+            bgcolor: "rgba(163, 230, 53, 0.1)",
+            border: "1px solid rgba(163, 230, 53, 0.2)",
+            borderRadius: "50px",
+            "& .MuiChip-label": {
+              fontSize: "0.875rem",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              color: "primary.main",
+            },
+          }}
+        />
+        <Typography
+          variant="h2"
+          sx={{
+            fontSize: { xs: "2.25rem", md: "3rem" },
+            fontWeight: 900,
+            mb: 2,
+          }}
+        >
+          {title.split(" ").map((word, index) => (
+            <Box
+              key={index}
+              component="span"
+              sx={{
+                color: word === "Specialise" ? "primary.main" : "white",
+                mr: 0.5,
+              }}
+            >
+              {word}
+            </Box>
+          ))}
+        </Typography>
+        {subtitle && (
+          <Typography
+            variant="body1"
+            sx={{ fontSize: "1.125rem", color: "rgba(255, 255, 255, 0.7)" }}
+          >
+            {subtitle}
+          </Typography>
+        )}
+      </Box>
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <Grid container spacing={3}>
         {services.map((service) => (
-          <ServiceCard key={service.id} {...service} />
+          <Grid size={{ xs: 12, md: 6, lg: 4 }} key={service.id}>
+            <ServiceCard {...service} />
+          </Grid>
         ))}
-      </div>
-    </div>
+      </Grid>
+    </Container>
   );
 }
 
 function ServiceCard({ icon, title, description }: Service) {
   return (
-    <div className="bg-slate-800 rounded-2xl p-6 hover:bg-slate-700 transition-all hover:-translate-y-1 border border-slate-700 hover:border-lime-400">
-      <div className="text-5xl mb-4">{icon}</div>
-      <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
-      <p className="text-white/70 leading-relaxed">{description}</p>
-    </div>
+    <Box
+      sx={{
+        bgcolor: "#1a2332",
+        borderRadius: 4,
+        p: 3,
+        border: "1px solid",
+        borderColor: "rgba(163, 230, 53, 0.1)",
+        transition: "all 0.3s",
+        "&:hover": {
+          bgcolor: "#141d2e",
+          borderColor: "rgba(163, 230, 53, 0.2)",
+          transform: "translateY(-4px)",
+          boxShadow:
+            "0 8px 24px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(163, 230, 53, 0.05)",
+        },
+      }}
+    >
+      <Typography sx={{ fontSize: "3rem", mb: 2 }}>{icon}</Typography>
+      <Typography
+        variant="h3"
+        sx={{ fontSize: "1.25rem", fontWeight: 700, color: "#f1f5f9", mb: 1.5 }}
+      >
+        {title}
+      </Typography>
+      <Typography sx={{ color: "#cbd5e1", lineHeight: 1.6 }}>
+        {description}
+      </Typography>
+    </Box>
   );
 }

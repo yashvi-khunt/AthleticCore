@@ -1,119 +1,247 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Box, Typography, Chip } from "@mui/material";
+import GroupIcon from "@mui/icons-material/Group";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import type { Program } from "@/types/content";
 
 export default function ProgramCard({ item }: { item: Program }) {
   return (
-    <article className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group">
+    <Box
+      component="article"
+      sx={{
+        bgcolor: "#1a2332",
+        borderRadius: 4,
+        overflow: "hidden",
+        border: "1px solid rgba(163, 230, 53, 0.1)",
+        boxShadow:
+          "0 8px 24px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(163, 230, 53, 0.05)",
+        transition: "all 0.3s",
+        "&:hover": {
+          boxShadow:
+            "0 20px 50px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(163, 230, 53, 0.08)",
+          transform: "translateY(-4px)",
+          borderColor: "rgba(163, 230, 53, 0.2)",
+        },
+      }}
+    >
       {/* Image Container */}
-      <div className="relative h-56 w-full overflow-hidden bg-slate-200">
+      <Box
+        sx={{
+          position: "relative",
+          height: "224px",
+          width: "100%",
+          overflow: "hidden",
+          bgcolor: "grey.200",
+        }}
+      >
         <Image
           src={item.image}
           alt={item.name}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-110"
+          style={{ objectFit: "cover" }}
           sizes="(min-width: 1024px) 400px, (min-width: 768px) 350px, 100vw"
         />
 
         {/* Featured Badge */}
         {item.featured && (
-          <div className="absolute top-4 right-4 bg-lime-400 text-black px-3 py-1 rounded-full text-xs font-bold uppercase">
-            Popular
-          </div>
+          <Box sx={{ position: "absolute", top: 2, right: 2 }}>
+            <Chip
+              label="Popular"
+              sx={{
+                bgcolor: "primary.main",
+                color: "black",
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                height: "auto",
+                px: 1.5,
+                py: 0.5,
+              }}
+            />
+          </Box>
         )}
 
         {/* Gradient Overlay on Hover */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <Box
+          className="gradient-overlay"
+          sx={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2), transparent)",
+            opacity: 0,
+            transition: "opacity 0.3s",
+            ".MuiBox-root:hover &": {
+              opacity: 1,
+            },
+          }}
+        />
 
         {/* Quick View Button */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span className="px-6 py-3 bg-lime-400 text-black font-bold rounded-full shadow-lg">
-            View Details
-          </span>
-        </div>
-      </div>
+        <Box
+          className="quick-view"
+          sx={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            opacity: 0,
+            transition: "opacity 0.3s",
+            ".MuiBox-root:hover &": {
+              opacity: 1,
+            },
+          }}
+        >
+          <Chip
+            label="View Details"
+            sx={{
+              px: 3,
+              py: 1.5,
+              bgcolor: "primary.main",
+              color: "black",
+              fontWeight: 700,
+              boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
+            }}
+          />
+        </Box>
+      </Box>
 
       {/* Content */}
-      <div className="p-6 space-y-4">
-        <h3 className="text-xl font-bold text-slate-900 group-hover:text-lime-400 transition-colors">
+      <Box sx={{ p: 3, display: "flex", flexDirection: "column", gap: 2 }}>
+        <Typography
+          variant="h3"
+          sx={{
+            fontSize: "1.25rem",
+            fontWeight: 700,
+            color: "#f1f5f9",
+            transition: "color 0.3s",
+            ".MuiBox-root:hover &": {
+              color: "primary.main",
+            },
+          }}
+        >
           {item.name}
-        </h3>
+        </Typography>
 
-        <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
+        <Typography
+          sx={{
+            fontSize: "0.875rem",
+            color: "#cbd5e1",
+            lineHeight: 1.6,
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
           {item.shortDescription}
-        </p>
+        </Typography>
 
         {/* Meta Info */}
-        <div className="space-y-2 pt-2 border-t border-slate-100">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 1,
+            pt: 1,
+            borderTop: "1px solid",
+            borderColor: "rgba(163, 230, 53, 0.1)",
+          }}
+        >
           {item.groupSize && (
-            <div className="flex items-center gap-2 text-xs text-slate-500">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-              <span>{item.groupSize}</span>
-            </div>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                fontSize: "0.75rem",
+                color: "#94a3b8",
+              }}
+            >
+              <GroupIcon sx={{ fontSize: 16 }} />
+              <Typography sx={{ fontSize: "0.75rem" }}>
+                {item.groupSize}
+              </Typography>
+            </Box>
           )}
 
           {item.duration && (
-            <div className="flex items-center gap-2 text-xs text-slate-500">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>{item.duration}</span>
-            </div>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                fontSize: "0.75rem",
+                color: "#94a3b8",
+              }}
+            >
+              <AccessTimeIcon sx={{ fontSize: 16 }} />
+              <Typography sx={{ fontSize: "0.75rem" }}>
+                {item.duration}
+              </Typography>
+            </Box>
           )}
-        </div>
+        </Box>
 
         {/* Footer with Price and Link */}
-        <div className="flex items-center justify-between pt-4">
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            pt: 2,
+          }}
+        >
           {item.price && (
-            <span className="text-lg font-bold text-lime-400">
+            <Typography
+              sx={{
+                fontSize: "1.125rem",
+                fontWeight: 700,
+                color: "primary.main",
+              }}
+            >
               {item.price}
-            </span>
+            </Typography>
           )}
 
           <Link
             href={`/programs/${item.slug}`}
-            className="text-sm font-semibold text-lime-400 hover:text-lime-500 flex items-center gap-2 group/link"
+            style={{ textDecoration: "none" }}
           >
-            Learn More
-            <svg
-              className="w-4 h-4 transition-transform group-hover/link:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                fontSize: "0.875rem",
+                fontWeight: 600,
+                color: "primary.main",
+                transition: "color 0.3s",
+                "&:hover": {
+                  color: "primary.dark",
+                },
+              }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              <Typography sx={{ fontSize: "0.875rem", fontWeight: 600 }}>
+                Learn More
+              </Typography>
+              <ArrowForwardIcon
+                sx={{
+                  fontSize: 16,
+                  transition: "transform 0.3s",
+                  "a:hover &": {
+                    transform: "translateX(4px)",
+                  },
+                }}
               />
-            </svg>
+            </Box>
           </Link>
-        </div>
-      </div>
-    </article>
+        </Box>
+      </Box>
+    </Box>
   );
 }

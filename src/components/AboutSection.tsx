@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Fragment } from "react";
+import { Box, Container, Typography, Button, Chip, Grid } from "@mui/material";
 import type { About } from "@/types/content";
 
 export default function AboutSection({
@@ -44,12 +45,27 @@ export default function AboutSection({
   }, []);
 
   return (
-    <div ref={sectionRef} className=" text-white overflow-hidden">
+    <Box
+      ref={sectionRef}
+      sx={{ color: "white", overflow: "hidden", position: "relative" }}
+    >
       {/* Background Logo with Parallax */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute inset-0 w-full h-[140%] -top-[50%]"
-          style={{
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+          overflow: "hidden",
+        }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "140%",
+            top: "-50%",
             transform: `translateY(${offsetY}px)`,
             willChange: "transform",
           }}
@@ -58,72 +74,126 @@ export default function AboutSection({
             src="/AthleticCore/images/aboutBackground.png"
             alt="CORE ATHLETE Logo"
             fill
-            className="object-cover opacity-20"
+            style={{ objectFit: "cover", opacity: 0.2 }}
             sizes="100vw"
             priority
           />
-        </div>
-      </div>
+        </Box>
+      </Box>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 10 }}>
+        <Grid container spacing={6} alignItems="center">
           {/* Image */}
-          <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden">
-            <Image
-              src={image}
-              alt="Athletic training"
-              fill
-              className="object-contain"
-              sizes="(min-width: 1024px) 600px, 100vw"
-            />
-          </div>
+          <Grid size={{ xs: 12, lg: 6 }}>
+            <Box
+              sx={{
+                position: "relative",
+                height: { xs: "384px", lg: "500px" },
+                borderRadius: 4,
+                overflow: "hidden",
+              }}
+            >
+              <Image
+                src={image}
+                alt="Athletic training"
+                fill
+                style={{ objectFit: "contain" }}
+                sizes="(min-width: 1024px) 600px, 100vw"
+              />
+            </Box>
+          </Grid>
 
           {/* Content */}
-          <div className="space-y-6">
-            <div className="inline-block px-4 py-2 bg-lime-400/10 border border-lime-400/20 rounded-full">
-              <span className="text-sm font-bold uppercase tracking-wider text-lime-400">
-                Our Philosophy
-              </span>
-            </div>
+          <Grid size={{ xs: 12, lg: 6 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+              <Chip
+                label="Our Philosophy"
+                sx={{
+                  alignSelf: "flex-start",
+                  px: 2,
+                  py: 1,
+                  bgcolor: "rgba(163, 230, 53, 0.1)",
+                  border: "1px solid rgba(163, 230, 53, 0.2)",
+                  borderRadius: "50px",
+                  "& .MuiChip-label": {
+                    fontSize: "0.875rem",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    color: "primary.main",
+                  },
+                }}
+              />
 
-            <h2 className="text-4xl md:text-5xl font-black">
-              {title.split(" ").map((word, index) => {
-                const isHighlight = word.includes("C.O.R.E");
-                return (
-                  <span key={index}>
-                    {isHighlight ? (
-                      <span className="text-lime-400">{word}</span>
-                    ) : (
-                      word
-                    )}
-                    {index < title.split(" ").length - 1 ? " " : ""}
-                  </span>
-                );
-              })}
-            </h2>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontSize: { xs: "2.25rem", md: "3rem" },
+                  fontWeight: 900,
+                }}
+              >
+                {title.split(" ").map((word, index) => {
+                  const isHighlight = word.includes("C.O.R.E");
+                  return (
+                    <Fragment key={index}>
+                      <Box
+                        component="span"
+                        sx={{ color: isHighlight ? "primary.main" : "inherit" }}
+                      >
+                        {word}
+                      </Box>
+                      {index < title.split(" ").length - 1 ? " " : ""}
+                    </Fragment>
+                  );
+                })}
+              </Typography>
 
-            {description.map((para, i) => (
-              <p key={i} className="text-lg text-white/80 leading-relaxed">
-                {para}
-              </p>
-            ))}
-
-            <div className="space-y-4 mt-8">
-              {philosophy?.map((item) => (
-                <PhilosophyItem key={item.letter} {...item} />
+              {description.map((para, i) => (
+                <Typography
+                  key={i}
+                  variant="body1"
+                  sx={{
+                    fontSize: "1.125rem",
+                    color: "#cbd5e1",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {para}
+                </Typography>
               ))}
-            </div>
 
-            <Link
-              href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-lime-400 text-black text-base font-bold rounded-full hover:bg-lime-500 transition-colors shadow-lg mt-4"
-            >
-              Start Your Journey
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 4 }}
+              >
+                {philosophy?.map((item) => (
+                  <PhilosophyItem key={item.letter} {...item} />
+                ))}
+              </Box>
+
+              <Link href="#contact" style={{ textDecoration: "none" }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    mt: 2,
+                    px: 4,
+                    py: 2,
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    borderRadius: "50px",
+                    color: "black",
+                    boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  Start Your Journey
+                </Button>
+              </Link>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 }
 
@@ -137,14 +207,40 @@ function PhilosophyItem({
   description: string;
 }) {
   return (
-    <div className="flex gap-4">
-      <div className="shrink-0 w-12 h-12 rounded-full bg-lime-400 flex items-center justify-center">
-        <span className="text-xl font-black text-black">{letter}</span>
-      </div>
-      <div>
-        <h3 className="text-lg font-bold text-white mb-1">{word}</h3>
-        <p className="text-sm text-white/70">{description}</p>
-      </div>
-    </div>
+    <Box sx={{ display: "flex", gap: 2 }}>
+      <Box
+        sx={{
+          flexShrink: 0,
+          width: 48,
+          height: 48,
+          borderRadius: "50%",
+          bgcolor: "primary.main",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Typography
+          sx={{ fontSize: "1.25rem", fontWeight: 900, color: "black" }}
+        >
+          {letter}
+        </Typography>
+      </Box>
+      <Box>
+        <Typography
+          sx={{
+            fontSize: "1.125rem",
+            fontWeight: 700,
+            color: "#f1f5f9",
+            mb: 0.5,
+          }}
+        >
+          {word}
+        </Typography>
+        <Typography sx={{ fontSize: "0.875rem", color: "#cbd5e1" }}>
+          {description}
+        </Typography>
+      </Box>
+    </Box>
   );
 }

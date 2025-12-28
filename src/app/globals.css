@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
-@import "tailwindcss";
 
-/* ===== TAILWIND V4 THEME CONFIGURATION ===== */
-@theme {
+/* ===== GLOBAL STYLES ===== */
+:root {
   /* CORE ATHLETE Brand Colors */
   --color-lime-50: #f7fee7;
   --color-lime-100: #ecfccb;
@@ -28,22 +27,6 @@
   --color-slate-900: #0f172a;
   --color-slate-950: #020617;
 
-  /* Spacing Extensions */
-  --spacing-18: 4.5rem;
-  --spacing-22: 5.5rem;
-
-  /* Border Radius */
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
-  --radius-3xl: 2rem;
-
-  /* Font Families */
-  --font-sans: "Poppins", "Inter", ui-sans-serif, system-ui, -apple-system;
-  --font-display: "Poppins", sans-serif;
-}
-
-/* ===== SEMANTIC COLOR VARIABLES ===== */
-:root {
   /* Semantic Colors */
   --color-primary: #a3e635;
   --color-primary-dark: #65a30d;

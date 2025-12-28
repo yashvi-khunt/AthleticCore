@@ -2,6 +2,7 @@
 "use client";
 
 import { type ReactNode, useEffect, useRef, useState } from "react";
+import { Box } from "@mui/material";
 
 export type SectionBgVariant = "black" | "ctaDefault" | "hero";
 export type SectionAnimationPreset = "none" | "fadeIn" | "slideUp" | "parallax";
@@ -24,17 +25,17 @@ interface SectionShellProps {
   style?: React.CSSProperties;
 }
 
-const bgVariantClasses: Record<SectionBgVariant, string> = {
-  black: "bg-black",
-  ctaDefault: "", // CTA section handles its own background
-  hero: "", // Hero section handles its own background (image-based)
+const bgVariantStyles: Record<SectionBgVariant, object> = {
+  black: { bgcolor: "#000000" }, // Black background
+  ctaDefault: { bgcolor: "#000000" }, // Black background
+  hero: { bgcolor: "#000000" }, // Black background
 };
 
-const spacingClasses: Record<SectionSpacing, string> = {
-  none: "",
-  small: "py-8 md:py-12",
-  medium: "py-12 md:py-16 lg:py-20",
-  large: "py-16 md:py-20 lg:py-24",
+const spacingStyles: Record<SectionSpacing, object> = {
+  none: {},
+  small: { py: { xs: 4, md: 6 } },
+  medium: { py: { xs: 6, md: 8, lg: 10 } },
+  large: { py: { xs: 8, md: 10, lg: 12 } },
 };
 
 /**
@@ -88,13 +89,18 @@ export default function SectionShell({
       : style;
 
   return (
-    <section
+    <Box
       ref={sectionRef}
       id={id}
-      className={`${bgVariantClasses[bgVariant]} ${spacingClasses[spacing]} ${className}`}
-      style={sectionStyle}
+      component="section"
+      className={className}
+      sx={{
+        ...bgVariantStyles[bgVariant],
+        ...spacingStyles[spacing],
+        ...sectionStyle,
+      }}
     >
       {children}
-    </section>
+    </Box>
   );
 }

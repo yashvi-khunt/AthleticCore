@@ -3,11 +3,23 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  Box,
+  Container,
+  IconButton,
+  List,
+  ListItem,
+  Button,
+  Collapse,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import { getNavigation } from "@/lib/content";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigation = getNavigation();
 
   useEffect(() => {
@@ -19,122 +31,204 @@ export default function Navbar() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    // Handle scroll event for background change
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 site-header"
-      style={{
+    <Box
+      component="header"
+      className="site-header"
+      sx={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        bgcolor: isScrolled ? "#000000" : "transparent",
         filter: isVisible ? "blur(0px)" : "blur(10px)",
         opacity: isVisible ? 1 : 0,
-        transition: "filter 1s ease-out, opacity 1s ease-out",
+        transition:
+          "filter 1s ease-out, opacity 1s ease-out, background-color 0.3s ease",
+        boxShadow: isScrolled ? "0 4px 6px -1px rgb(0 0 0 / 0.5)" : "none",
       }}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+      <Container maxWidth="xl">
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            height: "80px",
+          }}
+        >
           {/* Logo */}
-          <Link href="/" className="hover:opacity-90 transition-opacity">
-            <div className="h-16 w-64 relative">
+          <Link href="/" style={{ textDecoration: "none" }}>
+            <Box
+              sx={{
+                position: "relative",
+                height: "64px",
+                width: "256px",
+                transition: "opacity 0.3s",
+                "&:hover": { opacity: 0.9 },
+              }}
+            >
               <Image
                 src="/AthleticCore/images/logos/full-logo-white.png"
                 alt="Athletic Core Logo"
                 fill
-                className="object-contain object-left"
+                style={{ objectFit: "contain", objectPosition: "left" }}
                 sizes="256px"
                 priority
               />
-            </div>
+            </Box>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 site-nav">
-            <ul className="flex items-center gap-6">
+          <Box
+            component="nav"
+            className="site-nav"
+            sx={{
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+              gap: 4,
+            }}
+          >
+            <List sx={{ display: "flex", alignItems: "center", gap: 3, p: 0 }}>
               {navigation.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm font-semibold uppercase tracking-wide text-white hover:text-lime-400 transition-colors"
-                  >
-                    {link.label}
+                <ListItem key={link.href} sx={{ width: "auto", p: 0 }}>
+                  <Link href={link.href} style={{ textDecoration: "none" }}>
+                    <Box
+                      component="span"
+                      sx={{
+                        fontSize: "0.875rem",
+                        fontWeight: 600,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        color: "white",
+                        transition: "color 0.3s",
+                        "&:hover": { color: "primary.main" },
+                      }}
+                    >
+                      {link.label}
+                    </Box>
                   </Link>
-                </li>
+                </ListItem>
               ))}
-            </ul>
+            </List>
 
-            <Link
-              href="#contact"
-              className="inline-flex items-center justify-center px-6 py-2.5 bg-lime text-black text-sm font-bold rounded-full hover:bg-lime-dark transition-colors shadow-md hover:shadow-lg"
-            >
-              Book Session
+            <Link href="#contact" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{
+                  px: 3,
+                  py: 1.25,
+                  fontSize: "0.875rem",
+                  fontWeight: 700,
+                  borderRadius: "50px",
+                  color: "black",
+                  boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+                  "&:hover": {
+                    boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
+                  },
+                }}
+              >
+                Book Session
+              </Button>
             </Link>
-          </nav>
+          </Box>
 
           {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors"
+          <IconButton
+            sx={{
+              display: { xs: "flex", md: "none" },
+              color: "white",
+              "&:hover": { bgcolor: "rgba(255, 255, 255, 0.1)" },
+            }}
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
           >
-            {isOpen ? (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            )}
-          </button>
-        </div>
+            {isOpen ? <CloseIcon /> : <MenuIcon />}
+          </IconButton>
+        </Box>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <nav className="md:hidden pb-4 border-t border-white/10">
-            <ul className="flex flex-col gap-2 mt-4">
+        <Collapse in={isOpen}>
+          <Box
+            component="nav"
+            sx={{
+              display: { xs: "block", md: "none" },
+              pb: 2,
+              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+          >
+            <List
+              sx={{ display: "flex", flexDirection: "column", gap: 1, mt: 2 }}
+            >
               {navigation.map((link) => (
-                <li key={link.href}>
+                <ListItem key={link.href} sx={{ p: 0 }}>
                   <Link
                     href={link.href}
-                    className="block px-4 py-2 text-sm font-semibold uppercase tracking-wide text-white hover:bg-white/10 hover:text-lime-400 rounded-lg transition-colors"
+                    style={{ textDecoration: "none", width: "100%" }}
                     onClick={() => setIsOpen(false)}
                   >
-                    {link.label}
+                    <Box
+                      sx={{
+                        display: "block",
+                        px: 2,
+                        py: 1,
+                        fontSize: "0.875rem",
+                        fontWeight: 600,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        color: "white",
+                        borderRadius: 1,
+                        transition: "all 0.3s",
+                        "&:hover": {
+                          bgcolor: "rgba(255, 255, 255, 0.1)",
+                          color: "primary.main",
+                        },
+                      }}
+                    >
+                      {link.label}
+                    </Box>
                   </Link>
-                </li>
+                </ListItem>
               ))}
-              <li className="mt-2 px-4">
+              <ListItem sx={{ mt: 1, px: 2 }}>
                 <Link
                   href="#contact"
-                  className="block text-center px-6 py-2.5 bg-lime text-black text-sm font-bold rounded-full hover:bg-lime-dark transition-colors"
+                  style={{ textDecoration: "none", width: "100%" }}
                   onClick={() => setIsOpen(false)}
                 >
-                  Book Session
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    sx={{
+                      py: 1.25,
+                      fontSize: "0.875rem",
+                      fontWeight: 700,
+                      borderRadius: "50px",
+                      color: "black",
+                    }}
+                  >
+                    Book Session
+                  </Button>
                 </Link>
-              </li>
-            </ul>
-          </nav>
-        )}
-      </div>
-    </header>
+              </ListItem>
+            </List>
+          </Box>
+        </Collapse>
+      </Container>
+    </Box>
   );
 }

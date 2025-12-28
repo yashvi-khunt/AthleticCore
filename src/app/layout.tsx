@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageLoader from "@/components/PageLoader";
-import "./globals.css";
+import ThemeRegistry from "@/components/ThemeRegistry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,12 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body className={inter.className}>
-        <PageLoader />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <ThemeRegistry>
+          <PageLoader />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </ThemeRegistry>
       </body>
     </html>
   );

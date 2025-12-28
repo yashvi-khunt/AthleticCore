@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Box, Container, Typography, Button, Grid } from "@mui/material";
 import type { Hero as HeroType } from "@/types/content";
 
 export default function Hero({
@@ -26,11 +27,24 @@ export default function Hero({
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <Box
+      component="section"
+      sx={{
+        position: "relative",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        pt: "80px",
+      }}
+    >
       {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
           filter: isRevealing ? "blur(0px)" : "blur(20px)",
           clipPath: isRevealing
             ? "circle(150% at 0% 0%)"
@@ -42,89 +56,204 @@ export default function Hero({
           src={backgroundImage}
           alt="Hero background"
           fill
-          className="object-cover"
+          style={{ objectFit: "cover" }}
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 hero-overlay" />
-      </div>
+        <Box className="hero-overlay" sx={{ position: "absolute", inset: 0 }} />
+      </Box>
 
       {/* Content */}
-      <div
-        className="relative z-10 container mx-auto px-4 py-20"
-        style={{
+      <Container
+        maxWidth="xl"
+        sx={{
+          position: "relative",
+          zIndex: 10,
+          py: 10,
           filter: isRevealing ? "blur(0px)" : "blur(15px)",
           opacity: isRevealing ? 1 : 0,
           transition: "filter 1s ease-out 0.2s, opacity 1s ease-out 0.2s",
         }}
       >
-        <div className="max-w-4xl">
+        <Box sx={{ maxWidth: "896px" }}>
           {/* Title */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
+          <Typography
+            variant="h1"
+            sx={{
+              fontSize: { xs: "3rem", md: "3.75rem", lg: "4.5rem" },
+              fontWeight: 900,
+              color: "white",
+              mb: 3,
+              lineHeight: 1.2,
+            }}
+          >
             {title.split(" ").map((word, index) => {
               const isHighlight =
                 word.includes("CORE") || word.includes("ATHLETE");
               return (
-                <span key={index}>
-                  {isHighlight ? (
-                    <span className="text-lime">{word}</span>
-                  ) : (
-                    word
-                  )}
+                <React.Fragment key={index}>
+                  <Box
+                    component="span"
+                    sx={{ color: isHighlight ? "primary.main" : "inherit" }}
+                  >
+                    {word}
+                  </Box>
                   {index < title.split(" ").length - 1 ? " " : ""}
-                </span>
+                </React.Fragment>
               );
             })}
-          </h1>
+          </Typography>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl leading-relaxed">
+          <Typography
+            variant="body1"
+            sx={{
+              fontSize: { xs: "1.125rem", md: "1.25rem" },
+              color: "rgba(255, 255, 255, 0.9)",
+              mb: 4,
+              maxWidth: "672px",
+              lineHeight: 1.6,
+            }}
+          >
             {subtitle}
-          </p>
+          </Typography>
 
           {/* Buttons */}
-          <div className="flex flex-wrap gap-4 mb-12">
-            <Link
-              href={primaryButton.href}
-              className="inline-flex items-center justify-center px-8 py-4 bg-lime text-black text-base font-bold rounded-full hover:bg-lime-dark transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl"
-            >
-              {primaryButton.text}
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 6 }}>
+            <Link href={primaryButton.href} style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{
+                  px: 4,
+                  py: 2,
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  borderRadius: "50px",
+                  color: "black",
+                  boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
+                  transition: "all 0.3s",
+                  "&:hover": {
+                    transform: "translateY(-4px)",
+                    boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)",
+                  },
+                }}
+              >
+                {primaryButton.text}
+              </Button>
             </Link>
             {secondaryButton && (
               <Link
                 href={secondaryButton.href}
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/20 text-white text-base font-bold rounded-full hover:bg-white hover:text-black transition-all hover:-translate-y-1"
+                style={{ textDecoration: "none" }}
               >
-                {secondaryButton.text}
+                <Button
+                  variant="outlined"
+                  sx={{
+                    px: 4,
+                    py: 2,
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    borderRadius: "50px",
+                    color: "white",
+                    borderColor: "rgba(255, 255, 255, 0.2)",
+                    borderWidth: 2,
+                    transition: "all 0.3s",
+                    "&:hover": {
+                      bgcolor: "white",
+                      color: "black",
+                      borderColor: "white",
+                      transform: "translateY(-4px)",
+                    },
+                  }}
+                >
+                  {secondaryButton.text}
+                </Button>
               </Link>
             )}
-          </div>
+          </Box>
 
           {/* Stats */}
           {showStats && stats && stats.length > 0 && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <Grid container spacing={3}>
               {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
-                >
-                  <div className="text-3xl md:text-4xl font-black text-lime mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-white/80">{stat.label}</div>
-                </div>
+                <Grid size={{ xs: 6, md: 3 }} key={index}>
+                  <Box
+                    sx={{
+                      bgcolor: "rgba(255, 255, 255, 0.1)",
+                      backdropFilter: "blur(8px)",
+                      borderRadius: 4,
+                      p: 3,
+                      border: "1px solid rgba(255, 255, 255, 0.2)",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: { xs: "1.875rem", md: "2.25rem" },
+                        fontWeight: 900,
+                        color: "primary.main",
+                        mb: 1,
+                      }}
+                    >
+                      {stat.number}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "0.875rem",
+                        color: "rgba(255, 255, 255, 0.8)",
+                      }}
+                    >
+                      {stat.label}
+                    </Typography>
+                  </Box>
+                </Grid>
               ))}
-            </div>
+            </Grid>
           )}
-        </div>
-      </div>
+        </Box>
+      </Container>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-white/50 rounded-full animate-bounce" />
-        </div>
-      </div>
-    </section>
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: 4,
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 10,
+        }}
+      >
+        <Box
+          sx={{
+            width: "24px",
+            height: "40px",
+            borderRadius: "50px",
+            border: "2px solid rgba(255, 255, 255, 0.3)",
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "center",
+            p: 1,
+          }}
+        >
+          <Box
+            sx={{
+              width: "6px",
+              height: "12px",
+              bgcolor: "rgba(255, 255, 255, 0.5)",
+              borderRadius: "50px",
+              animation: "bounce 1s infinite",
+              "@keyframes bounce": {
+                "0%, 100%": {
+                  transform: "translateY(0)",
+                },
+                "50%": {
+                  transform: "translateY(8px)",
+                },
+              },
+            }}
+          />
+        </Box>
+      </Box>
+    </Box>
   );
 }

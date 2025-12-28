@@ -2,6 +2,7 @@
 "use client";
 
 import { type ReactNode } from "react";
+import { Box } from "@mui/material";
 
 interface SectionWrapperProps {
   id?: string;
@@ -11,17 +12,17 @@ interface SectionWrapperProps {
   spacing?: "none" | "small" | "medium" | "large";
 }
 
-const backgroundClasses = {
-  default: "bg-white",
-  gray: "bg-gray-50",
-  dark: "bg-gray-900 text-white",
+const backgroundStyles = {
+  default: { bgcolor: "white" },
+  gray: { bgcolor: "grey.50" },
+  dark: { bgcolor: "grey.900", color: "white" },
 };
 
-const spacingClasses = {
-  none: "",
-  small: "py-8 md:py-12",
-  medium: "py-12 md:py-16 lg:py-20",
-  large: "py-16 md:py-20 lg:py-24",
+const spacingStyles = {
+  none: {},
+  small: { py: { xs: 4, md: 6 } },
+  medium: { py: { xs: 6, md: 8, lg: 10 } },
+  large: { py: { xs: 8, md: 10, lg: 12 } },
 };
 
 export default function SectionWrapper({
@@ -32,11 +33,16 @@ export default function SectionWrapper({
   spacing = "medium",
 }: SectionWrapperProps) {
   return (
-    <section
+    <Box
       id={id}
-      className={`${backgroundClasses[background]} ${spacingClasses[spacing]} ${className}`}
+      component="section"
+      className={className}
+      sx={{
+        ...backgroundStyles[background],
+        ...spacingStyles[spacing],
+      }}
     >
       {children}
-    </section>
+    </Box>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { Box } from "@mui/material";
 
 export default function PageLoader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,42 +35,50 @@ export default function PageLoader() {
   if (!isLoading) return null;
 
   return (
-    <div
-      className={`fixed inset-0 z-[9999] bg-slate-950 transition-opacity duration-1000 ${
-        animationStage === "complete"
-          ? "opacity-0 pointer-events-none"
-          : "opacity-100"
-      }`}
+    <Box
+      sx={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
+        bgcolor: "grey.900",
+        opacity: animationStage === "complete" ? 0 : 1,
+        pointerEvents: animationStage === "complete" ? "none" : "auto",
+        transition: "opacity 1s",
+      }}
     >
-      <div
-        className={`absolute ${
-          animationStage === "initial"
-            ? "opacity-0 scale-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-180"
-            : animationStage === "center"
-            ? "opacity-100 scale-[3] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0"
-            : animationStage === "transition"
-            ? "opacity-100 scale-100"
-            : "opacity-0"
-        }`}
-        style={{
+      <Box
+        sx={{
+          position: "absolute",
+          opacity:
+            animationStage === "initial"
+              ? 0
+              : animationStage === "complete"
+              ? 0
+              : 1,
+          scale:
+            animationStage === "initial"
+              ? 0.5
+              : animationStage === "center"
+              ? 3
+              : 1,
+          top: animationStage === "transition" ? "1.5rem" : "50%",
+          left: animationStage === "transition" ? "2rem" : "50%",
+          transform:
+            animationStage === "transition" ? "none" : "translate(-50%, -50%)",
+          rotate: animationStage === "initial" ? "180deg" : "0deg",
           transition: "all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55)",
-          ...(animationStage === "transition" && {
-            top: "1.5rem",
-            left: "2rem",
-            transform: "none",
-          }),
         }}
       >
-        <div className="relative w-64 h-16">
+        <Box sx={{ position: "relative", width: "256px", height: "64px" }}>
           <Image
             src="/AthleticCore/images/logos/full-logo-white.png"
             alt="Athletic Core"
             fill
-            className="object-contain"
+            style={{ objectFit: "contain" }}
             priority
           />
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 }

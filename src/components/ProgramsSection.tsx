@@ -1,4 +1,5 @@
 import ProgramCard from "./ProgramCard";
+import { Box, Container, Typography, Grid, Chip } from "@mui/material";
 import type { Program } from "@/types/content";
 
 interface Props {
@@ -13,25 +14,71 @@ export default function ProgramsSection({
   description = "Custom programs built around your goals, sport, and lifestyle.",
 }: Props) {
   return (
-    <div className="container mx-auto px-4">
+    <Container maxWidth="xl">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
-          {title}
-        </h2>
+      <Box sx={{ textAlign: "center", maxWidth: "768px", mx: "auto", mb: 6 }}>
+        <Chip
+          label="Programs"
+          sx={{
+            mb: 2,
+            px: 2,
+            py: 1,
+            bgcolor: "rgba(163, 230, 53, 0.1)",
+            border: "1px solid rgba(163, 230, 53, 0.2)",
+            borderRadius: "50px",
+            "& .MuiChip-label": {
+              fontSize: "0.875rem",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              color: "primary.main",
+            },
+          }}
+        />
+        <Typography
+          variant="h2"
+          sx={{
+            fontSize: { xs: "2.25rem", md: "3rem" },
+            fontWeight: 900,
+            color: "white",
+            mb: 2,
+          }}
+        >
+          {title.split(" ").map((word, index) => (
+            <Box
+              key={index}
+              component="span"
+              sx={{
+                color: word === "Training" ? "primary.main" : "white",
+                mr: 0.5,
+              }}
+            >
+              {word}
+            </Box>
+          ))}
+        </Typography>
         {description && (
-          <p className="text-lg text-slate-600 leading-relaxed">
+          <Typography
+            variant="body1"
+            sx={{
+              fontSize: "1.125rem",
+              color: "rgba(255, 255, 255, 0.7)",
+              lineHeight: 1.6,
+            }}
+          >
             {description}
-          </p>
+          </Typography>
         )}
-      </div>
+      </Box>
 
       {/* Programs Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <Grid container spacing={{ xs: 3, lg: 4 }}>
         {programs.map((program) => (
-          <ProgramCard key={program.id} item={program} />
+          <Grid size={{ xs: 12, md: 6, lg: 4 }} key={program.id}>
+            <ProgramCard item={program} />
+          </Grid>
         ))}
-      </div>
-    </div>
+      </Grid>
+    </Container>
   );
 }

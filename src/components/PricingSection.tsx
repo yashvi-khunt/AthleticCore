@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Box, Container, Typography, Button, Chip, Grid } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
 import type { PricingPlan } from "@/types/content";
 
 interface Props {
@@ -13,94 +15,212 @@ export default function PricingSection({
   subtitle = "Choose the plan that fits your goals and schedule.",
 }: Props) {
   return (
-    <div className="container mx-auto px-4">
+    <Container maxWidth="xl">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-block px-4 py-2 bg-lime-400/10 border border-lime-400/20 rounded-full mb-4">
-          <span className="text-sm font-bold uppercase tracking-wider text-lime-400">
-            Pricing
-          </span>
-        </div>
-        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
-          {title}
-        </h2>
-        <p className="text-lg text-slate-600">{subtitle}</p>
-      </div>
+      <Box sx={{ textAlign: "center", maxWidth: "768px", mx: "auto", mb: 6 }}>
+        <Chip
+          label="Pricing"
+          sx={{
+            mb: 2,
+            px: 2,
+            py: 1,
+            bgcolor: "rgba(163, 230, 53, 0.1)",
+            border: "1px solid rgba(163, 230, 53, 0.2)",
+            borderRadius: "50px",
+            "& .MuiChip-label": {
+              fontSize: "0.875rem",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              color: "primary.main",
+            },
+          }}
+        />
+        <Typography
+          variant="h2"
+          sx={{
+            fontSize: { xs: "2.25rem", md: "3rem" },
+            fontWeight: 900,
+            color: "white",
+            mb: 2,
+          }}
+        >
+          {title.split(" ").map((word, index) => (
+            <Box
+              key={index}
+              component="span"
+              sx={{
+                color: word === "Pricing" ? "primary.main" : "white",
+                mr: 0.5,
+              }}
+            >
+              {word}
+            </Box>
+          ))}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{ fontSize: "1.125rem", color: "rgba(255, 255, 255, 0.7)" }}
+        >
+          {subtitle}
+        </Typography>
+      </Box>
 
       {/* Pricing Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <Grid container spacing={3} sx={{ maxWidth: "1024px", mx: "auto" }}>
         {plans.map((plan) => (
-          <PricingCard key={plan.id} {...plan} />
+          <Grid size={{ xs: 12, md: 4 }} key={plan.id}>
+            <PricingCard {...plan} />
+          </Grid>
         ))}
-      </div>
-    </div>
+      </Grid>
+    </Container>
   );
 }
 
 function PricingCard(plan: PricingPlan) {
   return (
-    <div
-      className={`bg-white rounded-2xl p-8 hover:shadow-xl transition-all ${
-        plan.featured
-          ? "border-2 border-lime-400 shadow-lg relative -mt-4 md:mt-0 md:scale-105"
-          : "border border-slate-200"
-      }`}
+    <Box
+      sx={{
+        bgcolor: "#1a2332",
+        borderRadius: 4,
+        p: 4,
+        border: plan.featured ? "2px solid" : "1px solid",
+        borderColor: plan.featured ? "primary.main" : "rgba(163, 230, 53, 0.1)",
+        boxShadow: plan.featured
+          ? "0 8px 24px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(163, 230, 53, 0.05)"
+          : "none",
+        position: "relative",
+        mt: { xs: 0, md: plan.featured ? 0 : 0 },
+        transform: { md: plan.featured ? "scale(1.05)" : "scale(1)" },
+        transition: "all 0.3s",
+        "&:hover": {
+          boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)",
+        },
+      }}
     >
       {plan.featured && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span className="inline-block px-4 py-1 bg-lime-400 text-black text-xs font-bold rounded-full uppercase">
-            Most Popular
-          </span>
-        </div>
+        <Box
+          sx={{
+            position: "absolute",
+            top: -16,
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <Chip
+            label="Most Popular"
+            sx={{
+              px: 2,
+              py: 0.5,
+              bgcolor: "primary.main",
+              color: "black",
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              "& .MuiChip-label": {
+                px: 1,
+              },
+            }}
+          />
+        </Box>
       )}
 
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
-        <p className="text-sm text-slate-600">{plan.description}</p>
-      </div>
+      <Box sx={{ textAlign: "center", mb: 3 }}>
+        <Typography
+          variant="h3"
+          sx={{ fontSize: "1.5rem", fontWeight: 700, color: "#f1f5f9", mb: 1 }}
+        >
+          {plan.name}
+        </Typography>
+        <Typography sx={{ fontSize: "0.875rem", color: "#cbd5e1" }}>
+          {plan.description}
+        </Typography>
+      </Box>
 
-      <div className="text-center mb-6 pb-6 border-b border-slate-200">
-        <div className="flex items-baseline justify-center gap-1">
-          <span className="text-5xl font-bold text-slate-900">
+      <Box
+        sx={{
+          textAlign: "center",
+          mb: 3,
+          pb: 3,
+          borderBottom: "1px solid",
+          borderColor: "rgba(163, 230, 53, 0.1)",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "baseline",
+            justifyContent: "center",
+            gap: 0.5,
+          }}
+        >
+          <Typography
+            sx={{ fontSize: "3rem", fontWeight: 700, color: "#f1f5f9" }}
+          >
             {plan.price}
-          </span>
+          </Typography>
           {plan.interval && (
-            <span className="text-slate-500">/{plan.interval}</span>
+            <Typography sx={{ color: "#94a3b8" }}>/{plan.interval}</Typography>
           )}
-        </div>
-      </div>
+        </Box>
+      </Box>
 
-      <ul className="space-y-4 mb-8">
+      <Box
+        component="ul"
+        sx={{
+          listStyle: "none",
+          p: 0,
+          m: 0,
+          mb: 4,
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+        }}
+      >
         {plan.features.map((feature, i) => (
-          <li key={i} className="flex items-start gap-3 text-sm">
-            <svg
-              className="w-5 h-5 text-lime-400 shrink-0 mt-0.5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-            <span className="text-slate-700">{feature}</span>
-          </li>
+          <Box
+            component="li"
+            key={i}
+            sx={{ display: "flex", alignItems: "flex-start", gap: 1.5 }}
+          >
+            <CheckIcon
+              sx={{
+                color: "primary.main",
+                fontSize: 20,
+                flexShrink: 0,
+                mt: 0.25,
+              }}
+            />
+            <Typography sx={{ fontSize: "0.875rem", color: "#cbd5e1" }}>
+              {feature}
+            </Typography>
+          </Box>
         ))}
-      </ul>
+      </Box>
 
       <Link
         href={plan.buttonLink || "#contact"}
-        className={`block text-center px-6 py-3 rounded-full font-bold transition-all ${
-          plan.featured
-            ? "bg-lime-400 text-black hover:bg-lime-500"
-            : "bg-slate-900 text-white hover:bg-slate-800"
-        }`}
+        style={{ textDecoration: "none" }}
       >
-        {plan.buttonText || "Get Started"}
+        <Button
+          variant="contained"
+          fullWidth
+          sx={{
+            py: 1.5,
+            borderRadius: "50px",
+            fontWeight: 700,
+            bgcolor: plan.featured ? "primary.main" : "#141d2e",
+            color: plan.featured ? "black" : "#f1f5f9",
+            transition: "all 0.3s",
+            "&:hover": {
+              bgcolor: plan.featured ? "primary.dark" : "#1a2332",
+            },
+          }}
+        >
+          {plan.buttonText || "Get Started"}
+        </Button>
       </Link>
-    </div>
+    </Box>
   );
 }
