@@ -16,30 +16,60 @@
       "dataKey": "programsHero"
     },
     {
+      "id": "programs-benefits",
+      "type": "program-benefits",
+      "enabled": true,
+      "order": 2,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "benefits"
+    },
+    {
       "id": "programs-grid",
       "type": "program-grid",
       "enabled": true,
-      "order": 2,
+      "order": 3,
       "bgVariant": "black",
       "animationPreset": "slideUp",
       "spacing": "large",
       "dataKey": "programsGrid"
     },
     {
+      "id": "programs-methodology",
+      "type": "program-methodology",
+      "enabled": true,
+      "order": 4,
+      "bgVariant": "black",
+      "animationPreset": "slideUp",
+      "spacing": "large",
+      "dataKey": "methodology"
+    },
+    {
       "id": "programs-comparison",
       "type": "comparison-table",
       "enabled": true,
-      "order": 3,
+      "order": 5,
       "bgVariant": "black",
       "animationPreset": "fadeIn",
       "spacing": "large",
       "dataKey": "comparison"
     },
     {
+      "id": "programs-faq",
+      "type": "program-faq",
+      "enabled": true,
+      "order": 6,
+      "bgVariant": "black",
+      "animationPreset": "fadeIn",
+      "spacing": "large",
+      "dataKey": "faq"
+    },
+    {
       "id": "programs-cta",
       "type": "cta",
       "enabled": true,
-      "order": 4,
+      "order": 7,
       "bgVariant": "ctaDefault",
       "animationPreset": "none",
       "spacing": "none",
@@ -50,14 +80,118 @@
     "programsHero": {
       "variant": "with-filters",
       "title": "Training Programs",
-      "subtitle": "Science-based programs designed for every athlete and every goal",
+      "subtitle": "Science-based programs designed for every athlete and every goal. Whether you're training for your sport, building strength, or looking to improve overall athletic performance, we have a program tailored to your needs.",
       "filters": ["All", "Team", "Small Group", "1-on-1", "Youth"]
+    },
+    "benefits": {
+      "title": "Why Choose Our Programs",
+      "subtitle": "Every program is built on proven athletic training principles",
+      "benefits": [
+        {
+          "icon": "🎯",
+          "title": "Personalized Approach",
+          "description": "Each program is customized to your sport, goals, and current fitness level. No cookie-cutter workouts."
+        },
+        {
+          "icon": "📊",
+          "title": "Data-Driven Results",
+          "description": "Track your progress with measurable metrics. See improvements in strength, speed, and overall performance."
+        },
+        {
+          "icon": "🏆",
+          "title": "Proven Track Record",
+          "description": "Our programs have helped hundreds of athletes reach state championships, college scholarships, and pro contracts."
+        },
+        {
+          "icon": "👥",
+          "title": "Expert Coaching",
+          "description": "Work with certified strength coaches who have trained collegiate and professional athletes."
+        },
+        {
+          "icon": "🔬",
+          "title": "Science-Based Training",
+          "description": "Every exercise and protocol is backed by sports science research and proven methodology."
+        },
+        {
+          "icon": "💪",
+          "title": "Injury Prevention Focus",
+          "description": "Build resilience and reduce injury risk through proper movement patterns and progressive loading."
+        }
+      ]
+    },
+    "methodology": {
+      "title": "Our Training Methodology",
+      "subtitle": "A systematic approach to athletic development",
+      "phases": [
+        {
+          "number": "01",
+          "title": "Assessment & Goal Setting",
+          "description": "We start with a comprehensive movement assessment and performance testing to establish your baseline and set clear, measurable goals.",
+          "duration": "Week 1"
+        },
+        {
+          "number": "02",
+          "title": "Foundation Building",
+          "description": "Develop proper movement patterns, core stability, and base strength. This phase prepares your body for more intense training.",
+          "duration": "Weeks 2-4"
+        },
+        {
+          "number": "03",
+          "title": "Strength & Power Development",
+          "description": "Build explosive power, speed, and sport-specific strength through progressive overload and varied training stimuli.",
+          "duration": "Weeks 5-10"
+        },
+        {
+          "number": "04",
+          "title": "Performance Optimization",
+          "description": "Fine-tune your athletic abilities with advanced techniques, speed work, and competition-specific conditioning.",
+          "duration": "Weeks 11+"
+        }
+      ]
     },
     "programsGrid": {
       "title": "Choose Your Path",
       "subtitle": "Find the program that matches your goals and schedule",
       "layout": "3-column-cards",
       "showFilters": true
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about our programs",
+      "questions": [
+        {
+          "question": "What age groups do you work with?",
+          "answer": "We train athletes from age 8 through adult. Our Youth Programs are designed for ages 8-13, while Teen and Adult programs cater to ages 14+. Each program is age-appropriate and follows proper developmental guidelines."
+        },
+        {
+          "question": "Do I need prior training experience?",
+          "answer": "No prior experience is necessary. We work with athletes at all levels, from beginners to elite competitors. Every program starts with an assessment to determine your current level and create an appropriate training plan."
+        },
+        {
+          "question": "How long does it take to see results?",
+          "answer": "Most athletes notice improvements in strength and conditioning within 3-4 weeks. Significant performance gains typically appear after 8-12 weeks of consistent training. Results vary based on training frequency, effort, and individual factors."
+        },
+        {
+          "question": "What equipment do I need?",
+          "answer": "All equipment is provided at our facility. We have everything from Olympic lifting platforms to sleds, medicine balls, resistance bands, and sport-specific training tools. Just bring athletic shoes and water."
+        },
+        {
+          "question": "Can I try a session before committing?",
+          "answer": "Absolutely! We offer a free trial session so you can experience our training firsthand. This includes a brief assessment, sample workout, and consultation with our coaches. Book through our contact page."
+        },
+        {
+          "question": "What's your cancellation policy?",
+          "answer": "We require 24-hour notice for cancellations. Sessions cancelled with less than 24 hours notice will be charged. We understand emergencies happen and handle these on a case-by-case basis."
+        },
+        {
+          "question": "Do you offer team discounts?",
+          "answer": "Yes! We offer special rates for sports teams and groups of 6 or more athletes training together. Contact us for custom team packages and pricing."
+        },
+        {
+          "question": "How do you track progress?",
+          "answer": "We use a combination of performance testing, body composition analysis, video analysis, and strength metrics. You'll receive regular progress reports showing improvements in key performance indicators relevant to your goals."
+        }
+      ]
     },
     "comparison": {
       "title": "Program Comparison",
@@ -124,6 +258,34 @@
           "small-group": "Skill refinement",
           "private": "Elite performance",
           "youth": "Developing athletes"
+        },
+        {
+          "feature": "Assessment Included",
+          "team": "✓",
+          "small-group": "✓",
+          "private": "✓ In-depth",
+          "youth": "✓"
+        },
+        {
+          "feature": "Video Analysis",
+          "team": "Monthly",
+          "small-group": "Bi-weekly",
+          "private": "Every session",
+          "youth": "Monthly"
+        },
+        {
+          "feature": "Nutrition Guidance",
+          "team": "Basic",
+          "small-group": "Detailed",
+          "private": "Comprehensive",
+          "youth": "Age-appropriate"
+        },
+        {
+          "feature": "Progress Tracking",
+          "team": "Team metrics",
+          "small-group": "Individual",
+          "private": "Advanced analytics",
+          "youth": "Growth-focused"
         }
       ]
     },

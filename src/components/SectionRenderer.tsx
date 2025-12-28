@@ -14,6 +14,11 @@ import SportsSection from "@/components/SportsSection";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
 import PageHero from "@/components/sections/PageHero";
+import ProgramGrid from "@/components/sections/ProgramGrid";
+import ComparisonTable from "@/components/sections/ComparisonTable";
+import ProgramBenefits from "@/components/sections/ProgramBenefits";
+import ProgramMethodology from "@/components/sections/ProgramMethodology";
+import ProgramFAQ from "@/components/sections/ProgramFAQ";
 
 import {
   getHero,
@@ -132,14 +137,84 @@ export default function SectionRenderer({ section }: SectionRendererProps) {
         return <PageHero {...heroData} {...customProps} />;
       }
 
+      case "program-grid": {
+        const pageSlug = section.id.split("-")[0];
+        const gridData = getPageContent(
+          pageSlug,
+          section.dataKey || "programsGrid"
+        );
+        if (!gridData) {
+          console.warn(
+            `Program grid data not found for ${pageSlug}:${section.dataKey}`
+          );
+          return null;
+        }
+        return <ProgramGrid content={gridData} {...customProps} />;
+      }
+
+      case "comparison-table": {
+        const pageSlug = section.id.split("-")[0];
+        const comparisonData = getPageContent(
+          pageSlug,
+          section.dataKey || "comparison"
+        );
+        if (!comparisonData) {
+          console.warn(
+            `Comparison table data not found for ${pageSlug}:${section.dataKey}`
+          );
+          return null;
+        }
+        return <ComparisonTable content={comparisonData} {...customProps} />;
+      }
+
+      case "program-benefits": {
+        const pageSlug = section.id.split("-")[0];
+        const benefitsData = getPageContent(
+          pageSlug,
+          section.dataKey || "benefits"
+        );
+        if (!benefitsData) {
+          console.warn(
+            `Benefits data not found for ${pageSlug}:${section.dataKey}`
+          );
+          return null;
+        }
+        return <ProgramBenefits content={benefitsData} {...customProps} />;
+      }
+
+      case "program-methodology": {
+        const pageSlug = section.id.split("-")[0];
+        const methodologyData = getPageContent(
+          pageSlug,
+          section.dataKey || "methodology"
+        );
+        if (!methodologyData) {
+          console.warn(
+            `Methodology data not found for ${pageSlug}:${section.dataKey}`
+          );
+          return null;
+        }
+        return (
+          <ProgramMethodology content={methodologyData} {...customProps} />
+        );
+      }
+
+      case "program-faq": {
+        const pageSlug = section.id.split("-")[0];
+        const faqData = getPageContent(pageSlug, section.dataKey || "faq");
+        if (!faqData) {
+          console.warn(`FAQ data not found for ${pageSlug}:${section.dataKey}`);
+          return null;
+        }
+        return <ProgramFAQ content={faqData} {...customProps} />;
+      }
+
       // Placeholder for other page-specific sections
       // These will be implemented as needed
       case "story":
       case "philosophy":
       case "team":
       case "credentials":
-      case "program-grid":
-      case "comparison-table":
       case "featured-story":
       case "testimonial-grid":
       case "sports-breakdown":
