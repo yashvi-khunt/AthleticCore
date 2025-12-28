@@ -242,7 +242,7 @@ function YouTubeTestimonialCard({
   return (
     <Box
       sx={{
-        bgcolor: "white",
+        bgcolor: "#1a2332",
         borderRadius: 3,
         overflow: "hidden",
         boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
@@ -359,7 +359,7 @@ function YouTubeTestimonialCard({
         <Typography
           sx={{
             fontWeight: 700,
-            color: "grey.900",
+            color: "white",
             mb: 1,
             display: "-webkit-box",
             WebkitLineClamp: 2,
@@ -401,7 +401,7 @@ function YouTubeTestimonialCard({
               sx={{
                 fontWeight: 600,
                 fontSize: "0.875rem",
-                color: "grey.900",
+                color: "white",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
@@ -413,7 +413,7 @@ function YouTubeTestimonialCard({
               <Typography
                 sx={{
                   fontSize: "0.75rem",
-                  color: "grey.600",
+                  color: "rgba(255, 255, 255, 0.7)",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
                   whiteSpace: "nowrap",

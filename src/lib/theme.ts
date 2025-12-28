@@ -90,7 +90,7 @@ const theme = createTheme({
     borderRadius: 8,
   },
   components: {
-    CssBaseline: {
+    MuiCssBaseline: {
       styleOverrides: {
         body: {
           backgroundColor: "#000000",
