@@ -4,21 +4,21 @@
 import { type SectionConfig } from "@/types/content";
 import type { PageSectionConfig } from "@/types/pages";
 import SectionShell from "@/components/SectionShell";
-import Hero from "@/components/Hero";
-import AboutSection from "@/components/AboutSection";
-import ProgramsSection from "@/components/ProgramsSection";
-import ServicesSection from "@/components/ServicesSection";
-import PricingSection from "@/components/PricingSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import SportsSection from "@/components/SportsSection";
+import Hero from "@/components/home/Hero";
+import AboutSection from "@/components/home/AboutSection";
+import ProgramsSection from "@/components/home/ProgramsSection";
+import ServicesSection from "@/components/home/ServicesSection";
+import PricingSection from "@/components/home/PricingSection";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
+import SportsSection from "@/components/home/SportsSection";
 import CTASection from "@/components/CTASection";
-import ContactSection from "@/components/ContactSection";
-import PageHero from "@/components/sections/PageHero";
-import ProgramGrid from "@/components/sections/ProgramGrid";
-import ComparisonTable from "@/components/sections/ComparisonTable";
-import ProgramBenefits from "@/components/sections/ProgramBenefits";
-import ProgramMethodology from "@/components/sections/ProgramMethodology";
-import ProgramFAQ from "@/components/sections/ProgramFAQ";
+import ContactSection from "@/components/home/ContactSection";
+import PageHero from "@/components/PageHero";
+import ProgramGrid from "@/app/programs/components/ProgramGrid";
+import ComparisonTable from "@/app/programs/components/ComparisonTable";
+import ProgramBenefits from "@/app/programs/components/ProgramBenefits";
+import ProgramMethodology from "@/app/programs/components/ProgramMethodology";
+import ProgramFAQ from "@/app/programs/components/ProgramFAQ";
 
 import {
   getHero,

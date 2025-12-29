@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Box, Container, Typography, Button, Grid } from "@mui/material";
-import ProgramCard from "../ProgramCard";
+import ProgramCard from "@/components/ProgramCard";
 import { getPrograms } from "@/lib/content";
 
 interface ProgramGridContent {

@@ -1,4 +1,4 @@
-import ProgramCard from "./ProgramCard";
+import ProgramCard from "../ProgramCard";
 import { Box, Container, Typography, Grid, Chip } from "@mui/material";
 import type { Program } from "@/types/content";
 
