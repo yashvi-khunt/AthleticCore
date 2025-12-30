@@ -81,7 +81,8 @@
       "variant": "with-filters",
       "title": "Training Programs",
       "subtitle": "Science-based programs designed for every athlete and every goal. Whether you're training for your sport, building strength, or looking to improve overall athletic performance, we have a program tailored to your needs.",
-      "filters": ["All", "Team", "Small Group", "1-on-1", "Youth"]
+      "filters": ["All", "Team", "Small Group", "1-on-1", "Youth"],
+      "videoId": "bTqVqk7FSmY"
     },
     "benefits": {
       "title": "Why Choose Our Programs",

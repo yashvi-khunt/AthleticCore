@@ -1,6 +1,13 @@
 "use client";
 
-import { Box, Container, Typography, Grid } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Paper,
+  useTheme,
+} from "@mui/material";
 
 interface Benefit {
   icon: string;
@@ -19,113 +26,115 @@ interface Props {
 }
 
 export default function ProgramBenefits({ content }: Props) {
+  const theme = useTheme();
+
   return (
-    <Container maxWidth="xl">
-      {/* Section Header */}
-      <Box sx={{ textAlign: "center", maxWidth: "768px", mx: "auto", mb: 8 }}>
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: { xs: "2.25rem", md: "3rem" },
-            fontWeight: 900,
-            color: "white",
-            mb: 2,
-          }}
+    <Box sx={{ py: 15, bgcolor: "background.default", position: "relative" }}>
+      <Container maxWidth="xl">
+        <Box
+          sx={{ textAlign: "center", maxWidth: "800px", mx: "auto", mb: 10 }}
         >
-          {content.title.split(" ").map((word, index) => (
-            <Box
-              key={index}
-              component="span"
-              sx={{
-                color:
-                  word === "Choose" || word === "Our"
-                    ? "primary.main"
-                    : "white",
-                mr: 0.5,
-              }}
-            >
-              {word}
-            </Box>
-          ))}
-        </Typography>
-        {content.subtitle && (
           <Typography
-            variant="body1"
+            variant="h2"
             sx={{
-              fontSize: "1.125rem",
-              color: "rgba(255, 255, 255, 0.7)",
-              lineHeight: 1.6,
+              fontSize: { xs: "2.5rem", md: "3.5rem" },
+              fontWeight: 900,
+              mb: 3,
+              textTransform: "uppercase",
             }}
           >
-            {content.subtitle}
+            {content.title}
           </Typography>
-        )}
-      </Box>
-
-      {/* Benefits Grid */}
-      <Grid container spacing={{ xs: 3, md: 4 }}>
-        {content.benefits.map((benefit, index) => (
-          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
-            <Box
+          {content.subtitle && (
+            <Typography
+              variant="h5"
               sx={{
-                p: 4,
-                height: "100%",
-                bgcolor: "rgba(255, 255, 255, 0.02)",
-                border: "1px solid rgba(255, 255, 255, 0.05)",
-                borderRadius: "12px",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  bgcolor: "rgba(255, 255, 255, 0.04)",
-                  borderColor: "primary.main",
-                  transform: "translateY(-4px)",
-                  boxShadow: "0 8px 24px rgba(163, 230, 53, 0.1)",
-                },
+                color: "text.secondary",
+                fontWeight: 300,
               }}
             >
-              {/* Icon */}
-              <Box
-                sx={{
-                  fontSize: "3rem",
-                  mb: 2,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "72px",
-                  height: "72px",
-                  bgcolor: "rgba(163, 230, 53, 0.1)",
-                  borderRadius: "50%",
-                }}
-              >
-                {benefit.icon}
-              </Box>
+              {content.subtitle}
+            </Typography>
+          )}
+        </Box>
 
-              {/* Title */}
-              <Typography
-                variant="h6"
+        <Grid container spacing={4}>
+          {content.benefits.map((benefit, index) => (
+            <Grid size={{ xs: 12, md: 4 }} key={index}>
+              <Paper
+                elevation={0}
                 sx={{
-                  fontSize: "1.25rem",
-                  fontWeight: 700,
-                  color: "white",
-                  mb: 1.5,
+                  p: 5,
+                  height: "100%",
+                  bgcolor: "rgba(255, 255, 255, 0.03)",
+                  border: "1px solid rgba(255, 255, 255, 0.05)",
+                  borderRadius: 4,
+                  transition: "all 0.4s ease",
+                  position: "relative",
+                  overflow: "hidden",
+                  "&:hover": {
+                    transform: "translateY(-10px)",
+                    bgcolor: "rgba(255, 255, 255, 0.05)",
+                    borderColor: "primary.main",
+                    "& .icon-bg": {
+                      transform: "scale(1.5)",
+                      opacity: 0.1,
+                    },
+                  },
                 }}
               >
-                {benefit.title}
-              </Typography>
+                <Box
+                  className="icon-bg"
+                  sx={{
+                    position: "absolute",
+                    top: -20,
+                    right: -20,
+                    fontSize: "8rem",
+                    opacity: 0.05,
+                    transition: "all 0.4s ease",
+                    pointerEvents: "none",
+                  }}
+                >
+                  {benefit.icon}
+                </Box>
 
-              {/* Description */}
-              <Typography
-                sx={{
-                  fontSize: "0.9375rem",
-                  color: "rgba(255, 255, 255, 0.7)",
-                  lineHeight: 1.7,
-                }}
-              >
-                {benefit.description}
-              </Typography>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+                <Typography
+                  variant="h1"
+                  sx={{
+                    fontSize: "4rem",
+                    mb: 3,
+                    lineHeight: 1,
+                  }}
+                >
+                  {benefit.icon}
+                </Typography>
+
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 2,
+                    color: "common.white",
+                  }}
+                >
+                  {benefit.title}
+                </Typography>
+
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "text.secondary",
+                    lineHeight: 1.7,
+                    fontSize: "1.1rem",
+                  }}
+                >
+                  {benefit.description}
+                </Typography>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 }

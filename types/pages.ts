@@ -73,6 +73,7 @@ export interface PageHero {
   subtitle?: string;
   backgroundImage?: string;
   backgroundVideo?: string;
+  videoId?: string;
   stats?: Stat[];
   filters?: string[];
 }

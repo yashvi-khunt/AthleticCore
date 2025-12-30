@@ -3,6 +3,7 @@
 
 import { Box, Container, Typography } from "@mui/material";
 import type { PageHero as PageHeroType } from "@/types/pages";
+import YouTubeBackground from "@/components/YouTubeBackground";
 
 /**
  * PageHero - Minimal hero component for internal pages
@@ -14,6 +15,7 @@ export default function PageHero({
   subtitle,
   variant = "minimal",
   backgroundImage,
+  videoId,
   stats,
 }: PageHeroType) {
   return (
@@ -24,14 +26,17 @@ export default function PageHero({
         pt: { xs: 16, md: 20 },
         pb: { xs: 8, md: 12 },
         overflow: "hidden",
-        ...(backgroundImage && {
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }),
+        ...(backgroundImage &&
+          !videoId && {
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }),
       }}
     >
-      <Container maxWidth="lg">
+      {videoId && <YouTubeBackground videoId={videoId} opacity={0.3} />}
+
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Box
           sx={{
             textAlign: "center",

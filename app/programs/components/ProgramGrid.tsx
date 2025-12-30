@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Container, Typography, Button, Grid } from "@mui/material";
+import { Box, Container, Typography, Button, Grid, Chip } from "@mui/material";
 import ProgramCard from "@/components/ProgramCard";
 import { getPrograms } from "@/lib/content";
 
@@ -25,123 +25,92 @@ export default function ProgramGrid({ content }: Props) {
   // Filter programs based on active filter
   const filteredPrograms = allPrograms.filter((program) => {
     if (activeFilter === "All") return true;
-    // Match filter to program name
+    // Match filter to program name or tags if available
     return program.name.toLowerCase().includes(activeFilter.toLowerCase());
   });
 
   return (
-    <Container maxWidth="xl">
-      {/* Section Header */}
-      <Box sx={{ textAlign: "center", maxWidth: "768px", mx: "auto", mb: 6 }}>
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: { xs: "2.25rem", md: "3rem" },
-            fontWeight: 900,
-            color: "white",
-            mb: 2,
-          }}
-        >
-          {content.title.split(" ").map((word, index) => (
-            <Box
-              key={index}
-              component="span"
-              sx={{
-                color:
-                  word === "Path" || word === "Your" ? "primary.main" : "white",
-                mr: 0.5,
-              }}
-            >
-              {word}
-            </Box>
-          ))}
-        </Typography>
-        {content.subtitle && (
+    <Box sx={{ py: 15, bgcolor: "background.default" }}>
+      <Container maxWidth="xl">
+        {/* Section Header */}
+        <Box sx={{ textAlign: "center", maxWidth: "768px", mx: "auto", mb: 8 }}>
           <Typography
-            variant="body1"
+            variant="h2"
             sx={{
-              fontSize: "1.125rem",
-              color: "rgba(255, 255, 255, 0.7)",
-              lineHeight: 1.6,
+              fontSize: { xs: "2.5rem", md: "3.5rem" },
+              fontWeight: 900,
+              color: "white",
+              mb: 2,
+              textTransform: "uppercase",
             }}
           >
-            {content.subtitle}
+            {content.title}
           </Typography>
-        )}
-      </Box>
-
-      {/* Filters */}
-      {content.showFilters && (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 2,
-            mb: 6,
-            flexWrap: "wrap",
-          }}
-        >
-          {filterCategories.map((filter) => (
-            <Button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
+          {content.subtitle && (
+            <Typography
+              variant="body1"
               sx={{
-                px: 3,
-                py: 1,
-                borderRadius: "50px",
-                bgcolor:
-                  activeFilter === filter
-                    ? "primary.main"
-                    : "rgba(255, 255, 255, 0.05)",
-                color: activeFilter === filter ? "#000" : "white",
-                border:
-                  activeFilter === filter
-                    ? "2px solid transparent"
-                    : "2px solid rgba(255, 255, 255, 0.1)",
-                fontWeight: 700,
-                fontSize: "0.875rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  bgcolor:
-                    activeFilter === filter
-                      ? "primary.main"
-                      : "rgba(255, 255, 255, 0.1)",
-                  transform: "translateY(-2px)",
-                },
+                fontSize: "1.125rem",
+                color: "text.secondary",
+                lineHeight: 1.6,
               }}
             >
-              {filter}
-            </Button>
-          ))}
+              {content.subtitle}
+            </Typography>
+          )}
         </Box>
-      )}
 
-      {/* Programs Grid */}
-      <Grid container spacing={{ xs: 3, lg: 4 }}>
-        {filteredPrograms.length > 0 ? (
-          filteredPrograms.map((program) => (
-            <Grid size={{ xs: 12, md: 6, lg: 4 }} key={program.id}>
+        {/* Filters */}
+        {content.showFilters && (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              gap: 2,
+              mb: 8,
+              flexWrap: "wrap",
+            }}
+          >
+            {filterCategories.map((filter) => (
+              <Chip
+                key={filter}
+                label={filter}
+                onClick={() => setActiveFilter(filter)}
+                variant={activeFilter === filter ? "filled" : "outlined"}
+                color={activeFilter === filter ? "primary" : "default"}
+                sx={{
+                  px: 2,
+                  py: 2.5,
+                  borderRadius: "50px",
+                  fontSize: "1rem",
+                  fontWeight: 600,
+                  borderColor:
+                    activeFilter === filter
+                      ? "transparent"
+                      : "rgba(255,255,255,0.2)",
+                  color:
+                    activeFilter === filter ? "common.black" : "text.primary",
+                  "&:hover": {
+                    bgcolor:
+                      activeFilter === filter
+                        ? "primary.dark"
+                        : "rgba(255,255,255,0.05)",
+                  },
+                }}
+              />
+            ))}
+          </Box>
+        )}
+
+        {/* Programs Grid */}
+        <Grid container spacing={4}>
+          {filteredPrograms.map((program) => (
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={program.id}>
               <ProgramCard item={program} />
             </Grid>
-          ))
-        ) : (
-          <Grid size={12}>
-            <Box
-              sx={{
-                textAlign: "center",
-                py: 8,
-                color: "rgba(255, 255, 255, 0.5)",
-              }}
-            >
-              <Typography variant="h6">
-                No programs found for &quot;{activeFilter}&quot;
-              </Typography>
-            </Box>
-          </Grid>
-        )}
-      </Grid>
-    </Container>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 }
