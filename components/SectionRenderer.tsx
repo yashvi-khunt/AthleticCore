@@ -19,6 +19,9 @@ import ComparisonTable from "@/app/programs/components/ComparisonTable";
 import ProgramBenefits from "@/app/programs/components/ProgramBenefits";
 import ProgramMethodology from "@/app/programs/components/ProgramMethodology";
 import ProgramFAQ from "@/app/programs/components/ProgramFAQ";
+import FeaturedStory from "@/app/athletes/components/FeaturedStory";
+import TestimonialGrid from "@/app/athletes/components/TestimonialGrid";
+import SportsBreakdown from "@/app/athletes/components/SportsBreakdown";
 
 import {
   getHero,
@@ -118,9 +121,26 @@ export default function SectionRenderer({ section }: SectionRendererProps) {
       }
 
       case "cta": {
-        const cta = getCTA();
+        // Check if there is page-specific CTA data
+        const pageSlug = section.id.split("-")[0];
+        const pageCta = section.dataKey
+          ? getPageContent(pageSlug, section.dataKey)
+          : null;
+
+        const ctaData = pageCta || getCTA();
+
+        // Map data to CTASection props
+        const props = {
+          title: ctaData.title,
+          subtitle: ctaData.subtitle,
+          primaryButtonText: ctaData.primaryButton?.text,
+          primaryButtonLink: ctaData.primaryButton?.href,
+          secondaryButtonText: ctaData.secondaryButton?.text,
+          secondaryButtonLink: ctaData.secondaryButton?.href,
+        };
+
         // CTA section manages its own styling (lime background)
-        return <CTASection {...cta} {...customProps} />;
+        return <CTASection {...props} {...customProps} />;
       }
 
       case "contact": {
@@ -218,15 +238,64 @@ export default function SectionRenderer({ section }: SectionRendererProps) {
         return <ProgramFAQ content={faqData} {...customProps} />;
       }
 
+      case "featured-story": {
+        const pageSlug = section.id.split("-")[0];
+        const storyData = getPageContent(
+          pageSlug,
+          section.dataKey || "featuredStory"
+        );
+        if (!storyData) {
+          console.warn(
+            `Featured story data not found for ${pageSlug}:${section.dataKey}`
+          );
+          return null;
+        }
+        return <FeaturedStory content={storyData} {...customProps} />;
+      }
+
+      case "testimonial-grid": {
+        const pageSlug = section.id.split("-")[0];
+        const gridData = getPageContent(
+          pageSlug,
+          section.dataKey || "testimonials"
+        );
+        if (!gridData) {
+          console.warn(
+            `Testimonial grid data not found for ${pageSlug}:${section.dataKey}`
+          );
+          return null;
+        }
+        const testimonials = getTestimonials();
+        return (
+          <TestimonialGrid
+            content={gridData}
+            testimonials={testimonials}
+            {...customProps}
+          />
+        );
+      }
+
+      case "sports-breakdown": {
+        const pageSlug = section.id.split("-")[0];
+        const sportsData = getPageContent(
+          pageSlug,
+          section.dataKey || "sportsBreakdown"
+        );
+        if (!sportsData) {
+          console.warn(
+            `Sports breakdown data not found for ${pageSlug}:${section.dataKey}`
+          );
+          return null;
+        }
+        return <SportsBreakdown content={sportsData} {...customProps} />;
+      }
+
       // Placeholder for other page-specific sections
       // These will be implemented as needed
       case "story":
       case "philosophy":
       case "team":
       case "credentials":
-      case "featured-story":
-      case "testimonial-grid":
-      case "sports-breakdown":
       case "facility-tour":
       case "methodology":
       case "equipment":
