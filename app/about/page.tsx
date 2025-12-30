@@ -23,7 +23,11 @@ export default function AboutPage() {
   return (
     <main>
       {heroContent && (
-        <AboutHero title={heroContent.title} subtitle={heroContent.subtitle} />
+        <AboutHero
+          title={heroContent.title}
+          subtitle={heroContent.subtitle}
+          videoId={heroContent.videoId}
+        />
       )}
 
       {storyContent && (

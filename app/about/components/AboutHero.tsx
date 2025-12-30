@@ -2,6 +2,7 @@
 
 import { Box, Container, Typography, useTheme } from "@mui/material";
 import { keyframes } from "@mui/system";
+import YouTubeBackground from "@/components/YouTubeBackground";
 
 const float = keyframes`
   0% { transform: translate(0, 0) rotate(0deg); }
@@ -19,9 +20,14 @@ const morph = keyframes`
 interface AboutHeroProps {
   title: string;
   subtitle: string;
+  videoId?: string;
 }
 
-export default function AboutHero({ title, subtitle }: AboutHeroProps) {
+export default function AboutHero({
+  title,
+  subtitle,
+  videoId,
+}: AboutHeroProps) {
   const theme = useTheme();
 
   return (
@@ -37,35 +43,41 @@ export default function AboutHero({ title, subtitle }: AboutHeroProps) {
         pt: 10,
       }}
     >
-      {/* Fluid Background Blobs */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: "-10%",
-          right: "-5%",
-          width: "60vw",
-          height: "60vw",
-          bgcolor: "primary.main",
-          opacity: 0.15,
-          filter: "blur(80px)",
-          animation: `${morph} 15s ease-in-out infinite, ${float} 20s ease-in-out infinite`,
-          zIndex: 0,
-        }}
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: "-10%",
-          left: "-10%",
-          width: "50vw",
-          height: "50vw",
-          bgcolor: "secondary.main",
-          opacity: 0.3,
-          filter: "blur(60px)",
-          animation: `${morph} 12s ease-in-out infinite reverse, ${float} 25s ease-in-out infinite reverse`,
-          zIndex: 0,
-        }}
-      />
+      {videoId ? (
+        <YouTubeBackground videoId={videoId} opacity={0.3} />
+      ) : (
+        <>
+          {/* Fluid Background Blobs */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: "-10%",
+              right: "-5%",
+              width: "60vw",
+              height: "60vw",
+              bgcolor: "primary.main",
+              opacity: 0.15,
+              filter: "blur(80px)",
+              animation: `${morph} 15s ease-in-out infinite, ${float} 20s ease-in-out infinite`,
+              zIndex: 0,
+            }}
+          />
+          <Box
+            sx={{
+              position: "absolute",
+              bottom: "-10%",
+              left: "-10%",
+              width: "50vw",
+              height: "50vw",
+              bgcolor: "secondary.main",
+              opacity: 0.3,
+              filter: "blur(60px)",
+              animation: `${morph} 12s ease-in-out infinite reverse, ${float} 25s ease-in-out infinite reverse`,
+              zIndex: 0,
+            }}
+          />
+        </>
+      )}
 
       <Container
         maxWidth="lg"

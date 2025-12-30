@@ -71,7 +71,8 @@
       "variant": "full-screen-video",
       "title": "Our Training Facility",
       "subtitle": "A world-class environment designed for athletic excellence",
-      "backgroundImage": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80"
+      "backgroundImage": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80",
+      "videoId": "bTqVqk7FSmY"
     },
     "tour": {
       "type": "images",
